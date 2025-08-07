@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Words to cycle through after the prefix. The animation will type
         // each word, delete it, then move on to the next. When it reaches
         // the end of the array it loops back to the first.
-        const words = ['SphereLab.', 'driven by curiosity.'];
+        const words = ['SphereLab.', 'driven by curiosity.', 'building principled AI.'];
         // Timing constants controlling the pace of typing and deletion as
         // well as pauses between phases. Adjust these values to change
         // the animation speed or pauses.
