@@ -1,168 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" class="dark-mode">
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gradient Typewriter</title>
-    <style>
-      /*
-       * Basic page styling: center the typewriter in the viewport and
-       * set a dark background to let the gradient colours pop. The
-       * font family is generic so it renders nicely on any system.
-       */
-      body {
-        height: 100vh;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #0a0a0a;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-          Arial, sans-serif;
-      }
-
-      /*
-       * Apply a multi‑hue linear gradient to the text. The
-       * `background-clip` properties ensure the gradient fills the glyphs
-       * themselves while keeping the actual text colour transparent. A
-       * border on the right imitates the blinking caret seen in
-       * typewriters.
-       */
-      #typewriter {
-        font-size: 3rem;
-        font-weight: 700;
-        background: linear-gradient(90deg,
-          #ff5f6d 0%,   /* warm pink */
-          #ffc371 25%,  /* amber */
-          #47c1e2 50%,  /* light blue */
-          #7e5bef 75%,  /* violet */
-          #fcb045 100%  /* orange */
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
-        white-space: nowrap;
-        overflow: hidden;
-        border-right: 0.15em solid rgba(255, 255, 255, 0.75);
-      }
-
-      /*
-       * Blink animation for the caret. It toggles the border colour
-       * from transparent to opaque to create the familiar blinking
-       * effect. Applied via the `.typing` class while the animation
-       * runs.
-       */
-      @keyframes blink {
-        from,
-        to {
-          border-color: transparent;
-        }
-        50% {
-          border-color: rgba(255, 255, 255, 0.75);
-        }
-      }
-      .typing {
-        animation: blink 0.8s step-end infinite;
-      }
-    </style>
-  </head>
-  <body>
-    <!--
-      The container that will receive the gradually typed text. It
-      initially has the `.typing` class so the caret blinks while
-      characters are being added. Once typing completes the class is
-      removed to stop the blinking.
-    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SphereLab - Scalable Principles for Learning and Reasoning Lab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="sphere.svg">
+</head>
+<body>
+    <section class="hero2">
     <div id="typewriter" class="typing"></div>
-
-    <script>
-      // Wait until the DOM is fully parsed before starting the animation
-      document.addEventListener('DOMContentLoaded', () => {
-        const element = document.getElementById('typewriter');
-
-        // Define the parts of the animation: a prefix, a segment to delete,
-        // and the final suffix to append after deletion. Deleting only the
-        // segment leaves the prefix intact. After deletion the suffix will
-        // be typed after the retained prefix, resulting in “We are driven by curiosity”.
-        // Constant prefix that should never be removed. It is typed once at
-        // the beginning of the animation and then retained through each
-        // subsequent cycle. Only the words that follow this prefix will be
-        // deleted and retyped.
-        const prefix = 'We are ';
-        // Words to cycle through after the prefix. The animation will type
-        // each word, delete it, then move on to the next. When it reaches
-        // the end of the array it loops back to the first.
-        const words = ['SphereLab', 'driven by curiosity'];
-        // Timing constants controlling the pace of typing and deletion as
-        // well as pauses between phases. Adjust these values to change
-        // the animation speed or pauses.
-        const typingDelay = 150;         // milliseconds between keystrokes
-        const deletingDelay = 100;       // milliseconds between deleting characters
-        const pauseAfterTyping = 1000;   // pause before starting deletion
-        const pauseAfterDeleting = 500;  // pause before typing the next word
-
-        /**
-         * Helper to write a given string to the element one character at a time.
-         * @param {string} str The text to write
-         * @param {number} i Current index in the string
-         * @param {function} callback Called when the entire string has been written
-         */
-        function typeString(str, i, callback) {
-          if (i < str.length) {
-            element.textContent += str.charAt(i);
-            setTimeout(() => typeString(str, i + 1, callback), typingDelay);
-          } else {
-            callback();
-          }
-        }
-
-        /**
-         * Helper to delete a number of characters from the end of the current
-         * element’s text. It deletes one character per call until the
-         * specified count has been removed.
-         * @param {number} count Number of characters to delete
-         * @param {function} callback Called when deletion is complete
-         */
-        function deleteChars(count, callback) {
-          if (count > 0) {
-            element.textContent = element.textContent.slice(0, -1);
-            setTimeout(() => deleteChars(count - 1, callback), deletingDelay);
-          } else {
-            callback();
-          }
-        }
-
-        /**
-         * Cycles through the `words` array indefinitely. After the prefix
-         * has been typed once, this function types the current word
-         * character by character, waits, deletes it, waits again, then
-         * proceeds to the next word. When the end of the array is
-         * reached, it loops back to the beginning.
-         */
-        function cycleWords() {
-          const word = words[wordIndex];
-          typeString(word, 0, () => {
-            // After typing the word, pause before deleting
-            setTimeout(() => {
-              deleteChars(word.length, () => {
-                // Move to the next word after a pause
-                setTimeout(() => {
-                  wordIndex = (wordIndex + 1) % words.length;
-                  cycleWords();
-                }, pauseAfterDeleting);
-              });
-            }, pauseAfterTyping);
-          });
-        }
-
-        // Begin typing the prefix once and then start cycling through words
-        let wordIndex = 0;
-        element.classList.add('typing');
-        typeString(prefix, 0, () => {
-          cycleWords();
-        });
-      });
-    </script>
-  </body>
-</html>
+    </section>
+    <section class="hero">
+        <div class="container">
+            <div class="welcome-text">
+                <div class="sub-heading">
+                    Scalable Principles for Learning and Reasoning Lab<br>
+                    The Chinese University of Hong Kong<br><br>
+                    <a href="http://wyliu.com/" class="gradient-button">Explore Our Research</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html> 
