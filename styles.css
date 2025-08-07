@@ -2,7 +2,7 @@
 :root {
     /* Dark mode colors (default) */
     --bg-color: #121212;
-    --text-color: #ffffff;
+    --text-color: #bbbbbb;
     --nav-hover-color: #3e9fff;
     --button-bg: rgba(255, 255, 255, 0.1);
     --button-border: rgba(255, 255, 255, 0.2);
@@ -10,16 +10,6 @@
     --shape-gradient: linear-gradient(135deg, rgba(145, 145, 145, 0) 0%, rgb(119, 119, 119) 100%);
 }
 
-/* Light mode colors */
-html.light-mode {
-    --bg-color: #f5f5f7;
-    --text-color: #121212;
-    --nav-hover-color: #0066cc;
-    --button-bg: rgba(0, 0, 0, 0.1);
-    --button-border: rgba(0, 0, 0, 0.2);
-    --footer-bg: #e0e0e0;
-    --shape-gradient: linear-gradient(135deg, rgba(145, 145, 145, 0) 0%, rgba(119, 119, 119, 0.5) 100%);
-}
 
 /* Basic reset and global styles */
 * {
@@ -33,6 +23,9 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -41,9 +34,47 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+#typewriter {
+        font-size: 4rem;
+        font-weight: 700;
+        background: linear-gradient(90deg,
+          #ff5f6d 0%,   /* warm pink */
+          #ffc371 25%,  /* amber */
+          #47c1e2 50%,  /* light blue */
+          #7e5bef 75%,  /* violet */
+          #fcb045 100%  /* orange */
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 0.15em solid rgba(255, 255, 255, 0.75);
+      }
+
+      /*
+       * Blink animation for the caret. It toggles the border colour
+       * from transparent to opaque to create the familiar blinking
+       * effect. Applied via the `.typing` class while the animation
+       * runs.
+       */
+      @keyframes blink {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: rgba(255, 255, 255, 0.75);
+        }
+      }
+      .typing {
+        animation: blink 0.8s step-end infinite;
+}
+
 .container {
     max-width: 1400px;
-    width: 100%;
+    margin: auto;
     margin: 0 auto;
     padding: 0 40px;
     position: relative;
@@ -79,7 +110,6 @@ nav a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
-    text-transform: uppercase;
     letter-spacing: 1px;
     transition: color 0.3s ease;
 }
@@ -88,69 +118,43 @@ nav a:hover {
     color: var(--nav-hover-color);
 }
 
-/* Theme toggle button */
-.theme-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    position: relative;
-    transition: background-color 0.3s;
-    background-color: var(--button-bg);
-}
 
-.theme-toggle:hover {
-    background-color: var(--button-border);
-}
-
-.theme-toggle svg {
-    width: 24px;
-    height: 24px;
-    stroke: var(--text-color);
-    transition: opacity 0.3s, transform 0.5s;
-    position: absolute;
-}
 
 html.dark-mode .sun-icon {
-    opacity: 1;
-    transform: rotate(0);
-}
-
-html.dark-mode .moon-icon {
-    opacity: 0;
-    transform: rotate(100deg);
-}
-
-html.light-mode .sun-icon {
     opacity: 0;
     transform: rotate(-100deg);
 }
 
-html.light-mode .moon-icon {
+html.dark-mode .moon-icon {
     opacity: 1;
     transform: rotate(0);
 }
 
+
 /* Hero section */
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: 70vh;
     width: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    padding-top: 120px;
+    padding-top: 0px;
+    overflow: hidden;
+}
+.hero2 {
+    position: relative;
+    min-height: 30vh;
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 200px;
     overflow: hidden;
 }
 
 .welcome-text {
-    padding-left: 40px;
-    max-width: 800px;
+    max-width: 600px;
     z-index: 10;
     opacity: 0;
     transform: translateY(30px);
@@ -163,14 +167,13 @@ html.light-mode .moon-icon {
     line-height: 1;
     margin-bottom: 20px;
     letter-spacing: 2px;
-    text-transform: uppercase;
 }
 
 .sub-heading {
-    font-size: 24px;
-    font-weight: 400;
-    letter-spacing: 8px;
-    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 450;
+    text-align: center;
+    letter-spacing: 0.75px;
     margin-top: 30px;
     line-height: 1.6;
 }
@@ -185,9 +188,8 @@ html.light-mode .moon-icon {
 .gradient-button {
     display: inline-block;
     padding: 12px 30px;
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: 16px;
+    letter-spacing: .65px;
     font-weight: 500;
     color: var(--text-color);
     background-color: var(--button-bg);
@@ -227,8 +229,8 @@ html.light-mode .moon-icon {
 /* Logo section */
 .logo-container {
     position: absolute;
-    bottom: 100px;
-    right: 100px;
+    bottom: 90px;
+    right: 90px;
     z-index: 10;
     opacity: 0;
     transform: scale(0.8);
@@ -242,20 +244,21 @@ html.light-mode .moon-icon {
 }
 
 .logo-image {
-    width: 350px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
 }
 
 .logo-image img {
     width: 100%;
     height: 100%;
+    opacity: .6;
     object-fit: contain;
-    filter: invert(100%);
+    filter: invert(0%);
     transition: filter 0.5s ease;
 }
 
 /* Invert the logo only in dark mode */
-html.light-mode .logo-image img {
+html.dark-mode .logo-image img {
     filter: invert(0%);
 }
 
