@@ -3,6 +3,9 @@
     --bg-color: #121212;
     --text-color: #bbbbbb;
     --nav-hover-color: #3e9fff;
+    --grad-1: #ff6ec7;  /* pink */
+    --grad-2: #7a5cff;  /* purple */
+    --grad-3: #00d4ff;  /* cyan */
     --button-bg: rgba(255, 255, 255, 0.1);
     --button-border: rgba(255, 255, 255, 0.2);
     --footer-bg: #191919;
@@ -36,13 +39,7 @@ body {
 #typewriter {
         font-size: 4rem;
         font-weight: 700;
-        background: linear-gradient(90deg,
-          #ff5f6d 0%,   /* warm pink */
-          #ffc371 25%,  /* amber */
-          #47c1e2 50%,  /* light blue */
-          #7e5bef 75%,  /* violet */
-          #fcb045 100%  /* orange */
-        );
+        background: linear-gradient(135deg, var(--grad-1), var(--grad-2) 50%, var(--grad-3));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
