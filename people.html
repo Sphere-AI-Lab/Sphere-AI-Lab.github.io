@@ -18,15 +18,61 @@
             min-height: 100vh;
             padding: 3rem 2rem;
         }
+
+        .main-title {
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: clamp(3rem, 8vh, 6rem);
+            letter-spacing: -0.02em;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+        }
         
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1.5rem;
+            width: clamp(1.5rem, 3vw, 3rem);
+            height: clamp(1.5rem, 3vw, 3rem);
+            background-color: #c2e8f6;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+            z-index: -1;
+        }
+        
+        .main-title:hover::before {
+            transform: scale(1.2);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         .header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
         }
         
         .subtitle {
@@ -42,7 +88,7 @@
             font-weight: 900;
             font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
             font-size: 1.4rem;
-            color: #000;
+            color: #3e3e3e;
             line-height: 1.1;
             text-align: left;
             display: inline-block;
@@ -73,7 +119,7 @@
         .page-title {
             font-size: clamp(3rem, 8vw, 5rem);
             font-weight: 900;
-            color: #000;
+            color: #3e3e3e;
             position: relative;
             display: inline-block;
             cursor: pointer;
@@ -86,7 +132,7 @@
             left: -1rem;
             width: clamp(2rem, 3vw, 2.5rem);
             height: clamp(2rem, 3vw, 2.5rem);
-            background-color: #ff9999;
+            background-color: #cea8e0;
             border-radius: 50%;
             transition: transform 0.2s ease;
             z-index: -1;
@@ -121,7 +167,7 @@
              left: -0.8rem;
              width: 2.2rem;
              height: 2.2rem;
-             background-color: #a8d8ea;
+             background-color: #cea8e0;
              border-radius: 50%;
              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
              z-index: -1;
@@ -155,7 +201,7 @@
         .member-name {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #000;
+            color: #3e3e3e;
             margin-bottom: 0.25rem;
         }
         
@@ -265,7 +311,7 @@
 </head>
 <body>
     <a href="index.html" class="subtitle">
-        <span class="subtitle-text">SPHERE<br>LAB</span>
+            <h1 class="main-title">SphereLab</h1>
     </a>
     
     <div class="container">

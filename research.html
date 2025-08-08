@@ -45,7 +45,7 @@
         }
 
         .main-title {
-            font-size: clamp(2.25rem, 6.5vw, 3.25rem);
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
             font-weight: 900;
             margin-bottom: clamp(3rem, 8vh, 6rem);
             letter-spacing: -0.02em;
@@ -64,8 +64,8 @@
             position: absolute;
             top: -0.5rem;
             left: -1.5rem;
-            width: clamp(2rem, 3vw, 3.5rem);
-            height: clamp(2rem, 3vw, 3.5rem);
+            width: clamp(1.5rem, 3vw, 3rem);
+            height: clamp(1.5rem, 3vw, 3rem);
             background-color: #c2e8f6;
             border-radius: 50%;
             transition: transform 0.2s ease;
@@ -135,12 +135,12 @@
         }
 
         .header h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
+            font-size: clamp(2.5rem, 7vw, 4rem);
             margin-bottom: 3rem;
             position: relative;
             display: inline-block;
             font-weight: 900;
-            color: #000;
+            color: #3e3e3e;
         }
 
         .header h1::before {
@@ -150,7 +150,7 @@
             left: -1rem;
             width: clamp(2.5rem, 4vw, 3rem);
             height: clamp(2.5rem, 4vw, 3rem);
-            background-color: #ffb366;
+            background-color: #95ade4;
             border-radius: 50%;
             transition: transform 0.3s ease;
             z-index: -1;
@@ -180,6 +180,237 @@
             position: relative;
         }
 
+        /* Featured Projects Carousel Styles */
+        .featured-section {
+            text-align: center;
+            margin-bottom: 0rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0rem 0;
+            padding: 0rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 2rem;
+            padding: 1rem 0;
+            width: fit-content;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .featured-project {
+            flex: 0 0 350px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .featured-project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .featured-project::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: #ffb366;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .featured-project:hover::before {
+            opacity: 0.2;
+            transform: scale(1.2);
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #f8f8f8;
+        }
+
+        .featured-content {
+            padding: 1.5rem;
+        }
+
+        .featured-project-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .featured-project-authors {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .featured-project-venue {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 0.8rem;
+        }
+
+        .featured-project-description {
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .featured-project-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            background-color: #f5f5f5;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            width: fit-content;
+        }
+
+        .featured-project-link:hover {
+            background-color: #e5e5e5;
+            color: #000;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #95ade4;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #95ade4;
+            font-weight: bold;
+        }
+
+        .carousel-btn:hover {
+            background-color: #95ade4;
+            color: #fff;
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .carousel-btn:disabled:hover {
+            background-color: #fff;
+            color: #95ade4;
+            transform: none;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-350px - 2rem));
+            }
+        }
+
+        .auto-scroll {
+            animation: scroll 30s linear infinite;
+        }
+
+        /* Mobile responsive for featured section */
+        @media (max-width: 768px) {
+            .featured-section {
+                margin: 2rem 0;
+                padding: 1rem 0;
+            }
+
+            .featured-project {
+                flex: 0 0 280px;
+            }
+
+            .featured-content {
+                padding: 1rem;
+            }
+
+            .featured-project-title {
+                font-size: 1.1rem;
+            }
+
+            .featured-project-description {
+                font-size: 0.85rem;
+                -webkit-line-clamp: 2;
+            }
+
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-280px - 2rem));
+                }
+            }
+        }
+
         .sort-btn {
             padding: 0.5rem 2rem;
             border: none;
@@ -190,16 +421,17 @@
             transition: all 0.3s ease;
             z-index: 1;
             font-size: 1.2rem;
+            color: #3e3e3e;
         }
 
         .sort-btn::before {
             content: '';
             position: absolute;
-            top: -0.3rem;
-            left: -0.3rem;
-            width: 1.8rem;
-            height: 1.8rem;
-            background-color: #ffb366;
+            top: 0.4rem;
+            left: 0.4rem;
+            width: 1.3rem;
+            height: 1.3rem;
+            background-color: #95ade4;
             border-radius: 50%;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: -1;
@@ -321,9 +553,7 @@
             position: relative;
             opacity: 0;
             transform: translateY(20px);
-            display: flex;
-            align-items: stretch;
-            min-height: 250px;
+            min-height: 200px;
         }
 
         .paper-card.appear {
@@ -409,11 +639,7 @@
         }
 
         .paper-content {
-            flex: 1;
             padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
         .paper-title {
@@ -492,13 +718,7 @@
             }
 
             .paper-card {
-                flex-direction: column;
                 min-height: auto;
-            }
-
-            .paper-image-container {
-                flex: 0 0 auto;
-                height: 200px;
             }
 
             .paper-content {
@@ -537,6 +757,23 @@
             <h1>Research</h1>
         </div>
 
+        <div class="featured-section">
+            <h2 class="featured-title">Featured Projects</h2>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Projects will be dynamically populated by JavaScript -->
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn" onclick="moveToSlide('prev')" id="prev-btn">‹</button>
+                    <button class="carousel-btn" onclick="moveToSlide('next')" id="next-btn">›</button>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <div class="featured-section">
+            <h2 class="featured-title">Publication</h2>
+        </div>
         <div class="filter-section">
             <div class="sort-buttons">
                 <button class="sort-btn active" onclick="handleSort('date')">Sort by Date</button>
@@ -729,9 +966,6 @@
                 paperCard.className = 'paper-card appear';
                 
                 paperCard.innerHTML = `
-                    <div class="paper-image-container">
-                        <img class="paper-image" src="${paper.img_path}" alt="${paper.title}">
-                    </div>
                     <div class="paper-content">
                         <h3 class="paper-title">${paper.title}</h3>
                         <p class="paper-authors">${paper.authorlist.join(', ')}</p>
@@ -745,9 +979,178 @@
             });
         }
 
+        // Featured Projects Carousel Functionality
+        let currentSlide = 0;
+        let autoScrollInterval;
+        const featuredProjects = [
+            {
+                title: "Orthogonal Finetuning Made Scalable",
+                authors: "Zeju Qiu*, Weiyang Liu*, Adrian Weller, Bernhard Schölkopf",
+                venue: "Preprint 2025",
+                description: "A parameter-efficient, memory-efficient finetuning method that works for both full-precision and quantized models.",
+                image: "papers/featured/oftv2.png",
+                link: "https://spherelab.ai/oftv2/"
+            },
+            {
+                title: "Reparameterized LLM Training via Orthogonal Equivalence Transformation",
+                authors: "Zeju Qiu, Simon Buchholz, Tim Z. Xiao, Maximilian Dax, Bernhard Schölkopf, Weiyang Liu",
+                venue: "Preprint 2025",
+                description: "A novel reparameterized training algorithm that uses orthogonal equivalence transformation to optimize large language models.",
+                image: "papers/featured/poet.png",
+                link: "https://spherelab.ai/poet/"
+            },
+            {
+                title: "FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models",
+                authors: "Zhouliang Yu, Ruotian Peng, Keyi Ding, Yizhe Li, Zhongyuan Peng, Minghao Liu, Yifan Zhang, Zheng Yuan, Huajian Xin, Wenhao Huang, Yandong Wen, Ge Zhang, Weiyang Liu",
+                venue: "Preprint 2025",
+                description: "A large-scale comprehensive Lean4 mathematical reasoning benchmark.",
+                image: "papers/featured/formalmath.png",
+                link: "https://spherelab.ai/FormalMATH/"
+            },
+
+            {
+                title: "Generating Symbolic World Models via Test-time Scaling of Large Language Models",
+                authors: "Zhouliang Yu, Yuhuan Yuan, Tim Z. Xiao, Frank Xia, Jie Fu, Ge Zhang, Ge Lin, Weiyang Liu",
+                venue: "TMLR 2025",
+                description: "A general yet effective test-time compute scaling method for large language models",
+                image: "papers/featured/ivml.png",
+                link: "https://vmlpddl.github.io/"
+            },
+
+            {
+                title: "Can Large Language Models Understand Symbolic Graphics Programs?",
+                authors: "Zeju Qiu*, Weiyang Liu*, Haiwen Feng*, Zhen Liu, Tim Z. Xiao, Katherine M. Collins, Joshua B. Tenenbaum, Adrian Weller, Michael J. Black, Bernhard Schölkopfu",
+                venue: "ICLR 2025 Spotlight",
+                description: "A comprehensive study to evaluate whether language models can truly understand symbolic graphics programs.",
+                image: "papers/featured/sgpbench.png",
+                link: "https://sgp-bench.github.io/"
+            },
+
+
+            {
+                title: "Verbalized Machine Learning: Revisiting Machine Learning with Language Models",
+                authors: "Tim Z. Xiao, Robert Bamler, Bernhard Schölkopf, Weiyang Liu",
+                venue: "TMLR 2025",
+                description: "A novel in-context machine learning paradigm that enables effective learning of text prompts in large language models.",
+                image: "papers/featured/vml.png",
+                link: "https://arxiv.org/abs/2406.04344/"
+            }
+
+        ];
+
+        function initializeFeaturedCarousel() {
+            const carouselTrack = document.querySelector('.carousel-track');
+            
+            // Populate carousel with actual project data
+            carouselTrack.innerHTML = '';
+            featuredProjects.forEach((project, index) => {
+                const projectElement = document.createElement('div');
+                projectElement.className = 'featured-project';
+                projectElement.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="featured-image">
+                    <div class="featured-content">
+                        <h3 class="featured-project-title">${project.title}</h3>
+                        <p class="featured-project-authors">${project.authors}</p>
+                        <p class="featured-project-venue">${project.venue}</p>
+                        <p class="featured-project-description">${project.description}</p>
+                        <a href="${project.link}" target="_blank" class="featured-project-link">Learn More</a>
+                    </div>
+                `;
+                carouselTrack.appendChild(projectElement);
+            });
+
+            // Start auto-scroll
+            startAutoScroll();
+
+            // Add hover pause functionality
+            carouselTrack.addEventListener('mouseenter', pauseAutoScroll);
+            carouselTrack.addEventListener('mouseleave', startAutoScroll);
+
+            // Initialize navigation buttons
+            updateNavigationButtons();
+        }
+
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                const container = document.querySelector('.carousel-container');
+                const containerWidth = container.offsetWidth;
+                const projectWidth = window.innerWidth <= 768 ? 280 : 350;
+                const gap = 32;
+                const slideWidth = projectWidth + gap;
+                const maxVisibleSlides = Math.floor(containerWidth / slideWidth);
+                const maxSlide = Math.max(0, featuredProjects.length - maxVisibleSlides);
+                
+                if (currentSlide < maxSlide) {
+                    currentSlide++;
+                } else {
+                    // Loop back to the beginning
+                    currentSlide = 0;
+                }
+                updateCarousel();
+            }, 4000); // Change slide every 4 seconds
+        }
+
+        function pauseAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+
+        function updateCarousel() {
+            const carouselTrack = document.querySelector('.carousel-track');
+            const container = document.querySelector('.carousel-container');
+            const containerWidth = container.offsetWidth;
+            
+            // Responsive project width
+            const projectWidth = window.innerWidth <= 768 ? 280 : 350;
+            const gap = 32;
+            const slideWidth = projectWidth + gap;
+            const maxVisibleSlides = Math.floor(containerWidth / slideWidth);
+            const maxSlide = Math.max(0, featuredProjects.length - maxVisibleSlides);
+            
+            // Ensure currentSlide doesn't exceed the maximum
+            if (currentSlide > maxSlide) {
+                currentSlide = maxSlide;
+            }
+            
+            carouselTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+            updateNavigationButtons(maxSlide);
+        }
+
+        function updateNavigationButtons(maxSlide) {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            // Disable prev button if at the beginning
+            prevBtn.disabled = currentSlide === 0;
+            
+            // Disable next button if at the end
+            nextBtn.disabled = currentSlide >= maxSlide;
+        }
+
+        function moveToSlide(direction) {
+            const container = document.querySelector('.carousel-container');
+            const containerWidth = container.offsetWidth;
+            const projectWidth = window.innerWidth <= 768 ? 280 : 350;
+            const gap = 32;
+            const slideWidth = projectWidth + gap;
+            const maxVisibleSlides = Math.floor(containerWidth / slideWidth);
+            const maxSlide = Math.max(0, featuredProjects.length - maxVisibleSlides);
+            
+            if (direction === 'prev' && currentSlide > 0) {
+                currentSlide--;
+            } else if (direction === 'next' && currentSlide < maxSlide) {
+                currentSlide++;
+            }
+            
+            updateCarousel();
+            // Restart auto-scroll timer
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
+
         // 初始化加载
         window.onload = () => {
             loadPapers();
+            initializeFeaturedCarousel();
         };
     </script>
 </body>
