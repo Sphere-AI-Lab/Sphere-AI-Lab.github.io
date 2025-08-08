@@ -451,7 +451,7 @@
 
         /* 为Sort by Type按钮添加自定义颜色类 */
         .sort-btn[data-type-color]::before {
-            background-color: var(--type-color, #ffb366);
+            background-color: var(--type-color, #95ade4);
         }
 
         .filter-section {
@@ -549,7 +549,7 @@
             border-radius: 8px;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            background: #fff;
+            background: #f8fafc;
             position: relative;
             opacity: 0;
             transform: translateY(20px);
@@ -662,8 +662,12 @@
             margin-bottom: 0.5rem;
             font-size: 0.85rem;
             font-weight: 600;
-            color: #666;
+            color: #2c3e50;
             letter-spacing: 0.02em;
+            background-color: #ecf0f1;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            display: inline-block;
         }
 
 
@@ -728,6 +732,11 @@
             .paper-authors {
                 font-size: 0.8rem;
                 margin-bottom: 0.4rem;
+            }
+
+            .paper-venue {
+                font-size: 0.75rem;
+                padding: 0.15rem 0.5rem;
             }
 
             .sort-buttons {
