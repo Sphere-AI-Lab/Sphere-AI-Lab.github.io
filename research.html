@@ -1042,8 +1042,8 @@
                         <div class="paper-venue">${paper.venue}</div>
                         <div class="paper-links">
                             <a href="${paper.arxiv_link}" target="_blank" class="paper-link">Paper</a>
-                            ${paper.project_link ? `<a href="${paper.project_link}" target="_blank" class="paper-link">Code</a>` : ''}
-                            <button class="paper-link bib-btn" onclick="toggleBib(${index})">Citation</button>
+                            ${paper.project_link ? `<a href="${paper.project_link}" target="_blank" class="paper-link">Project</a>` : ''}
+                            <button class="paper-link bib-btn" onclick="toggleBib(${index})">BibTeX</button>
                         </div>
                         <div class="bib-content" id="bib-${index}" style="display: none;">
                             <pre class="bib-text">${paper.bibtex ? paper.bibtex.replace(/\\n/g, '\n') : 'BibTeX not available'}</pre>
