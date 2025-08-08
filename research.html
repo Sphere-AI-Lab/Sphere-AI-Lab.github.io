@@ -659,7 +659,7 @@
         }
 
         .paper-venue {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
             font-size: 0.85rem;
             font-weight: 600;
             color: #2c3e50;
@@ -667,7 +667,9 @@
             background-color: #ecf0f1;
             padding: 0.2rem 0.6rem;
             border-radius: 4px;
-            display: inline-block;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
         }
 
 
@@ -772,6 +774,7 @@
             .paper-venue {
                 font-size: 0.75rem;
                 padding: 0.15rem 0.5rem;
+                margin-bottom: 0.6rem;
             }
 
             .paper-links {
@@ -854,9 +857,14 @@
                 const years = ['2024', '2025'];
                 for (const year of years) {
                     const response = await fetch(`papers/${year}.json`);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${year}.json: ${response.status}`);
+                    }
                     const data = await response.json();
                     allPapers = [...allPapers, ...data];
                 }
+                
+                console.log('Loaded papers:', allPapers.length);
                 
                 // 提取所有独特的类型并创建主题标签
                 const types = [...new Set(allPapers.map(paper => paper.type))];
@@ -873,9 +881,13 @@
 
                 // 初始化时按日期降序排序
                 currentPapers = [...allPapers].sort((a, b) => new Date(b.date) - new Date(a.date));
+                console.log('Current papers to display:', currentPapers.length);
                 displayPapers(currentPapers);
             } catch (error) {
                 console.error('Error loading papers:', error);
+                // Show error message on page
+                const container = document.getElementById('papers-container');
+                container.innerHTML = `<div style="text-align: center; padding: 2rem; color: #666;">Error loading papers: ${error.message}</div>`;
             }
         }
 
@@ -997,6 +1009,8 @@
         async function displayPapers(papers) {
             const container = document.getElementById('papers-container');
             
+            console.log('Displaying papers:', papers.length);
+            
             // 为现有的卡片添加消失动画
             const existingCards = container.querySelectorAll('.paper-card');
             const disappearPromises = Array.from(existingCards).map((card, index) => {
@@ -1013,7 +1027,8 @@
             
             container.innerHTML = '';
 
-            papers.forEach(paper => {
+            papers.forEach((paper, index) => {
+                console.log('Creating paper card:', paper.title);
                 const paperCard = document.createElement('div');
                 paperCard.className = 'paper-card appear';
                 
@@ -1035,6 +1050,8 @@
                 
                 container.appendChild(paperCard);
             });
+            
+            console.log('Finished displaying papers');
         }
 
         // Featured Projects Carousel Functionality
