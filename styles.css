@@ -3,9 +3,9 @@
     --bg-color: #121212;
     --text-color: #bbbbbb;
     --nav-hover-color: #3e9fff;
-    --grad-1: #ff6ec7;  /* pink */
-    --grad-2: #7a5cff;  /* purple */
-    --grad-3: #00d4ff;  /* cyan */
+    --grad-1: #a78bfa;  /* pink */
+    --grad-2: #60a5fa;  /* purple */
+    --grad-3: #34d399;  /* cyan */
     --button-bg: rgba(255, 255, 255, 0.1);
     --button-border: rgba(255, 255, 255, 0.2);
     --footer-bg: #191919;
@@ -39,7 +39,7 @@ body {
 #typewriter {
         font-size: 4rem;
         font-weight: 700;
-        background: linear-gradient(135deg, var(--grad-1), var(--grad-2) 50%, var(--grad-3));
+        background: linear-gradient(90deg, var(--grad-1), var(--grad-2) 50%, var(--grad-3));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
