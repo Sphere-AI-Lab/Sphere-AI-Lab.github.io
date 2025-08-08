@@ -2,9 +2,7 @@
     {
         "title": "Orthogonal Finetuning Made Scalable",
         "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Adrian Weller", "Bernhard Schölkopf"],
-        "img_path": "papers/img/2025/orthogonal2025.png",
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "description": "A new methodology for training vision transformers with significantly reduced computational requirements.",
         "type": "PEFT",
         "date": "2025-01-05",
         "venue": "Preprints"
@@ -13,9 +11,7 @@
     {
         "title": "Reparameterized LLM Training via Orthogonal Equivalence Transformation",
         "authorlist": ["Zeju Qiu", "Simon Buchholz", "Tim Z. Xiao", "Maximilian Dax", "Bernhard Schölkopf", "Weiyang Liu*"],
-        "img_path": "papers/img/2025/reparameterized2025.png",
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "description": "A new methodology for training vision transformers with significantly reduced computational requirements.",
         "type": "PEFT",
         "date": "2025-02-05",
         "venue": "Preprints"
@@ -23,9 +19,7 @@
     {
         "title": "FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models",
         "authorlist": ["Zhouliang Yu", "Ruotian Peng", "Keyi Ding", "Yizhe Li", "Zhongyuan Peng", "Minghao Liu", "Yifan Zhang", "Zheng Yuan", "Huajian Xin", "Wenhao Huang", "Yandong Wen", "Ge Zhang", "Weiyang Liu*"],
-        "img_path": "papers/img/2025/formalmath2025.png",
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "description": "A new methodology for training vision transformers with significantly reduced computational requirements.",
         "type": "Math Reasoning",
         "date": "2025-03-05",
         "venue": "Preprints"
@@ -33,9 +27,7 @@
     {
         "title": "Generating Symbolic World Models via Test-time Scaling of Large Language Models",
         "authorlist": ["Zhouliang Yu", "Yuhuan Yuan", "Tim Z. Xiao", "Frank Xia", "Jie Fu", "Ge Zhang", "Ge Lin", "Weiyang Liu*"],
-        "img_path": "papers/img/2025/symbolic2025.png",
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "description": "A new methodology for training vision transformers with significantly reduced computational requirements.",
         "type": "Symbolic Reasoning",
         "date": "2025-01-05",
         "venue": "Preprints"
@@ -43,9 +35,7 @@
     {
         "title": "Can Large Language Models Understand Symbolic Graphics Programs?",
         "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Haiwen Feng*", "Zhen Liu**", "Tim Z. Xiao**", "Katherine M. Collins**", "Joshua B. Tenenbaum", "Adrian Weller", "Michael J. Black", "Bernhard Schölkopf"],
-        "img_path": "papers/img/2025/symbolic2025.png",
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "description": "A new methodology for training vision transformers with significantly reduced computational requirements.",
         "type": "Symbolic Reasoning",
         "date": "2025-01-05",
         "venue": "Preprints"
