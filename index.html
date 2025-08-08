@@ -1,27 +1,427 @@
 <!DOCTYPE html>
-<html lang="en" class="dark-mode">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SphereLab - Scalable Principles for Learning and Reasoning Lab</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/svg+xml" href="sphere.svg">
+    <title>SphereLab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .main-title {
+            font-size: clamp(5rem, 15vw, 10rem);
+            font-weight: 900;
+            margin-bottom: clamp(3rem, 8vh, 6rem);
+            letter-spacing: -0.02em;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+        }
+        
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1.5rem;
+            width: clamp(3rem, 4vw, 4.5rem);
+            height: clamp(3rem, 4vw, 4.5rem);
+            background-color: #a8d8ea;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+            z-index: -1;
+        }
+        
+        .main-title:hover::before {
+            transform: scale(1.2);
+        }
+        
+        .sections {
+            display: flex;
+            gap: clamp(2rem, 5vw, 5rem);
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .section {
+            display: flex;
+            align-items: center;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+        
+        .icon {
+            width: clamp(2.2rem, 3vw, 3rem);
+            height: clamp(2.2rem, 3vw, 3rem);
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            top: -0.8rem;
+            left: -0.8rem;
+            z-index: -1;
+            background-size: 200% 200%;
+        }
+        
+        .research-icon {
+            background-color: #ffb366;
+        }
+        
+        .people-icon {
+            background-color: #ff9999;
+        }
+        
+        .section:hover .icon {
+            transform: scale(1.2);
+            animation: gradientMoveBg 2s linear infinite;
+        }
+        
+        .section-text {
+            margin-left: clamp(2rem, 3vw, 2.5rem);
+            background: linear-gradient(to right, #e24f00, #e67300, #cc3333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 200% 100%;
+            transition: color 0.3s ease;
+        }
+        
+        .section-text {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 700;
+            color: #000;
+        }
+
+        .section:hover .section-text {
+            color: transparent;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes gradientMoveBg {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+        
+                .subtitle {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            cursor: pointer;
+        }
+
+        .subtitle-text {
+            font-weight: 900;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.4rem;
+            color: #000;
+            line-height: 1.1;
+            text-align: left;
+            display: inline-block;
+            background: linear-gradient(to right, #66b7d8, #e67300, #cc3333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 200% 100%;
+            transition: color 0.3s ease;
+        }
+
+        .subtitle:hover .subtitle-text {
+            color: transparent;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+
+        
+        .description {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #888;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        .affiliations {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #666;
+        }
+
+        .affiliation {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .affiliation-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.3rem 0.8rem;
+            border-radius: 1.5rem;
+            margin: 0 0.2rem;
+            color: #ffffff;
+        }
+
+        .affiliation-tag span {
+            color: #ffffff;
+            margin-right: 0.2rem;
+            font-weight: 900;
+        }
+
+        .cuhk-bg {
+            background: linear-gradient(135deg, #be02cb, #ffe063);
+        }
+
+        .cuhk-bg:hover {
+            background: linear-gradient(135deg, #9a02a3, #e6cc57);
+        }
+
+        .mpis-bg {
+            background-color: #5d9f7f;
+        }
+
+        .mpis-bg:hover {
+            background-color: #4a7f65;
+        }
+
+        .westlake-bg {
+            background: linear-gradient(135deg, #0077ff, #ff7b00);
+        }
+
+        .westlake-bg:hover {
+            background: linear-gradient(135deg, #005acc, #e66d00);
+        }
+
+        .slogan {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            text-align: right;
+            font-size: 1.4rem;
+            font-weight: 900;
+            /* font-style: italic; */
+            line-height: 1.4;
+            color: #000;
+            z-index: 10;
+        }
+
+        .slogan .line1, .slogan .line2 {
+            display: flex;
+            justify-content: flex-end;
+            overflow: hidden;
+        }
+
+        .slogan span {
+            opacity: 0;
+            transform: translateX(1rem);
+            display: inline-block;
+        }
+
+        .slogan .line1 span {
+            animation: typeIn 0.08s ease forwards;
+        }
+
+        .slogan .line2 span {
+            animation: typeIn 0.08s ease forwards;
+            animation-delay: calc(1.5s + (var(--char-index) * 0.05s));
+        }
+
+        .slogan .line1 span {
+            animation-delay: calc(var(--char-index) * 0.05s);
+        }
+
+        @keyframes typeIn {
+            from {
+                opacity: 0;
+                transform: translateX(1rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .sections {
+                flex-direction: column;
+                gap: clamp(2rem, 5vh, 3rem);
+            }
+            
+            .subtitle {
+                top: 1rem;
+                left: 1rem;
+                gap: 0.8rem;
+            }
+            
+            .subtitle-icon {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+            
+            .subtitle-text {
+                font-size: 1rem;
+                font-weight: 900;
+            }
+
+            .affiliations {
+                bottom: 1rem;
+                right: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .affiliation-tag {
+                padding: 0.2rem 0.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <section class="hero2">
-    <div id="typewriter" class="typing"></div>
-    </section>
-    <section class="hero">
-        <div class="container">
-            <div class="welcome-text">
-                <div class="sub-heading">
-                    Scalable Principles for Learning and Reasoning Lab<br>
-                    The Chinese University of Hong Kong<br><br>
-                    <a href="http://wyliu.com/" class="gradient-button">Explore Our Research</a>
-                </div>
-            </div>
+    <div class="slogan">
+        <div class="line1">
+            <span style="--char-index: 0;">D</span>
+            <span style="--char-index: 1;">R</span>
+            <span style="--char-index: 2;">I</span>
+            <span style="--char-index: 3;">V</span>
+            <span style="--char-index: 4;">E</span>
+            <span style="--char-index: 5;">N</span>
+            <span style="--char-index: 6;">&nbsp;</span>
+            <span style="--char-index: 7;">B</span>
+            <span style="--char-index: 8;">Y</span>
+            <span style="--char-index: 9;">&nbsp;</span>
+            <span style="--char-index: 10;">C</span>
+            <span style="--char-index: 11;">U</span>
+            <span style="--char-index: 12;">R</span>
+            <span style="--char-index: 13;">I</span>
+            <span style="--char-index: 14;">O</span>
+            <span style="--char-index: 15;">S</span>
+            <span style="--char-index: 16;">I</span>
+            <span style="--char-index: 17;">T</span>
+            <span style="--char-index: 18;">Y</span>
         </div>
-    </section>
-    <script src="script.js"></script>
+        <div class="line2">
+            <span style="--char-index: 0;">B</span>
+            <span style="--char-index: 1;">U</span>
+            <span style="--char-index: 2;">I</span>
+            <span style="--char-index: 3;">L</span>
+            <span style="--char-index: 4;">D</span>
+            <span style="--char-index: 5;">I</span>
+            <span style="--char-index: 6;">N</span>
+            <span style="--char-index: 7;">G</span>
+            <span style="--char-index: 8;">&nbsp;</span>
+            <span style="--char-index: 9;">P</span>
+            <span style="--char-index: 10;">R</span>
+            <span style="--char-index: 11;">I</span>
+            <span style="--char-index: 12;">N</span>
+            <span style="--char-index: 13;">C</span>
+            <span style="--char-index: 14;">I</span>
+            <span style="--char-index: 15;">P</span>
+            <span style="--char-index: 16;">L</span>
+            <span style="--char-index: 17;">E</span>
+            <span style="--char-index: 18;">D</span>
+            <span style="--char-index: 19;">&nbsp;</span>
+            <span style="--char-index: 20;">A</span>
+            <span style="--char-index: 21;">I</span>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h1 class="main-title">SphereLab</h1>
+        
+        <div class="sections">
+            <a href="research.html" class="section">
+                <div class="icon research-icon"></div>
+                <span class="section-text">Research</span>
+            </a>
+            
+            <a href="people.html" class="section">
+                <div class="icon people-icon"></div>
+                <span class="section-text">People</span>
+            </a>
+        </div>
+    </div>
+    
+    <div class="subtitle">
+        <span class="subtitle-text">SPHERE<br>LAB</span>
+    </div>
+
+    <div class="description">
+        <span>The Scalable Principles for<br>Learning and Reasoning Lab</span>
+    </div>
+
+    <div class="affiliations">
+        <div class="affiliation">
+            <div class="affiliation-tag cuhk-bg" style="cursor:pointer;" onclick="window.open('https://www.cuhk.edu.hk/', '_blank')"><span>@</span>The Chinese University of Hong Kong</div>
+            <!-- <div class="affiliation-tag mpis-bg" style="cursor:pointer;" onclick="window.open('https://is.mpg.de/', '_blank')"><span>@</span>MPI-IS</div>
+            <div class="affiliation-tag westlake-bg" style="cursor:pointer;" onclick="window.open('https://en.westlake.edu.cn/', '_blank')"><span>@</span>Westlake</div> -->
+        </div>
+    </div>
 </body>
 </html> 
