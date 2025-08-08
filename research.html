@@ -672,6 +672,12 @@
 
 
 
+        .paper-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
         .paper-link {
             color: #333;
             text-decoration: none;
@@ -684,11 +690,40 @@
             transition: all 0.2s ease;
             font-weight: 500;
             width: fit-content;
+            border: none;
+            cursor: pointer;
         }
 
         .paper-link:hover {
             background-color: #e5e5e5;
             color: #000;
+        }
+
+        .bib-btn {
+            background-color: #95ade4;
+            color: white;
+        }
+
+        .bib-btn:hover {
+            background-color: #7a8fc7;
+            color: white;
+        }
+
+        .bib-content {
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #95ade4;
+        }
+
+        .bib-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #333;
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         @media (max-width: 768px) {
@@ -737,6 +772,24 @@
             .paper-venue {
                 font-size: 0.75rem;
                 padding: 0.15rem 0.5rem;
+            }
+
+            .paper-links {
+                gap: 0.3rem;
+            }
+
+            .paper-link {
+                font-size: 0.75rem;
+                padding: 0.15rem 0.5rem;
+            }
+
+            .bib-content {
+                margin-top: 0.6rem;
+                padding: 0.6rem;
+            }
+
+            .bib-text {
+                font-size: 0.75rem;
             }
 
             .sort-buttons {
@@ -969,7 +1022,14 @@
                         <h3 class="paper-title">${paper.title}</h3>
                         <p class="paper-authors">${paper.authorlist.join(', ')}</p>
                         <div class="paper-venue">${paper.venue}</div>
-                        <a href="${paper.arxiv_link}" target="_blank" class="paper-link">arXiv</a>
+                        <div class="paper-links">
+                            <a href="${paper.arxiv_link}" target="_blank" class="paper-link">arXiv</a>
+                            ${paper.project_link ? `<a href="${paper.project_link}" target="_blank" class="paper-link">Project</a>` : ''}
+                            <button class="paper-link bib-btn" onclick="toggleBib(${index})">Bib</button>
+                        </div>
+                        <div class="bib-content" id="bib-${index}" style="display: none;">
+                            <pre class="bib-text">${paper.bibtex || 'BibTeX not available'}</pre>
+                        </div>
                     </div>
                 `;
                 
@@ -1143,6 +1203,15 @@
             // Restart auto-scroll timer
             clearInterval(autoScrollInterval);
             startAutoScroll();
+        }
+
+        function toggleBib(index) {
+            const bibContent = document.getElementById(`bib-${index}`);
+            if (bibContent.style.display === 'none') {
+                bibContent.style.display = 'block';
+            } else {
+                bibContent.style.display = 'none';
+            }
         }
 
         // 初始化加载

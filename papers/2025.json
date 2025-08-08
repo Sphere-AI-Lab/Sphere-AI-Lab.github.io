@@ -3,6 +3,8 @@
         "title": "Orthogonal Finetuning Made Scalable",
         "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Adrian Weller", "Bernhard Schölkopf"],
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
+        "project_link": "https://github.com/spherelab/orthogonal-finetuning-v2",
+        "bibtex": "@article{qiu2025orthogonal,\n  title={Orthogonal Finetuning Made Scalable},\n  author={Qiu, Zeju and Liu, Weiyang and Weller, Adrian and Sch{\\\"o}lkopf, Bernhard},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
         "type": "PEFT",
         "date": "2025-01-05",
         "venue": "Preprints"
@@ -12,6 +14,8 @@
         "title": "Reparameterized LLM Training via Orthogonal Equivalence Transformation",
         "authorlist": ["Zeju Qiu", "Simon Buchholz", "Tim Z. Xiao", "Maximilian Dax", "Bernhard Schölkopf", "Weiyang Liu*"],
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
+        "project_link": "https://github.com/spherelab/poet",
+        "bibtex": "@article{qiu2025reparameterized,\n  title={Reparameterized LLM Training via Orthogonal Equivalence Transformation},\n  author={Qiu, Zeju and Buchholz, Simon and Xiao, Tim Z and Dax, Maximilian and Sch{\\\"o}lkopf, Bernhard and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
         "type": "PEFT",
         "date": "2025-02-05",
         "venue": "Preprints"
@@ -20,6 +24,8 @@
         "title": "FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models",
         "authorlist": ["Zhouliang Yu", "Ruotian Peng", "Keyi Ding", "Yizhe Li", "Zhongyuan Peng", "Minghao Liu", "Yifan Zhang", "Zheng Yuan", "Huajian Xin", "Wenhao Huang", "Yandong Wen", "Ge Zhang", "Weiyang Liu*"],
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
+        "project_link": "https://github.com/spherelab/formalmath",
+        "bibtex": "@article{yu2025formalmath,\n  title={FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models},\n  author={Yu, Zhouliang and Peng, Ruotian and Ding, Keyi and Li, Yizhe and Peng, Zhongyuan and Liu, Minghao and Zhang, Yifan and Yuan, Zheng and Xin, Huajian and Huang, Wenhao and Wen, Yandong and Zhang, Ge and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
         "type": "Math Reasoning",
         "date": "2025-03-05",
         "venue": "Preprints"
@@ -28,6 +34,8 @@
         "title": "Generating Symbolic World Models via Test-time Scaling of Large Language Models",
         "authorlist": ["Zhouliang Yu", "Yuhuan Yuan", "Tim Z. Xiao", "Frank Xia", "Jie Fu", "Ge Zhang", "Ge Lin", "Weiyang Liu*"],
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
+        "project_link": "https://github.com/spherelab/symbolic-world-models",
+        "bibtex": "@article{yu2025generating,\n  title={Generating Symbolic World Models via Test-time Scaling of Large Language Models},\n  author={Yu, Zhouliang and Yuan, Yuhuan and Xiao, Tim Z and Xia, Frank and Fu, Jie and Zhang, Ge and Lin, Ge and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
         "type": "Symbolic Reasoning",
         "date": "2025-01-05",
         "venue": "Preprints"
@@ -36,6 +44,8 @@
         "title": "Can Large Language Models Understand Symbolic Graphics Programs?",
         "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Haiwen Feng*", "Zhen Liu**", "Tim Z. Xiao**", "Katherine M. Collins**", "Joshua B. Tenenbaum", "Adrian Weller", "Michael J. Black", "Bernhard Schölkopf"],
         "arxiv_link": "https://arxiv.org/abs/2501.11111",
+        "project_link": "https://github.com/spherelab/symbolic-graphics",
+        "bibtex": "@article{qiu2025can,\n  title={Can Large Language Models Understand Symbolic Graphics Programs?},\n  author={Qiu, Zeju and Liu, Weiyang and Feng, Haiwen and Liu, Zhen and Xiao, Tim Z and Collins, Katherine M and Tenenbaum, Joshua B and Weller, Adrian and Black, Michael J and Sch{\\\"o}lkopf, Bernhard},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
         "type": "Symbolic Reasoning",
         "date": "2025-01-05",
         "venue": "Preprints"
