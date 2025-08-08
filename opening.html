@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Openings - SphereLab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 3rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: clamp(3rem, 8vh, 6rem);
+            letter-spacing: -0.02em;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1.5rem;
+            width: clamp(1.5rem, 3vw, 3rem);
+            height: clamp(1.5rem, 3vw, 3rem);
+            background-color: #c2e8f6;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+            z-index: -1;
+        }
+
+        .main-title:hover::before {
+            transform: scale(1.2);
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subtitle {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
+        }
+
+        .page-title::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1rem;
+            width: clamp(2.5rem, 4vw, 3rem);
+            height: clamp(2.5rem, 4vw, 3rem);
+            background-color: #e995bf;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .page-title:hover::before {
+            transform: scale(1.2);
+        }
+
+        .intro {
+            max-width: 820px;
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        .openings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .opening-card {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f8fafc;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .opening-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+        }
+
+        .opening-content {
+            padding: 1.2rem 1.2rem 1rem 1.2rem;
+        }
+
+        .opening-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 0.6rem;
+        }
+
+        .opening-venue {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.03em;
+            background-color: #95ade4;
+            padding: 0.25rem 0.7rem;
+            border-radius: 6px;
+            display: inline-block;
+            width: fit-content;
+            box-shadow: 0 2px 4px rgba(149, 173, 228, 0.3);
+            margin-bottom: 0.8rem;
+        }
+
+        .opening-desc {
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
+        }
+
+        .opening-list {
+            margin: 0 0 0.8rem 1.1rem;
+            color: #444;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .opening-tags {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.8rem;
+        }
+
+        .opening-tag {
+            font-size: 0.75rem;
+            color: #555;
+            background: #eef2f7;
+            padding: 0.2rem 0.5rem;
+            border-radius: 999px;
+        }
+
+        .opening-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.2rem;
+        }
+
+        /* Button style matching paper buttons */
+        .paper-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            background-color: #e8e8e8;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            width: fit-content;
+            border: none;
+            cursor: pointer;
+        }
+
+        .paper-link:hover {
+            background-color: #d8d8d8;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem;
+            }
+
+            .subtitle {
+                top: 1rem;
+                left: 1rem;
+            }
+
+            .intro {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="subtitle">
+        <h1 class="main-title">SphereLab</h1>
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="page-title">Openings</h1>
+            <p class="intro">
+                We welcome highly motivated students and researchers to join SphereLab. Below are the current opening categories.
+                If you are interested, please reach out with your CV, transcripts, and a brief statement of interest.
+            </p>
+        </div>
+
+        <div class="openings-grid">
+            <!-- PhD Students -->
+            <div class="opening-card">
+                <div class="opening-content">
+                    <div class="opening-title">PhD Students</div>
+                    <div class="opening-venue">Fall 2025 / Spring 2026</div>
+                    <p class="opening-desc">We are looking for strong PhD applicants with backgrounds in machine learning, optimization, or reasoning.</p>
+                    <ul class="opening-list">
+                        <li>Solid math and programming foundations</li>
+                        <li>Experience with PyTorch/JAX or related frameworks</li>
+                        <li>Publications or strong research experience are a plus</li>
+                    </ul>
+                    <div class="opening-tags">
+                        <span class="opening-tag">Machine Learning</span>
+                        <span class="opening-tag">Reasoning</span>
+                        <span class="opening-tag">Optimization</span>
+                    </div>
+                    <div class="opening-actions">
+                        <a href="mailto:place_holder" class="paper-link">Apply via Email</a>
+                        <a href="#" class="paper-link">Program Info</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Postdoctoral Researchers -->
+            <div class="opening-card">
+                <div class="opening-content">
+                    <div class="opening-title">Postdoctoral Researchers</div>
+                    <div class="opening-venue">Rolling Applications</div>
+                    <p class="opening-desc">We invite exceptional candidates to work on large-scale learning and principled reasoning with us.</p>
+                    <ul class="opening-list">
+                        <li>Strong publication record in ML/AI venues</li>
+                        <li>Independent, collaborative, and proactive</li>
+                        <li>Comfortable with mentoring junior students</li>
+                    </ul>
+                    <div class="opening-tags">
+                        <span class="opening-tag">LLMs</span>
+                        <span class="opening-tag">Theoretical ML</span>
+                        <span class="opening-tag">Formal Methods</span>
+                    </div>
+                    <div class="opening-actions">
+                        <a href="mailto:place_holder" class="paper-link">Apply via Email</a>
+                        <a href="#" class="paper-link">Group Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visiting Students / Interns -->
+            <div class="opening-card">
+                <div class="opening-content">
+                    <div class="opening-title">Visiting Students / Interns</div>
+                    <div class="opening-venue">3–12 Months</div>
+                    <p class="opening-desc">We host short-term visitors and research interns to collaborate on ongoing projects at SphereLab.</p>
+                    <ul class="opening-list">
+                        <li>Strong coding and communication skills</li>
+                        <li>Prior ML coursework or project experience</li>
+                        <li>Availability to commit sufficient time</li>
+                    </ul>
+                    <div class="opening-tags">
+                        <span class="opening-tag">Research Internship</span>
+                        <span class="opening-tag">Collaboration</span>
+                        <span class="opening-tag">Prototyping</span>
+                    </div>
+                    <div class="opening-actions">
+                        <a href="mailto:place_holder" class="paper-link">Apply via Email</a>
+                        <a href="#" class="paper-link">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SphereLab</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 3rem 2rem;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .main-title {
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: clamp(3rem, 8vh, 6rem);
+            letter-spacing: -0.02em;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1.5rem;
+            width: clamp(1.5rem, 3vw, 3rem);
+            height: clamp(1.5rem, 3vw, 3rem);
+            background-color: #c2e8f6;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+            z-index: -1;
+        }
+        .main-title:hover::before { transform: scale(1.2); }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .subtitle { position: fixed; top: 2rem; left: 2rem; cursor: pointer; text-decoration: none; z-index: 10; }
+
+        .header { text-align: center; margin-bottom: 1rem; display: flex; flex-direction: column; align-items: center; }
+
+        .page-title {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
+        }
+        .page-title::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1rem;
+            width: clamp(2.5rem, 4vw, 3rem);
+            height: clamp(2.5rem, 4vw, 3rem);
+            background-color: #6acacf;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        .page-title:hover::before { transform: scale(1.2); }
+
+        .intro {
+            max-width: 900px;
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        /* Section title style consistent with research page */
+        .featured-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin: 2rem 0 1.2rem 0;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
+        }
+
+        /* Photo wall */
+        .wall-section { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        .photo-wall { width: 100%; overflow: hidden; position: relative; }
+        .photo-strip {
+            display: flex;
+            gap: 1rem;
+            width: max-content;
+            animation: scrollLeft 50s linear infinite;
+            padding: 0.5rem 0;
+        }
+        .photo-strip.reverse { animation: scrollRight 55s linear infinite; }
+        .photo-strip:hover { animation-play-state: paused; }
+
+        @keyframes scrollLeft {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        @keyframes scrollRight {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+        }
+
+        .photo {
+            width: 220px; height: 140px; object-fit: cover; border-radius: 10px; background: #f8fafc;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        }
+
+        .legend { color: #666; font-size: 0.9rem; text-align: center; }
+
+        /* Buttons style matching paper buttons */
+        .paper-link {
+            color: #333; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center;
+            padding: 0.2rem 0.6rem; border-radius: 4px; background-color: #e8e8e8; transition: all 0.2s ease;
+            font-weight: 600; width: fit-content; border: none; cursor: pointer;
+        }
+        .paper-link:hover { background-color: #d8d8d8; color: #000; }
+
+        @media (max-width: 768px) {
+            body { padding: 2rem 1rem; }
+            .subtitle { top: 1rem; left: 1rem; }
+            .intro { font-size: 0.95rem; }
+            .photo { width: 160px; height: 100px; }
+            .photo-strip { gap: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="subtitle">
+        <h1 class="main-title">SphereLab</h1>
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="page-title">About Us</h1>
+            <p class="intro">
+                SphereLab (Scalable Principles for Learning and Reasoning Lab) advances the foundations and practice of machine learning and AI reasoning.
+                We explore scalable learning principles, formal reasoning, and their synergy, building systems that are data-efficient, reliable, and interpretable.
+                Our interests span large-scale representation learning, language models, optimization, formal methods, and applications across science and engineering.
+            </p>
+        </div>
+
+        <div class="wall-section">
+            <h2 class="featured-title">Group Photo Wall</h2>
+            <div class="photo-wall">
+                <!-- Strip 1 (duplicated for seamless loop) -->
+                <div class="photo-strip">
+                    <img class="photo" src="member_avatar/weiyang_liu.jpg" alt="Weiyang Liu">
+                    <img class="photo" src="member_avatar/longhui_yu.jpg" alt="Longhui Yu">
+                    <img class="photo" src="member_avatar/zeju_qiu.jpg" alt="Zeju Qiu">
+                    <img class="photo" src="member_avatar/kexuan_shi.jpg" alt="Kexuan Shi">
+                    <img class="photo" src="member_avatar/he_guo.jpg" alt="He Guo">
+                    <img class="photo" src="member_avatar/yangyi_huang.jpg" alt="Yangyi Huang">
+                    <img class="photo" src="member_avatar/yamei_chen.jpg" alt="Yamei Chen">
+                    <img class="photo" src="member_avatar/jiacheng_chen.jpg" alt="Jiacheng Chen">
+                    <img class="photo" src="member_avatar/haoquan_zhang.jpg" alt="Haoquan Zhang">
+                    <img class="photo" src="member_avatar/tim_z_xiao.jpg" alt="Tim Z. Xiao">
+                    <img class="photo" src="member_avatar/zhouliang_yu.jpg" alt="Zhouliang Yu">
+                    <!-- duplicate for seamless scroll -->
+                    <img class="photo" src="member_avatar/weiyang_liu.jpg" alt="Weiyang Liu">
+                    <img class="photo" src="member_avatar/longhui_yu.jpg" alt="Longhui Yu">
+                    <img class="photo" src="member_avatar/zeju_qiu.jpg" alt="Zeju Qiu">
+                    <img class="photo" src="member_avatar/kexuan_shi.jpg" alt="Kexuan Shi">
+                    <img class="photo" src="member_avatar/he_guo.jpg" alt="He Guo">
+                    <img class="photo" src="member_avatar/yangyi_huang.jpg" alt="Yangyi Huang">
+                    <img class="photo" src="member_avatar/yamei_chen.jpg" alt="Yamei Chen">
+                    <img class="photo" src="member_avatar/jiacheng_chen.jpg" alt="Jiacheng Chen">
+                    <img class="photo" src="member_avatar/haoquan_zhang.jpg" alt="Haoquan Zhang">
+                    <img class="photo" src="member_avatar/tim_z_xiao.jpg" alt="Tim Z. Xiao">
+                    <img class="photo" src="member_avatar/zhouliang_yu.jpg" alt="Zhouliang Yu">
+                </div>
+
+                <!-- Strip 2 opposite direction for dynamics (duplicated) -->
+                <div class="photo-strip reverse" style="margin-top: 0.5rem;">
+                    <img class="photo" src="member_avatar/zhouliang_yu.jpg" alt="Zhouliang Yu">
+                    <img class="photo" src="member_avatar/tim_z_xiao.jpg" alt="Tim Z. Xiao">
+                    <img class="photo" src="member_avatar/haoquan_zhang.jpg" alt="Haoquan Zhang">
+                    <img class="photo" src="member_avatar/jiacheng_chen.jpg" alt="Jiacheng Chen">
+                    <img class="photo" src="member_avatar/yamei_chen.jpg" alt="Yamei Chen">
+                    <img class="photo" src="member_avatar/yangyi_huang.jpg" alt="Yangyi Huang">
+                    <img class="photo" src="member_avatar/he_guo.jpg" alt="He Guo">
+                    <img class="photo" src="member_avatar/kexuan_shi.jpg" alt="Kexuan Shi">
+                    <img class="photo" src="member_avatar/zeju_qiu.jpg" alt="Zeju Qiu">
+                    <img class="photo" src="member_avatar/longhui_yu.jpg" alt="Longhui Yu">
+                    <img class="photo" src="member_avatar/weiyang_liu.jpg" alt="Weiyang Liu">
+                    <!-- duplicate for seamless scroll -->
+                    <img class="photo" src="member_avatar/zhouliang_yu.jpg" alt="Zhouliang Yu">
+                    <img class="photo" src="member_avatar/tim_z_xiao.jpg" alt="Tim Z. Xiao">
+                    <img class="photo" src="member_avatar/haoquan_zhang.jpg" alt="Haoquan Zhang">
+                    <img class="photo" src="member_avatar/jiacheng_chen.jpg" alt="Jiacheng Chen">
+                    <img class="photo" src="member_avatar/yamei_chen.jpg" alt="Yamei Chen">
+                    <img class="photo" src="member_avatar/yangyi_huang.jpg" alt="Yangyi Huang">
+                    <img class="photo" src="member_avatar/he_guo.jpg" alt="He Guo">
+                    <img class="photo" src="member_avatar/kexuan_shi.jpg" alt="Kexuan Shi">
+                    <img class="photo" src="member_avatar/zeju_qiu.jpg" alt="Zeju Qiu">
+                    <img class="photo" src="member_avatar/longhui_yu.jpg" alt="Longhui Yu">
+                    <img class="photo" src="member_avatar/weiyang_liu.jpg" alt="Weiyang Liu">
+                </div>
+            </div>
+            <p class="legend">Hover to pause. Photos shown use member avatars as placeholders; replace with group photos when available.</p>
+        </div>
+
+        <!-- Optional contact/action section -->
+        <div class="header" style="margin-top: 2rem;">
+            <a href="opening.html" class="paper-link">See Open Positions</a>
+        </div>
+    </div>
+</body>
+</html>
