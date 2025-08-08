@@ -684,31 +684,31 @@
         .paper-link {
             color: #333;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             display: inline-flex;
             align-items: center;
             padding: 0.2rem 0.6rem;
             border-radius: 4px;
-            background-color: #f5f5f5;
+            background-color: #e8e8e8;
             transition: all 0.2s ease;
-            font-weight: 500;
+            font-weight: 600;
             width: fit-content;
             border: none;
             cursor: pointer;
         }
 
         .paper-link:hover {
-            background-color: #e5e5e5;
+            background-color: #d8d8d8;
             color: #000;
         }
 
         .bib-btn {
-            background-color: #f5f5f5;
+            background-color: #e8e8e8;
             color: #333;
         }
 
         .bib-btn:hover {
-            background-color: #e5e5e5;
+            background-color: #d8d8d8;
             color: #000;
         }
 
@@ -1041,9 +1041,9 @@
                         <p class="paper-authors">${paper.authorlist.join(', ')}</p>
                         <div class="paper-venue">${paper.venue}</div>
                         <div class="paper-links">
-                            <a href="${paper.arxiv_link}" target="_blank" class="paper-link">arXiv</a>
-                            ${paper.project_link ? `<a href="${paper.project_link}" target="_blank" class="paper-link">Project</a>` : ''}
-                            <button class="paper-link bib-btn" onclick="toggleBib(${index})">Bib</button>
+                            <a href="${paper.arxiv_link}" target="_blank" class="paper-link">Paper</a>
+                            ${paper.project_link ? `<a href="${paper.project_link}" target="_blank" class="paper-link">Code</a>` : ''}
+                            <button class="paper-link bib-btn" onclick="toggleBib(${index})">Citation</button>
                         </div>
                         <div class="bib-content" id="bib-${index}" style="display: none;">
                             <pre class="bib-text">${paper.bibtex ? paper.bibtex.replace(/\\n/g, '\n') : 'BibTeX not available'}</pre>
