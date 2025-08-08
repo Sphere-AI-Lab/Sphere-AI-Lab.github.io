@@ -141,6 +141,16 @@
         .page-title:hover::before {
             transform: scale(1.2);
         }
+
+        /* Match featured project title style from research.html */
+        .featured-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
+        }
         
         .team-grid {
             display: grid;
@@ -163,10 +173,10 @@
          
          .avatar-dot {
              position: absolute;
-             top: -0.8rem;
-             left: -0.8rem;
-             width: 2.2rem;
-             height: 2.2rem;
+             top: -1rem;
+             left: -1rem;
+             width: 2.5rem;
+             height: 2.5rem;
              background-color: #cea8e0;
              border-radius: 50%;
              transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -174,8 +184,8 @@
          }
          
          .avatar-frame {
-             width: 80px;
-             height: 80px;
+             width: 100px;
+             height: 100px;
              border: 2px solid #ffffff;
              border-radius: 8px;
              overflow: hidden;
@@ -190,8 +200,8 @@
          }
          
          .member-card:hover .avatar-dot {
-             transform: scale(2.2) translate(0.3rem, 0.3rem);
-             background-color: #75b6d0;
+             transform: scale(1.7) translate(0.3rem, 0.3rem);
+             background-color: #cea8e0;
          }
         
         .member-info {
@@ -247,15 +257,15 @@
         }
         
         .pi-card .avatar-frame {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
         }
         
         .pi-card .avatar-dot {
-            width: 2.8rem;
-            height: 2.8rem;
             top: -1rem;
             left: -1rem;
+            width: 2.5rem;
+            height: 2.5rem;
         }
         
         .pi-card .member-name {
@@ -297,14 +307,14 @@
             }
             
             .avatar-frame {
-                width: 60px;
-                height: 60px;
+                width: 80px;
+                height: 80px;
                 font-size: 1.5rem;
             }
             
             .pi-card .avatar-frame {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
             }
         }
     </style>
@@ -571,7 +581,7 @@
                 </div>
                                 <div class="member-info">
                 <div class="member-name">Tim Z. Xiao</div>
-                <div class="member-title">PhD Student</div>
+                <div class="member-title">Visiting PhD Student</div>
                 <div class="member-links">
                     <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
                         <span class="material-icons-round">language</span>
@@ -587,6 +597,110 @@
             </div>
 
         </div>
+
+        <!-- Alumni Section -->
+        <div class="header">
+            <h2 class="featured-title">Alumni</h2>
+        </div>
+        <div class="team-grid">
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/zhen_liu.jpg" alt="Zhen Liu">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Zhen Liu</div>
+                    <div class="member-title">Current: Assistant Professor at<br>CUHK-Shenzhen</div>
+                    <div class="member-links">
+                        <a href="https://itszhen.com/" class="member-link" target="_blank" title="Personal Website">
+                            <span class="material-icons-round">language</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=I1IiJCAAAAAJ&hl=en" class="member-link" target="_blank" title="Google Scholar">
+                            <span class="material-icons-round">school</span>
+                        </a>
+                        <a href="mailto:zhenliu@cuhk.edu.cn" class="member-link" title="Email">
+                            <span class="material-icons-round">email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/longhui_yu.jpg" alt="Longhui Yu">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                    <div class="member-info">
+                   <div class="member-name">Longhui Yu</div>
+                   <div class="member-title">Current: PhD Student at SphereLab</div>
+                   <div class="member-links">
+                       <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
+                           <span class="material-icons-round">language</span>
+                       </a>
+                       <a href="https://place_holder" class="member-link" target="_blank" title="Google Scholar">
+                           <span class="material-icons-round">school</span>
+                       </a>
+                       <a href="mailto:place_holder" class="member-link" title="Email">
+                           <span class="material-icons-round">email</span>
+                       </a>
+                   </div>
+               </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/zeju_qiu.jpg" alt="Zeju Qiu">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Zeju Qiu</div>
+                    <div class="member-title">Current: PhD Student at SphereLab</div>
+                    <div class="member-links">
+                    <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=place_holder" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="mailto:place_holder" class="member-link" title="Email">
+                        <span class="material-icons-round">email</span>
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/yamei_chen.jpg" alt="Yamei Chen">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Yamei Chen</div>
+                    <div class="member-title">Current: PhD Student at SphereLab</div>
+                    <div class="member-links">
+                        <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
+                            <span class="material-icons-round">language</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=place_holder" class="member-link" target="_blank" title="Google Scholar">
+                            <span class="material-icons-round">school</span>
+                        </a>
+                        <a href="mailto:place_holder@example.com" class="member-link" title="Email">
+                            <span class="material-icons-round">email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </body>
 </html> 
