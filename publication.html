@@ -20,6 +20,7 @@
             min-height: 100vh;
         }
 
+        /* 装饰性圆形 */
         body::before {
             content: '';
             position: fixed;
@@ -42,38 +43,6 @@
             border-radius: 50%;
             background-color: rgba(255, 179, 102, 0.1);
             z-index: -1;
-        }
-
-        .main-title {
-            font-size: clamp(2.25rem, 6.5vw, 3.25rem);
-            font-weight: 900;
-            margin-bottom: clamp(3rem, 8vh, 6rem);
-            letter-spacing: -0.02em;
-            position: relative;
-            cursor: pointer;
-            background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% 100%;
-            animation: gradientMove 2s linear infinite;
-        }
-        
-        .main-title::before {
-            content: '';
-            position: absolute;
-            top: -0.5rem;
-            left: -1.5rem;
-            width: clamp(2rem, 3vw, 3.5rem);
-            height: clamp(2rem, 3vw, 3.5rem);
-            background-color: #c2e8f6;
-            border-radius: 50%;
-            transition: transform 0.2s ease;
-            z-index: -1;
-        }
-        
-        .main-title:hover::before {
-            transform: scale(1.2);
         }
 
         .container {
@@ -530,7 +499,7 @@
 <body>
     <div class="container">
         <a href="index.html" class="subtitle">
-            <h1 class="main-title">SphereLab</h1>
+            <span class="subtitle-text">SPHERE<br>LAB</span>
         </a>
 
         <div class="header">

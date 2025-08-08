@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SphereLab</title>
     <style>
+        :root {
+            --grad-1: #a78bfa;  /* pink */
+            --grad-2: #60a5fa;  /* purple */
+            --grad-3: #34d399;  /* cyan */
+        }
         * {
             margin: 0;
             padding: 0;
@@ -24,6 +29,38 @@
             position: relative;
         }
         
+        #typewriter {
+            font-size: 4.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--grad-1), var(--grad-2) 50%, var(--grad-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.15em solid rgba(255, 255, 255, 0.75);
+        }
+
+      /*
+       * Blink animation for the caret. It toggles the border colour
+       * from transparent to opaque to create the familiar blinking
+       * effect. Applied via the `.typing` class while the animation
+       * runs.
+       */
+        @keyframes blink {
+            from,
+            to {
+              border-color: transparent;
+            }
+            50% {
+              border-color: rgba(183, 180, 180, 0.75);
+            }
+        }
+        .typing {
+            animation: blink 0.8s step-end infinite;
+        }
+
         .main-content {
             display: flex;
             flex-direction: column;
@@ -32,7 +69,7 @@
         }
         
         .main-title {
-            font-size: clamp(5rem, 15vw, 10rem);
+            font-size: clamp(2.25rem, 6.5vw, 3.25rem);
             font-weight: 900;
             margin-bottom: clamp(3rem, 8vh, 6rem);
             letter-spacing: -0.02em;
@@ -51,9 +88,9 @@
             position: absolute;
             top: -0.5rem;
             left: -1.5rem;
-            width: clamp(3rem, 4vw, 4.5rem);
-            height: clamp(3rem, 4vw, 4.5rem);
-            background-color: #a8d8ea;
+            width: clamp(2rem, 3vw, 3.5rem);
+            height: clamp(2rem, 3vw, 3.5rem);
+            background-color: #c2e8f6;
             border-radius: 50%;
             transition: transform 0.2s ease;
             z-index: -1;
@@ -95,11 +132,19 @@
         }
         
         .research-icon {
-            background-color: #ffb366;
+            background-color: #95ade4;
         }
         
         .people-icon {
-            background-color: #ff9999;
+            background-color: #cea8e0;
+        }
+
+        .events-icon {
+            background-color: #6acacf;
+        }
+
+        .opening-icon {
+            background-color: #e995bf;
         }
         
         .section:hover .icon {
@@ -119,7 +164,7 @@
         .section-text {
             font-size: clamp(1.5rem, 4vw, 3rem);
             font-weight: 700;
-            color: #000;
+            color: #3e3e3e;
         }
 
         .section:hover .section-text {
@@ -193,13 +238,10 @@
 
         
         .description {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
             font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
             font-size: 1.2rem;
-            font-weight: 900;
-            color: #888;
+            font-weight: 600;
+            color: #aaa;
             line-height: 1.4;
             text-align: left;
         }
@@ -344,58 +386,15 @@
     </style>
 </head>
 <body>
-    <div class="slogan">
-        <div class="line1">
-            <span style="--char-index: 0;">D</span>
-            <span style="--char-index: 1;">R</span>
-            <span style="--char-index: 2;">I</span>
-            <span style="--char-index: 3;">V</span>
-            <span style="--char-index: 4;">E</span>
-            <span style="--char-index: 5;">N</span>
-            <span style="--char-index: 6;">&nbsp;</span>
-            <span style="--char-index: 7;">B</span>
-            <span style="--char-index: 8;">Y</span>
-            <span style="--char-index: 9;">&nbsp;</span>
-            <span style="--char-index: 10;">C</span>
-            <span style="--char-index: 11;">U</span>
-            <span style="--char-index: 12;">R</span>
-            <span style="--char-index: 13;">I</span>
-            <span style="--char-index: 14;">O</span>
-            <span style="--char-index: 15;">S</span>
-            <span style="--char-index: 16;">I</span>
-            <span style="--char-index: 17;">T</span>
-            <span style="--char-index: 18;">Y</span>
-        </div>
-        <div class="line2">
-            <span style="--char-index: 0;">B</span>
-            <span style="--char-index: 1;">U</span>
-            <span style="--char-index: 2;">I</span>
-            <span style="--char-index: 3;">L</span>
-            <span style="--char-index: 4;">D</span>
-            <span style="--char-index: 5;">I</span>
-            <span style="--char-index: 6;">N</span>
-            <span style="--char-index: 7;">G</span>
-            <span style="--char-index: 8;">&nbsp;</span>
-            <span style="--char-index: 9;">P</span>
-            <span style="--char-index: 10;">R</span>
-            <span style="--char-index: 11;">I</span>
-            <span style="--char-index: 12;">N</span>
-            <span style="--char-index: 13;">C</span>
-            <span style="--char-index: 14;">I</span>
-            <span style="--char-index: 15;">P</span>
-            <span style="--char-index: 16;">L</span>
-            <span style="--char-index: 17;">E</span>
-            <span style="--char-index: 18;">D</span>
-            <span style="--char-index: 19;">&nbsp;</span>
-            <span style="--char-index: 20;">A</span>
-            <span style="--char-index: 21;">I</span>
-        </div>
-    </div>
-
+    <div id="typewriter" class="typing"></div>
     <div class="main-content">
-        <h1 class="main-title">SphereLab</h1>
-        
+        <br><br><br><br><br><br><br><br><br>
         <div class="sections">
+            <a href="events.html" class="section">
+                <div class="icon events-icon"></div>
+                <span class="section-text">Events</span>
+            </a>
+
             <a href="research.html" class="section">
                 <div class="icon research-icon"></div>
                 <span class="section-text">Research</span>
@@ -405,23 +404,26 @@
                 <div class="icon people-icon"></div>
                 <span class="section-text">People</span>
             </a>
+
+            <a href="opening.html" class="section">
+                <div class="icon opening-icon"></div>
+                <span class="section-text">Openings</span>
+            </a>
         </div>
     </div>
     
     <div class="subtitle">
-        <span class="subtitle-text">SPHERE<br>LAB</span>
-    </div>
-
-    <div class="description">
-        <span>The Scalable Principles for<br>Learning and Reasoning Lab</span>
+        <h1 class="main-title">SphereLab</h1>
     </div>
 
     <div class="affiliations">
         <div class="affiliation">
-            <div class="affiliation-tag cuhk-bg" style="cursor:pointer;" onclick="window.open('https://www.cuhk.edu.hk/', '_blank')"><span>@</span>The Chinese University of Hong Kong</div>
+            <img src="cuhkmlg.svg" width="68" height="68">
+            <div class="description">Scalable Principles for Learning and Reasoning Lab<br>The Chinese University of Hong Kong</div>
             <!-- <div class="affiliation-tag mpis-bg" style="cursor:pointer;" onclick="window.open('https://is.mpg.de/', '_blank')"><span>@</span>MPI-IS</div>
             <div class="affiliation-tag westlake-bg" style="cursor:pointer;" onclick="window.open('https://en.westlake.edu.cn/', '_blank')"><span>@</span>Westlake</div> -->
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html> 
