@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - SphereLab</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #ffffff;
+      min-height: 100vh;
+      padding: 3rem 2rem;
+    }
+
+    body::before {
+            content: '';
+            position: fixed;
+            top: -150px;
+            right: -150px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(149,173,228, 0.1);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(149,173,228, 0.1);
+            z-index: -1;
+        }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    .main-title {
+      font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: clamp(1rem, 2vh, 1rem);
+      letter-spacing: -0.02em;
+      position: relative;
+      cursor: pointer;
+      background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% 100%;
+      animation: gradientMove 2s linear infinite;
+    }
+    .main-title::before {
+      content: '';
+      position: absolute;
+      top: -0.5rem;
+      left: -1.5rem;
+      width: clamp(1.5rem, 3vw, 3rem);
+      height: clamp(1.5rem, 3vw, 3rem);
+      background-color: #c2e8f6;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+      z-index: -1;
+    }
+    .main-title:hover::before { transform: scale(1.2); }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .subtitle { position: fixed; top: 2rem; left: 2rem; cursor: pointer; text-decoration: none; z-index: 10; display: inline-block; }
+
+    .header { text-align: center; margin-bottom: 1rem; display: flex; flex-direction: column; align-items: center; }
+
+    .page-title {
+      font-size: clamp(2.5rem, 7vw, 4rem);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+      font-weight: 900;
+      color: #3e3e3e;
+    }
+    .page-title::before {
+      content: '';
+      position: absolute;
+      top: -0.5rem;
+      left: -1rem;
+      width: clamp(2.5rem, 4vw, 3rem);
+      height: clamp(2.5rem, 4vw, 3rem);
+      background-color: #95ade4;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+      z-index: -1;
+    }
+    .page-title:hover::before { transform: scale(1.2); }
+
+    /* Optional compact intro */
+    .intro {
+      max-width: 900px;
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-top: 0.6rem;
+      text-align: center;
+      background: #f8fafc;
+      border: 1px solid #eee;
+      border-left: 6px solid #95ade4;
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.4rem;
+    }
+
+    .project-card {
+      border: 1px solid #eee;
+      border-radius: 12px;
+      background: #fff;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .project-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+
+    .project-thumb {
+      height: 160px;
+      background: linear-gradient(135deg, #e9f2fb, #f8fafc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #95ade4;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .project-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.55rem; }
+    .project-title { font-size: 1.05rem; font-weight: 800; color: #000; line-height: 1.35; }
+    .project-desc { color: #555; font-size: 0.95rem; line-height: 1.5; }
+
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.2rem; }
+    .project-tag { font-size: 0.75rem; color: #555; background: #eef2f7; padding: 0.2rem 0.5rem; border-radius: 999px; }
+
+    .project-links { display: flex; gap: 0.4rem; margin-top: 0.2rem; flex-wrap: wrap; }
+    .paper-link { color: #333; text-decoration: none; font-size: 0.85rem; display: inline-flex; align-items: center; padding: 0.2rem 0.6rem; border-radius: 4px; background-color: #e8e8e8; transition: all 0.2s ease; font-weight: 600; width: fit-content; border: none; cursor: pointer; }
+    .paper-link:hover { background-color: #d8d8d8; color: #000; }
+
+    .actions { display: flex; justify-content: center; margin-top: 1rem; }
+    .load-more { color: #333; background: #f0f0f0; border: 1px solid #e1e1e1; border-radius: 10px; padding: 0.5rem 1rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; }
+    .load-more:hover { background: #e8e8e8; transform: translateY(-1px); }
+
+    @media (max-width: 768px) {
+      body { padding: 2rem 1rem; }
+      .subtitle { top: 1rem; left: 1rem; }
+      .intro { font-size: 0.95rem; padding: 0.95rem 1rem; border-left-width: 5px; }
+      .project-thumb { height: 140px; }
+      .project-title { font-size: 1rem; }
+      .project-desc { font-size: 0.9rem; }
+      .paper-link { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="subtitle">
+    <h1 class="main-title">SphereLab</h1>
+  </a>
+
+  <div class="container">
+    <div class="header">
+      <h1 class="page-title">Projects</h1>
+      <p class="intro">
+        SphereLab a firm believer of open-source and reproducible research.
+    </div>
+
+    <div id="projects" class="projects-grid"></div>
+    <div class="actions">
+      <button id="loadMore" class="load-more">Load More</button>
+    </div>
+  </div>
+
+  <script>
+    const projectsGrid = document.getElementById('projects');
+    const loadMoreBtn = document.getElementById('loadMore');
+
+    let loaded = 0;
+    const batchSize = 12; // render per batch for performance
+    let allProjects = [];
+
+    function makeProjectCardFromData(p) {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+
+      const thumb = document.createElement('div');
+      thumb.className = 'project-thumb';
+      if (p.image) {
+        thumb.style.background = `center/cover no-repeat url(${p.image}), linear-gradient(135deg, #e9f2fb, #f8fafc)`;
+        thumb.style.backgroundBlendMode = 'overlay';
+      } else {
+        thumb.textContent = 'PROJECT';
+      }
+
+      const body = document.createElement('div');
+      body.className = 'project-body';
+
+      const title = document.createElement('div');
+      title.className = 'project-title';
+      title.textContent = p.title || 'Project Title';
+
+      const desc = document.createElement('div');
+      desc.className = 'project-desc';
+      desc.textContent = p.description || 'Short project description.';
+
+      const tags = document.createElement('div');
+      tags.className = 'project-tags';
+      (p.tags || []).forEach(t => {
+        const tag = document.createElement('span');
+        tag.className = 'project-tag';
+        tag.textContent = t;
+        tags.appendChild(tag);
+      });
+
+      const links = document.createElement('div');
+      links.className = 'project-links';
+      if (p.demo_link) {
+        const demo = document.createElement('a');
+        demo.href = p.demo_link; demo.target = '_blank'; demo.className = 'paper-link'; demo.textContent = 'Demo';
+        links.appendChild(demo);
+      }
+      if (p.code_link) {
+        const code = document.createElement('a');
+        code.href = p.code_link; code.target = '_blank'; code.className = 'paper-link'; code.textContent = 'Code';
+        links.appendChild(code);
+      }
+
+      body.appendChild(title);
+      body.appendChild(desc);
+      body.appendChild(tags);
+      body.appendChild(links);
+
+      card.appendChild(thumb);
+      card.appendChild(body);
+      return card;
+    }
+
+    function loadBatch() {
+      const end = Math.min(loaded + batchSize, allProjects.length);
+      for (let i = loaded; i < end; i++) {
+        projectsGrid.appendChild(makeProjectCardFromData(allProjects[i]));
+      }
+      loaded = end;
+      if (loaded >= allProjects.length) {
+        loadMoreBtn.style.display = 'none';
+      }
+    }
+
+    async function init() {
+      try {
+        const res = await fetch('projects/projects.json');
+        if (!res.ok) throw new Error('Failed to load projects.json');
+        allProjects = await res.json();
+      } catch (e) {
+        console.error(e);
+        // fallback: generate placeholders if fetch fails
+        allProjects = Array.from({ length: 24 }).map((_, i) => ({
+          title: `Project Title #${i + 1}`,
+          description: 'Short placeholder description for a project. This text will be replaced with real content.',
+          tags: ['LLM', 'Optimization', 'Reasoning'],
+          demo_link: '#',
+          code_link: '#'
+        }));
+      }
+      loadBatch();
+      loadMoreBtn.addEventListener('click', loadBatch);
+    }
+
+    init();
+  </script>
+</body>
+</html>

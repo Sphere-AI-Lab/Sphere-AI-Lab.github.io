@@ -46,7 +46,7 @@
         .main-title {
             font-size: clamp(1.5rem, 4.5vw, 2.5rem);
             font-weight: 900;
-            margin-bottom: clamp(3rem, 8vh, 6rem);
+            margin-bottom: clamp(1rem, 2vh, 1rem);
             letter-spacing: -0.02em;
             position: relative;
             cursor: pointer;
@@ -252,6 +252,9 @@
             gap: 0.5rem;
         }
 
+        /* Ensure email button is right-most in the flex row */
+        .member-links .member-link[title="Email"] { order: 99; }
+
         .member-link {
             width: 2rem;
             height: 2rem;
@@ -269,6 +272,9 @@
             background-color: #e0e0e0;
             color: #333;
         }
+
+        /* Ensure SVG brand icons fit existing circular buttons */
+        .member-link svg { width: 1.1rem; height: 1.1rem; display: block; fill: currentColor; }
 
         .material-icons-round {
             font-size: 1.2rem;
@@ -339,6 +345,15 @@
     </style>
 </head>
 <body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden;">
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.302 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.016-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.386-1.333-1.756-1.333-1.756-1.09-.745.082-.73.082-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.997.108-.777.418-1.305.762-1.605-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.536-1.523.118-3.176 0 0 1.01-.323 3.31 1.23a11.5 11.5 0 0 1 6.018 0c2.3-1.553 3.308-1.23 3.308-1.23.656 1.653.244 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.48 5.92.43.37.823 1.103.823 2.222 0 1.604-.014 2.896-.014 3.292 0 .32.218.694.825.576C20.565 21.796 24 17.302 24 12 24 5.37 18.63 0 12 0Z"/>
+      </symbol>
+      <symbol id="icon-twitter" viewBox="0 0 24 24">
+        <path d="M18.244 2h3.31l-7.227 8.26L22 22h-6.579l-5.145-6.58L4.244 22H.934l7.594-8.68L2 2h6.579l4.94 6.315L18.244 2z"/>
+      </symbol>
+    </svg>
+    
     <a href="index.html" class="subtitle">
             <h1 class="main-title">SphereLab</h1>
     </a>
@@ -363,10 +378,12 @@
                         <a href="https://wyliu.com" class="member-link" target="_blank" title="Personal Website">
                             <span class="material-icons-round">language</span>
                         </a>
-                        <a href="https://scholar.google.com/citations?user=place_holder" class="member-link" target="_blank" title="Google Scholar">
+                        <a href="https://scholar.google.com/citations?user=DMjROf0AAAAJ" class="member-link" target="_blank" title="Google Scholar">
                             <span class="material-icons-round">school</span>
                         </a>
-                        <a href="mailto:place_holder" class="member-link" title="Email">
+                        <a href="https://github.com/wy1iu" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/Besteuler" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:wyliu@cse.cuhk.edu.hk" class="member-link" title="Email">
                             <span class="material-icons-round">email</span>
                         </a>
                     </div>
@@ -390,9 +407,11 @@
                        <a href="https://scholar.google.com.hk/citations?user=3eHjDDgAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                            <span class="material-icons-round">school</span>
                        </a>
-                       <a href="mailto:place_holder" class="member-link" title="Email">
+                        <a href="https://github.com/yulonghui" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://x.com/scut_longhui" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:place_holder" class="member-link" title="Email">
                            <span class="material-icons-round">email</span>
-                       </a>
+                         </a>
                    </div>
                </div>
             </div>
@@ -414,9 +433,11 @@
                         <a href="https://scholar.google.com/citations?user=dX-aOIwAAAAJ&hl=en" class="member-link" target="_blank" title="Google Scholar">
                             <span class="material-icons-round">school</span>
                         </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
                         <a href="mailto:place_holder" class="member-link" title="Email">
-                            <span class="material-icons-round">email</span>
-                        </a>
+                           <span class="material-icons-round">email</span>
+                         </a>
                     </div>
                 </div>
              </div>
@@ -438,9 +459,11 @@
                     <a href="https://scholar.google.com/citations?user=7y5RN9wAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                         <span class="material-icons-round">school</span>
                     </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
                     <a href="mailto:place_holder" class="member-link" title="Email">
-                        <span class="material-icons-round">email</span>
-                    </a>
+                           <span class="material-icons-round">email</span>
+                         </a>
                     </div>
                 </div>
             </div>
@@ -462,9 +485,11 @@
                         <a href="https://scholar.google.com/citations?user=place_holder" class="member-link" target="_blank" title="Google Scholar">
                             <span class="material-icons-round">school</span>
                         </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
                         <a href="mailto:place_holder" class="member-link" title="Email">
-                            <span class="material-icons-round">email</span>
-                        </a>
+                           <span class="material-icons-round">email</span>
+                         </a>
                     </div>
                 </div>
              </div>
@@ -486,9 +511,11 @@
                         <a href="https://scholar.google.com/citations?user=qUMjnPcAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                             <span class="material-icons-round">school</span>
                         </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
                         <a href="mailto:place_holder" class="member-link" title="Email">
-                            <span class="material-icons-round">email</span>
-                        </a>
+                           <span class="material-icons-round">email</span>
+                         </a>
                     </div>
                 </div>
              </div>
@@ -510,9 +537,11 @@
                         <a href="https://scholar.google.com/citations?user=MzGqlqIAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                             <span class="material-icons-round">school</span>
                         </a>
-                        <a href="mailto:place_holder" class="member-link" title="Email">
-                            <span class="material-icons-round">email</span>
-                        </a>
+                        <a href="https://github.com/huangyangyi" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://x.com/yangyi_huang_cn" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:yyhuang@link.cuhk.edu.hk" class="member-link" title="Email">
+                           <span class="material-icons-round">email</span>
+                         </a>
                     </div>
                 </div>
              </div>
@@ -534,9 +563,11 @@
                         <a href="https://scholar.google.com/citations?user=aCEtEIIAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                             <span class="material-icons-round">school</span>
                         </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
                         <a href="mailto:place_holder" class="member-link" title="Email">
-                            <span class="material-icons-round">email</span>
-                        </a>
+                           <span class="material-icons-round">email</span>
+                         </a>
                     </div>
                 </div>
              </div>
@@ -559,9 +590,11 @@
                        <a href="https://scholar.google.com/citations?user=VUboP9QAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                            <span class="material-icons-round">school</span>
                        </a>
-                       <a href="mailto:place_holder" class="member-link" title="Email">
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:place_holder" class="member-link" title="Email">
                            <span class="material-icons-round">email</span>
-                       </a>
+                         </a>
                    </div>
                </div>
             </div>
@@ -583,9 +616,11 @@
                        <a href="https://scholar.google.com/citations?user=knvJGuQAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                            <span class="material-icons-round">school</span>
                        </a>
-                       <a href="mailto:place_holder" class="member-link" title="Email">
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:place_holder" class="member-link" title="Email">
                            <span class="material-icons-round">email</span>
-                       </a>
+                         </a>
                    </div>
                </div>
             </div>
@@ -608,9 +643,11 @@
                     <a href="https://scholar.google.com/citations?user=4I7boHIAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                         <span class="material-icons-round">school</span>
                     </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
                     <a href="mailto:place_holder" class="member-link" title="Email">
-                        <span class="material-icons-round">email</span>
-                    </a>
+                           <span class="material-icons-round">email</span>
+                         </a>
                 </div>
             </div>
             </div>
@@ -639,6 +676,8 @@
                         <a href="https://scholar.google.com/citations?user=I1IiJCAAAAAJ&hl=en" class="member-link" target="_blank" title="Google Scholar">
                             <span class="material-icons-round">school</span>
                         </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
                         <a href="mailto:zhenliu@cuhk.edu.cn" class="member-link" title="Email">
                             <span class="material-icons-round">email</span>
                         </a>
@@ -663,9 +702,11 @@
                        <a href="https://scholar.google.com.hk/citations?user=3eHjDDgAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                            <span class="material-icons-round">school</span>
                        </a>
-                       <a href="mailto:place_holder" class="member-link" title="Email">
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:place_holder" class="member-link" title="Email">
                            <span class="material-icons-round">email</span>
-                       </a>
+                         </a>
                    </div>
                </div>
             </div>
@@ -687,9 +728,11 @@
                     <a href="https://scholar.google.com/citations?user=7y5RN9wAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                         <span class="material-icons-round">school</span>
                     </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
                     <a href="mailto:place_holder" class="member-link" title="Email">
-                        <span class="material-icons-round">email</span>
-                    </a>
+                           <span class="material-icons-round">email</span>
+                         </a>
                     </div>
                 </div>
             </div>
@@ -711,6 +754,8 @@
                         <a href="https://scholar.google.com/citations?user=aCEtEIIAAAAJ" class="member-link" target="_blank" title="Google Scholar">
                             <span class="material-icons-round">school</span>
                         </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
                         <a href="mailto:place_holder@example.com" class="member-link" title="Email">
                             <span class="material-icons-round">email</span>
                         </a>
@@ -721,5 +766,31 @@
         </div>
 
     </div>
+<script>
+  (function () {
+    function isPlaceholderHref(href) {
+      if (!href) return true;
+      const h = href.trim();
+      if (h === '#' || h === '') return true;
+      if (/place_holder/i.test(h)) return true;
+      if (/PLACEHOLDER/.test(h)) return true;
+      if (/user=place_holder/i.test(h)) return true;
+      if (/^mailto:\s*place_holder/i.test(h)) return true;
+      return false;
+    }
+
+    document.querySelectorAll('.member-links a.member-link').forEach((a) => {
+      const href = a.getAttribute('href');
+      if (isPlaceholderHref(href)) {
+        a.remove();
+      } else {
+        // Security hardening for external links
+        if (a.getAttribute('target') === '_blank') {
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+      }
+    });
+  })();
+</script>
 </body>
 </html> 

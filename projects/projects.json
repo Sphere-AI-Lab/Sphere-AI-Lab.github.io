@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Orthogonal Finetuning Made Scalable",
+    "description": "Parameter- and memory-efficient methods for scalable finetuning of large models.",
+    "tags": ["PEFT", "Optimization", "LLM"],
+    "demo_link": "#",
+    "code_link": "https://github.com/Sphere-AI-Lab/oft-v2",
+    "image": "papers/featured/oftv2.png"
+  },
+  {
+    "title": "Reparameterized LLM Training via Orthogonal Equivalence",
+    "description": "Training large models through orthogonal equivalence transformations for stability and efficiency.",
+    "tags": ["Training", "Reparameterization"],
+    "demo_link": "#",
+    "code_link": "https://github.com/Sphere-AI-Lab/poet",
+    "image": "papers/featured/poet.png"
+  },
+  {
+    "title": "FormalMATH Benchmark",
+    "description": "A comprehensive benchmark for formal mathematical reasoning with Lean4.",
+    "tags": ["Reasoning", "Math", "Lean4"],
+    "demo_link": "https://spherelab.ai/FormalMATH/",
+    "code_link": "#",
+    "image": "papers/featured/formalmath.png"
+  },
+  {
+    "title": "Symbolic World Models",
+    "description": "Test-time compute scaling for symbolic world model generation.",
+    "tags": ["Symbolic", "World Model"],
+    "demo_link": "https://vmlpddl.github.io/",
+    "code_link": "#",
+    "image": "papers/featured/ivml.png"
+  },
+  {
+    "title": "LLM Graphics Program Understanding",
+    "description": "Evaluating large models on understanding of symbolic graphics programs.",
+    "tags": ["Vision", "Symbolic"],
+    "demo_link": "https://sgp-bench.github.io/",
+    "code_link": "#",
+    "image": "papers/featured/sgpbench.png"
+  },
+  {
+    "title": "Verbalized Machine Learning",
+    "description": "In-context machine learning through verbalized objectives and prompts.",
+    "tags": ["VML", "TMLR", "LLM"],
+    "demo_link": "https://arxiv.org/abs/2406.04344",
+    "code_link": "#",
+    "image": "papers/featured/vml.png"
+  }
+]

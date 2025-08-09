@@ -43,7 +43,7 @@
         .main-title {
             font-size: clamp(1.5rem, 4.5vw, 2.5rem);
             font-weight: 900;
-            margin-bottom: clamp(3rem, 8vh, 6rem);
+            margin-bottom: clamp(1rem, 2vh, 1rem);
             letter-spacing: -0.02em;
             position: relative;
             cursor: pointer;
@@ -235,6 +235,18 @@
         /* Override intro alignment for values box */
         .intro.values { text-align: left; text-align-last: left; }
 
+        /* Inline link style for research values section */
+        .intro.values a,
+        .values-list a {
+            color: #50b1b6; /* closer to site blues */
+            text-decoration: none;
+        }
+        .intro.values a:hover,
+        .values-list a:hover {
+            color: #e67300; /* slightly darker on hover */
+            text-decoration: none;
+        }
+
         @media (max-width: 768px) {
             body { padding: 2rem 1rem; }
             .subtitle { top: 1rem; left: 1rem; }
@@ -258,15 +270,9 @@
             <h1 class="page-title">About Us</h1>
             <p class="intro">
                 SphereLab (Scalable Principles for Learning and Reasoning Lab) advances the foundations and practice of machine learning and artificial intelligence.
-                We are drawn to scalable principles with the aim to discover them and leverage them to design learning and reasoning algorithms. Through principled algorithm, we seek to build AI systems that are data-efficient, scalable, generalizable and trustworthy.
-                Our recent interests span principled learning algorithms and systems of large-scale foundation models, reliable reasoning of large language models, scalable generative modeling and their applications across computer vision, natural language processing and scientific discovery.
-            </p>
-        </div>
-        <div class="header">
-            <h2 class="value-title">Research Vision</h2>
-            <p class="intro">
-                We explore scalable learning principles, formal reasoning, and their synergy, building systems that are data-efficient, reliable, and interpretable.
-                Our interests span large-scale representation learning, language models, optimization, formal methods, and applications across science and engineering.
+                We are drawn to scalable principles with the aim to discover them and leverage them to design learning and reasoning algorithms. Through principled algorithms, we seek to build useful AI systems that are data-efficient, scalable, generalizable and trustworthy.
+                <br>
+                Our recent research interests span principled learning algorithms and systems of large-scale foundation models, reliable reasoning of large language models, scalable generative modeling and their applications across computer vision, natural language processing and scientific discovery.
             </p>
         </div>
 
@@ -274,37 +280,18 @@
             <h2 class="value-title">Research Values</h2>
             <div class="intro values">
                 <p>
-                    SphereLab always believe in two research principles: (i) insight must precede application, and (ii) everything should be made as simple as possible, but not simpler. Our research values are:
+                    SphereLab always believe in two research principles: (i) insight must precede application, and (ii) everything should be made as <a href="https://en.wikipedia.org/wiki/Occam%27s_razor">simple</a> as possible, but not simpler. Our research values are:
                 </p>
                 <ul class="values-list">
                     <li>Focus on creating novel ideas, not publishing papers</li>
-                    <li>Follow curiosity and passion, not trends</li>
+                    <li>Follow <a href="https://www.ias.edu/sites/default/files/library/UsefulnessHarpers.pdf">curiosity and passion</a>, not trends</li>
                     <li>Ideas are not owned, but come with debts to those who came before</li>
                     <li>Ideas become stronger when shared, discussed and criticized</li>
                     <li>Life is surprisingly short, so solve problems that interest and excite you most</li>
-                    <li>It is good to be quick, but it is more important to be deep</li>
-                    <li>Think like an amateur, do as an expert</li>
-                    <li>This is not only about how to do research, but also how to live your life</li>
+                    <li><a href="https://www.youtube.com/watch?v=7H2YvxefFro">It is good to be quick, but it is more important to be deep</li>
+                    <li><a href="https://youtu.be/0B9hhOTYa_I">Think like an amateur, do as an expert</li>
+                    <li><a href="https://www.youtube.com/watch?v=ji5_MqicxSo">This is not only about how to do research, but also how to live your life</a></li>
                 </ul>
-            </div>
-        </div>
-
-        <!-- Resources section -->
-        <div class="header">
-            <h2 class="value-title">Resources</h2>
-            <div class="resource-links">
-                <a href="https://github.com/Sphere-AI-Lab" target="_blank" class="paper-link" aria-label="GitHub">
-                    <span class="btn-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" role="img">
-                            <path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56 0-.28-.01-1.03-.02-2.02-3.22.7-3.9-1.55-3.9-1.55-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.74-1.56-2.57-.29-5.28-1.28-5.28-5.68 0-1.25.45-2.28 1.2-3.08-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.75.8 1.2 1.83 1.2 3.08 0 4.41-2.71 5.38-5.29 5.66.42.36.79 1.08.79 2.19 0 1.58-.01 2.86-.01 3.25 0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/>
-                        </svg>
-                    </span>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://huggingface.co/Sphere-AI-Lab" target="_blank" class="paper-link" aria-label="Hugging Face">
-                    <span class="btn-icon emoji-icon" aria-hidden="true">🤗</span>
-                    <span>Hugging Face</span>
-                </a>
             </div>
         </div>
 
