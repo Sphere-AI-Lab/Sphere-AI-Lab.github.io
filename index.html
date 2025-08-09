@@ -66,6 +66,7 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            padding-top: 18vh; /* replaces manual <br> spacing */
         }
         
         .main-title {
@@ -145,6 +146,10 @@
 
         .opening-icon {
             background-color: #e995bf;
+        }
+
+        .about-icon {
+            background-color: #60cdc9;
         }
         
         .section:hover .icon {
@@ -239,8 +244,8 @@
         
         .description {
             font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 590;
             color: #aaa;
             line-height: 1.4;
             text-align: left;
@@ -352,6 +357,17 @@
         
         /* 移动端适配 */
         @media (max-width: 768px) {
+            /* Typewriter headline */
+            #typewriter {
+                font-size: 2rem;
+                border-right-width: 0.1em;
+            }
+
+            /* Reduce top spacing for compact view */
+            .main-content {
+                padding-top: 10vh;
+            }
+
             .sections {
                 flex-direction: column;
                 gap: clamp(2rem, 5vh, 3rem);
@@ -373,11 +389,32 @@
                 font-weight: 900;
             }
 
+            /* Move affiliations block into flow and center on mobile */
             .affiliations {
-                bottom: 1rem;
-                right: 1rem;
+                position: static;
+                margin: 1.5rem auto 0 auto;
                 font-size: 0.9rem;
+                padding-bottom: env(safe-area-inset-bottom);
+                text-align: center;
             }
+
+            .affiliation {
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .affiliations img {
+                width: 52px;
+                height: 52px;
+            }
+
+            .description {
+                font-size: 1rem;
+                line-height: 1.3;
+            }
+
+            /* Hide slogan to avoid clutter/overlap on small screens */
+            .slogan { display: none; }
 
             .affiliation-tag {
                 padding: 0.2rem 0.6rem;
@@ -388,11 +425,10 @@
 <body>
     <div id="typewriter" class="typing"></div>
     <div class="main-content">
-        <br><br><br><br><br><br><br><br><br>
         <div class="sections">
             <a href="aboutus.html" class="section">
-                <div class="icon aboutus-icon"></div>
-                <span class="section-text">About us</span>
+                <div class="icon about-icon"></div>
+                <span class="section-text">About</span>
             </a>
 
             <a href="research.html" class="section">
@@ -418,7 +454,7 @@
 
     <div class="affiliations">
         <div class="affiliation">
-            <img src="cuhkmlg.svg" width="68" height="68">
+            <img src="cuhkmlg.svg" width="65" height="65">
             <div class="description">Scalable Principles for Learning and Reasoning Lab<br>The Chinese University of Hong Kong</div>
             <!-- <div class="affiliation-tag mpis-bg" style="cursor:pointer;" onclick="window.open('https://is.mpg.de/', '_blank')"><span>@</span>MPI-IS</div>
             <div class="affiliation-tag westlake-bg" style="cursor:pointer;" onclick="window.open('https://en.westlake.edu.cn/', '_blank')"><span>@</span>Westlake</div> -->
