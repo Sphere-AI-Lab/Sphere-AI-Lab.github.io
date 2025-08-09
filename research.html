@@ -905,8 +905,8 @@
         </div>
         <div class="filter-section">
             <div class="sort-buttons">
-                <button class="sort-btn active" onclick="handleSort('date')">Sort by Date</button>
-                <button class="sort-btn" onclick="handleSort('type')">Sort by Type</button>
+                <button class="sort-btn active" onclick="handleSort('date', this)">Sort by Date</button>
+                <button class="sort-btn" onclick="handleSort('type', this)">Sort by Type</button>
             </div>
             <div class="topics-container" id="topics-wrapper">
                 <div class="topics" id="topics-container">
@@ -977,28 +977,16 @@
             return colors[type] || '#F0F0F0';
         }
 
-        async         function handleSort(method) {
+        async         function handleSort(method, btnEl) {
             if (method === currentSort) return; // 如果点击当前激活的按钮，不执行任何操作
             
             currentSort = method;
             const buttons = document.querySelectorAll('.sort-btn');
             const typeBtn = document.querySelector('.sort-btn[onclick*="type"]');
-            
-            // 为即将失去active的按钮添加过渡动画
-            buttons.forEach(btn => {
-                if (btn.classList.contains('active')) {
-                    const circle = window.getComputedStyle(btn, '::before');
-                    if (circle) {
-                        btn.classList.add('transitioning');
-                        setTimeout(() => {
-                            btn.classList.remove('active', 'transitioning');
-                        }, 300);
-                    }
-                }
-            });
-            
-            // 为新的active按钮添加类
-            event.target.classList.add('active');
+
+            // 清除所有active，再设置当前按钮为active
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (btnEl && btnEl.classList) btnEl.classList.add('active');
 
             // 如果切换到date排序，清除type按钮的颜色
             if (method === 'date') {
@@ -1008,6 +996,8 @@
                 document.querySelectorAll('.topic-tag').forEach(tag => {
                     tag.classList.remove('active');
                 });
+            } else if (method === 'type') {
+                // 若已有选中的topic，保持其颜色；否则使用默认回退颜色由CSS控制
             }
 
             const topicsWrapper = document.getElementById('topics-wrapper');
