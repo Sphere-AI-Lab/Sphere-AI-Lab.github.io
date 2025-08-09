@@ -460,48 +460,32 @@
             }
         }
 
+        /* Redesigned pill-style sort buttons */
         .sort-btn {
-            padding: 0.5rem 2rem;
-            border: none;
-            background: none;
+            padding: 0.45rem 1.1rem;
+            border: 1px solid #e6e6e6;
+            background: #f9f9f9;
+            border-radius: 999px;
             cursor: pointer;
-            font-weight: 600;
-            position: relative;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            transition: all 0.2s ease;
             z-index: 1;
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             color: #3e3e3e;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
 
-        .sort-btn::before {
-            content: '';
-            position: absolute;
-            top: 0.4rem;
-            left: 0.4rem;
-            width: 1.3rem;
-            height: 1.3rem;
-            background-color: #95ade4;
-            border-radius: 50%;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-            opacity: 0;
-            transform: scale(0);
+        .sort-btn:hover { background: #f1f1f1; }
+
+        .sort-btn.active {
+            background: #95ade4;
+            color: #fff;
+            border-color: #95ade4;
+            box-shadow: 0 2px 8px rgba(149,173,228,0.35);
         }
 
-        .sort-btn:hover::before {
-            opacity: 1;
-            transform: scale(1.2);
-        }
-
-        .sort-btn.active::before {
-            opacity: 1;
-            transform: scale(1.2);
-        }
-
-        /* 为Sort by Type按钮添加自定义颜色类 */
-        .sort-btn[data-type-color]::before {
-            background-color: var(--type-color, #95ade4);
-        }
+        /* Neutralize legacy ::before circle if any */
+        .sort-btn::before { content: none !important; display: none !important; }
 
         .filter-section {
             display: flex;
@@ -795,6 +779,9 @@
                 align-items: center;
             }
 
+            .sort-buttons { gap: 0.9rem; }
+            .sort-btn { padding: 0.5rem 1rem; font-size: 1rem; }
+
             /* Featured projects: enable native touch scroll on mobile */
             .carousel-container {
                 overflow-x: auto;
@@ -990,19 +977,13 @@
 
             // 如果切换到date排序，清除type按钮的颜色
             if (method === 'date') {
-                typeBtn.style.removeProperty('--type-color');
-                typeBtn.removeAttribute('data-type-color');
                 // 清除所有topic的active状态
                 document.querySelectorAll('.topic-tag').forEach(tag => {
                     tag.classList.remove('active');
                 });
                 selectedTopic = null;
             } else if (method === 'type') {
-                // 若已有选中的topic，保持其颜色；否则设置默认颜色，确保按钮效果保留
-                if (!selectedTopic) {
-                    typeBtn.style.setProperty('--type-color', '#95ade4');
-                    typeBtn.setAttribute('data-type-color', 'true');
-                }
+                // 仅控制话题区域显隐，按钮使用active样式，不做动态配色
             }
 
             const topicsWrapper = document.getElementById('topics-wrapper');
