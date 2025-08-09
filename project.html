@@ -205,8 +205,11 @@
       const thumb = document.createElement('div');
       thumb.className = 'project-thumb';
       if (p.image) {
-        thumb.style.background = `center/cover no-repeat url(${p.image}), linear-gradient(135deg, #e9f2fb, #f8fafc)`;
-        thumb.style.backgroundBlendMode = 'overlay';
+        thumb.style.backgroundImage = `url(${p.image})`;
+        thumb.style.backgroundSize = 'cover';
+        thumb.style.backgroundPosition = 'center';
+        thumb.style.backgroundRepeat = 'no-repeat';
+        thumb.style.backgroundBlendMode = '';
       } else {
         thumb.textContent = 'PROJECT';
       }
