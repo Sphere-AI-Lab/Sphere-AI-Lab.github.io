@@ -120,7 +120,7 @@
             left: -1rem;
             width: clamp(2.5rem, 4vw, 3rem);
             height: clamp(2.5rem, 4vw, 3rem);
-            background-color: #e995bf;
+            background-color: #eeb2d0;
             border-radius: 50%;
             transition: transform 0.3s ease;
             z-index: -1;
@@ -139,7 +139,7 @@
             text-align: center;
             background: #f8fafc;
             border: 1px solid #eee;
-            border-left: 6px solid #95ade4;
+            border-left: 6px solid #eeb2d0;
             border-radius: 12px;
             padding: 1.1rem 1.2rem;
             box-shadow: 0 6px 18px rgba(0,0,0,0.04);
@@ -182,7 +182,7 @@
             font-weight: 700;
             color: white;
             letter-spacing: 0.03em;
-            background-color: #95ade4;
+            background-color: #eeb2d0;
             padding: 0.25rem 0.7rem;
             border-radius: 6px;
             display: inline-block;
@@ -249,6 +249,16 @@
             color: #000;
         }
 
+        a {
+            color: #db91b6; /* closer to site blues */
+            text-decoration: none;
+        }
+        a:hover,
+        a:hover {
+            color: #e67300; /* slightly darker on hover */
+            text-decoration: none;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 2rem 1rem;
@@ -268,7 +278,7 @@
             .opening-title { font-size: 1.1rem; }
             .opening-venue { font-size: 0.8rem; padding: 0.2rem 0.6rem; }
             .opening-desc, .opening-list { font-size: 0.9rem; }
-            .paper-link { font-size: 0.8rem; }
+            .paper-link { font-size: 0.9rem; padding: 0.28rem 0.7rem; }
         }
     </style>
 </head>
@@ -281,8 +291,8 @@
         <div class="header">
             <h1 class="page-title">Openings</h1>
             <p class="intro">
-                We welcome highly motivated students and researchers to join SphereLab. Below are the current opening categories.
-                If you are interested, please reach out with your CV, transcripts, and a brief statement of interest.
+                We welcome highly motivated students and researchers to join SphereLab. Below are the current Openings.
+                If you are interested, apply by submitting <a href="https://forms.gle/YdBwtA1zRQemMZzs8">this Google Form</a>. Explore our recent research focus <a href="https://docs.google.com/document/d/1ln-BCYiYLRLILlmOCd7hzvW1ByF7pYK2FyB54VJRWCM/edit?usp=sharing">here</a>.
             </p>
         </div>
 
@@ -291,21 +301,22 @@
             <div class="opening-card">
                 <div class="opening-content">
                     <div class="opening-title">PhD Students</div>
-                    <div class="opening-venue">Fall 2025 / Spring 2026</div>
-                    <p class="opening-desc">We are looking for strong PhD applicants with backgrounds in machine learning, optimization, or reasoning.</p>
+                    <div class="opening-venue">Fall 2026</div>
+                    <p class="opening-desc">We are currently looking for strong PhD applicants with backgrounds in machine learning, large-scale optimization and efficient ML systems.</p>
                     <ul class="opening-list">
-                        <li>Solid math and programming foundations</li>
-                        <li>Experience with PyTorch/JAX or related frameworks</li>
-                        <li>Publications or strong research experience are a plus</li>
+                        <li>Self-motivated, curiosity-driven, responsible, good communication</li>
+                        <li>Strong alignment in our lab’s research interest</li>
+                        <li>Determination and ability to get things done (good mathematics, coding, etc.)</li>
                     </ul>
                     <div class="opening-tags">
                         <span class="opening-tag">Machine Learning</span>
-                        <span class="opening-tag">Reasoning</span>
+                        <span class="opening-tag">LLM</span>
                         <span class="opening-tag">Optimization</span>
+                        <span class="opening-tag">Systems</span>
                     </div>
                     <div class="opening-actions">
-                        <a href="mailto:place_holder" class="paper-link">Apply via Email</a>
-                        <a href="#" class="paper-link">Program Info</a>
+                        <a href="https://forms.gle/YdBwtA1zRQemMZzs8" class="paper-link">Apply via Google form</a>
+                        <a href="https://www.cse.cuhk.edu.hk/admission/mphil-phd/" class="paper-link">Program Info</a>
                     </div>
                 </div>
             </div>
@@ -315,20 +326,19 @@
                 <div class="opening-content">
                     <div class="opening-title">Postdoctoral Researchers</div>
                     <div class="opening-venue">Rolling Applications</div>
-                    <p class="opening-desc">We invite exceptional candidates to work on large-scale learning and principled reasoning with us.</p>
+                    <p class="opening-desc">We invite candidates to work on scalable LLM training, formal/symbolic/math reasoning and principled generative modeling with us.</p>
                     <ul class="opening-list">
                         <li>Strong publication record in ML/AI venues</li>
                         <li>Independent, collaborative, and proactive</li>
                         <li>Comfortable with mentoring junior students</li>
                     </ul>
                     <div class="opening-tags">
-                        <span class="opening-tag">LLMs</span>
-                        <span class="opening-tag">Theoretical ML</span>
-                        <span class="opening-tag">Formal Methods</span>
+                        <span class="opening-tag">Scalable LLM Training</span>
+                        <span class="opening-tag">Formal Reasoning</span>
+                        <span class="opening-tag">Generative Models</span>
                     </div>
                     <div class="opening-actions">
-                        <a href="mailto:place_holder" class="paper-link">Apply via Email</a>
-                        <a href="#" class="paper-link">Group Website</a>
+                        <a href="https://forms.gle/YdBwtA1zRQemMZzs8" class="paper-link">Apply via Google form</a>
                     </div>
                 </div>
             </div>
@@ -337,7 +347,7 @@
             <div class="opening-card">
                 <div class="opening-content">
                     <div class="opening-title">Visiting Students / Interns</div>
-                    <div class="opening-venue">3–12 Months</div>
+                    <div class="opening-venue">6–12 Months</div>
                     <p class="opening-desc">We host short-term visitors and research interns to collaborate on ongoing projects at SphereLab.</p>
                     <ul class="opening-list">
                         <li>Strong coding and communication skills</li>
@@ -345,13 +355,12 @@
                         <li>Availability to commit sufficient time</li>
                     </ul>
                     <div class="opening-tags">
-                        <span class="opening-tag">Research Internship</span>
-                        <span class="opening-tag">Collaboration</span>
-                        <span class="opening-tag">Prototyping</span>
+                        <span class="opening-tag">LLM Reasoning</span>
+                        <span class="opening-tag">ML Systems</span>
+                        <span class="opening-tag">Benchmarks</span>
                     </div>
                     <div class="opening-actions">
-                        <a href="mailto:place_holder" class="paper-link">Apply via Email</a>
-                        <a href="#" class="paper-link">Learn More</a>
+                        <a href="https://forms.gle/YdBwtA1zRQemMZzs8" class="paper-link">Apply via Google form</a>
                     </div>
                 </div>
             </div>
