@@ -741,6 +741,24 @@
                 align-items: center;
             }
 
+            /* Featured projects: enable native touch scroll on mobile */
+            .carousel-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 0.5rem;
+            }
+            .carousel-track {
+                width: max-content;
+                gap: 1rem;
+                transform: none !important; /* avoid JS transforms fighting native scroll */
+            }
+            .featured-project {
+                flex: 0 0 280px;
+                scroll-snap-align: start;
+            }
+            .carousel-nav { display: none; }
+
             /* Let topic filters fully expand on mobile for readability */
             #topics-wrapper.visible { height: auto; }
             #topics-container { max-height: none; }
@@ -1044,6 +1062,8 @@
         // Featured Projects Carousel Functionality
         let currentSlide = 0;
         let autoScrollInterval;
+        let autoScrollEnabled = true;
+        const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
         const featuredProjects = [
             {
                 title: "Orthogonal Finetuning Made Scalable",
@@ -1121,8 +1141,14 @@
                 carouselTrack.appendChild(projectElement);
             });
 
-            // Start auto-scroll
-            startAutoScroll();
+            // Start/stop auto-scroll depending on viewport
+            if (isMobile()) {
+                autoScrollEnabled = false;
+                pauseAutoScroll();
+            } else {
+                autoScrollEnabled = true;
+                startAutoScroll();
+            }
 
             // Add hover pause functionality
             carouselTrack.addEventListener('mouseenter', pauseAutoScroll);
@@ -1130,9 +1156,21 @@
 
             // Initialize navigation buttons
             updateNavigationButtons();
+
+            // Respond to viewport changes
+            window.addEventListener('resize', () => {
+                if (isMobile()) {
+                    autoScrollEnabled = false;
+                    pauseAutoScroll();
+                } else {
+                    autoScrollEnabled = true;
+                    startAutoScroll();
+                }
+            });
         }
 
         function startAutoScroll() {
+            if (!autoScrollEnabled) return;
             autoScrollInterval = setInterval(() => {
                 const container = document.querySelector('.carousel-container');
                 const containerWidth = container.offsetWidth;
@@ -1157,6 +1195,7 @@
         }
 
         function updateCarousel() {
+            if (isMobile()) return; // use native scroll on mobile
             const carouselTrack = document.querySelector('.carousel-track');
             const container = document.querySelector('.carousel-container');
             const containerWidth = container.offsetWidth;
@@ -1180,7 +1219,7 @@
         function updateNavigationButtons(maxSlide) {
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
-            
+            if (!prevBtn || !nextBtn) return;
             // Disable prev button if at the beginning
             prevBtn.disabled = currentSlide === 0;
             
@@ -1189,6 +1228,7 @@
         }
 
         function moveToSlide(direction) {
+            if (isMobile()) return; // allow native swipe/scroll on mobile
             const container = document.querySelector('.carousel-container');
             const containerWidth = container.offsetWidth;
             const projectWidth = window.innerWidth <= 768 ? 280 : 350;
