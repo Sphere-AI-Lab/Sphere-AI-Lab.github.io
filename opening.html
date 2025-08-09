@@ -18,6 +18,29 @@
             padding: 3rem 2rem;
         }
 
+        body::before {
+            content: '';
+            position: fixed;
+            top: -150px;
+            right: -150px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(233,149,191, 0.1);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(233,149,191, 0.1);
+            z-index: -1;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;

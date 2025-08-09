@@ -14,6 +14,30 @@
             padding: 3rem 2rem;
         }
 
+        body::before {
+            content: '';
+            position: fixed;
+            top: -150px;
+            right: -150px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(106,202,207, 0.1);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(106,202,207, 0.1);
+            z-index: -1;
+        }
+
         .container { max-width: 1200px; margin: 0 auto; }
 
         .main-title {
@@ -82,9 +106,15 @@
             color: #555;
             font-size: 1rem;
             line-height: 1.7;
-            margin-top: 0.5rem;
-            text-align: center;
+            margin-top: 0.8rem;
+            text-align: justify;
+            text-align-last: left;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.2rem 1.4rem;
         }
+
+        /* Removed decorative pseudo-elements for a cleaner intro box */
 
         /* Section title style consistent with research page */
         .featured-title {
@@ -103,10 +133,10 @@
             display: flex;
             gap: 1rem;
             width: max-content;
-            animation: scrollLeft 50s linear infinite;
+            animation: scrollLeft 60s linear infinite;
             padding: 0.5rem 0;
         }
-        .photo-strip.reverse { animation: scrollRight 55s linear infinite; }
+        .photo-strip.reverse { animation: scrollLeft 55s linear infinite; }
         .photo-strip:hover { animation-play-state: paused; }
 
         @keyframes scrollLeft {
@@ -119,8 +149,34 @@
         }
 
         .photo {
-            width: 220px; height: 140px; object-fit: cover; border-radius: 10px; background: #f8fafc;
+            width: 420px; height: 260px; object-fit: cover; border-radius: 12px; background: #f8fafc;
             box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+            cursor: zoom-in;
+        }
+
+        /* Lightbox overlay */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 2rem;
+        }
+        .lightbox-image {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            cursor: zoom-out;
+        }
+
+        /* Double-size override for the first wall */
+        .photo-strip.large .photo {
+            width: 840px;
+            height: 520px;
         }
 
         .legend { color: #666; font-size: 0.9rem; text-align: center; }
@@ -136,8 +192,9 @@
         @media (max-width: 768px) {
             body { padding: 2rem 1rem; }
             .subtitle { top: 1rem; left: 1rem; }
-            .intro { font-size: 0.95rem; }
-            .photo { width: 160px; height: 100px; }
+            .intro { font-size: 0.95rem; padding: 1rem 1rem; text-align: justify; text-align-last: left; }
+            .photo { width: 300px; height: 185px; }
+            .photo-strip.large .photo { width: 600px; height: 370px; }
             .photo-strip { gap: 0.6rem; }
         }
     </style>
@@ -157,10 +214,37 @@
             </p>
         </div>
 
+        <!-- Group Photos wall (duplicate) -->
         <div class="wall-section">
-            <h2 class="featured-title">Group Photo Wall</h2>
+            <h2 class="featured-title">CUHK Campus</h2>
             <div class="photo-wall">
-                <!-- Strip 1 (duplicated for seamless loop) -->
+                <!-- Single strip (duplicated content for seamless loop) -->
+                <div class="photo-strip large">
+                    <img class="photo" src="group_photo/cuhk1.jpg" alt="1">
+                    <img class="photo" src="group_photo/cuhk2.jpg" alt="2">
+                    <img class="photo" src="group_photo/cuhk3.jpg" alt="3">
+                    <img class="photo" src="group_photo/cuhk4.jpg" alt="4">
+                    <img class="photo" src="group_photo/cuhk5.jpg" alt="5">
+                    <img class="photo" src="group_photo/cuhk6.jpg" alt="6">
+                    <img class="photo" src="group_photo/cuhk7.jpg" alt="7">
+                    <img class="photo" src="group_photo/cuhk8.jpg" alt="8">
+                    <!-- duplicate for seamless scroll -->
+                    <img class="photo" src="group_photo/cuhk1.jpg" alt="1">
+                    <img class="photo" src="group_photo/cuhk2.jpg" alt="2">
+                    <img class="photo" src="group_photo/cuhk3.jpg" alt="3">
+                    <img class="photo" src="group_photo/cuhk4.jpg" alt="4">
+                    <img class="photo" src="group_photo/cuhk5.jpg" alt="5">
+                    <img class="photo" src="group_photo/cuhk6.jpg" alt="6">
+                    <img class="photo" src="group_photo/cuhk7.jpg" alt="7">
+                    <img class="photo" src="group_photo/cuhk8.jpg" alt="8">
+                </div>
+            </div>
+        </div>
+
+        <div class="wall-section">
+            <h2 class="featured-title">Group Photos</h2>
+            <div class="photo-wall">
+                <!-- Single strip (duplicated content for seamless loop) -->
                 <div class="photo-strip">
                     <img class="photo" src="member_avatar/weiyang_liu.jpg" alt="Weiyang Liu">
                     <img class="photo" src="member_avatar/longhui_yu.jpg" alt="Longhui Yu">
@@ -186,41 +270,42 @@
                     <img class="photo" src="member_avatar/tim_z_xiao.jpg" alt="Tim Z. Xiao">
                     <img class="photo" src="member_avatar/zhouliang_yu.jpg" alt="Zhouliang Yu">
                 </div>
-
-                <!-- Strip 2 opposite direction for dynamics (duplicated) -->
-                <div class="photo-strip reverse" style="margin-top: 0.5rem;">
-                    <img class="photo" src="member_avatar/zhouliang_yu.jpg" alt="Zhouliang Yu">
-                    <img class="photo" src="member_avatar/tim_z_xiao.jpg" alt="Tim Z. Xiao">
-                    <img class="photo" src="member_avatar/haoquan_zhang.jpg" alt="Haoquan Zhang">
-                    <img class="photo" src="member_avatar/jiacheng_chen.jpg" alt="Jiacheng Chen">
-                    <img class="photo" src="member_avatar/yamei_chen.jpg" alt="Yamei Chen">
-                    <img class="photo" src="member_avatar/yangyi_huang.jpg" alt="Yangyi Huang">
-                    <img class="photo" src="member_avatar/he_guo.jpg" alt="He Guo">
-                    <img class="photo" src="member_avatar/kexuan_shi.jpg" alt="Kexuan Shi">
-                    <img class="photo" src="member_avatar/zeju_qiu.jpg" alt="Zeju Qiu">
-                    <img class="photo" src="member_avatar/longhui_yu.jpg" alt="Longhui Yu">
-                    <img class="photo" src="member_avatar/weiyang_liu.jpg" alt="Weiyang Liu">
-                    <!-- duplicate for seamless scroll -->
-                    <img class="photo" src="member_avatar/zhouliang_yu.jpg" alt="Zhouliang Yu">
-                    <img class="photo" src="member_avatar/tim_z_xiao.jpg" alt="Tim Z. Xiao">
-                    <img class="photo" src="member_avatar/haoquan_zhang.jpg" alt="Haoquan Zhang">
-                    <img class="photo" src="member_avatar/jiacheng_chen.jpg" alt="Jiacheng Chen">
-                    <img class="photo" src="member_avatar/yamei_chen.jpg" alt="Yamei Chen">
-                    <img class="photo" src="member_avatar/yangyi_huang.jpg" alt="Yangyi Huang">
-                    <img class="photo" src="member_avatar/he_guo.jpg" alt="He Guo">
-                    <img class="photo" src="member_avatar/kexuan_shi.jpg" alt="Kexuan Shi">
-                    <img class="photo" src="member_avatar/zeju_qiu.jpg" alt="Zeju Qiu">
-                    <img class="photo" src="member_avatar/longhui_yu.jpg" alt="Longhui Yu">
-                    <img class="photo" src="member_avatar/weiyang_liu.jpg" alt="Weiyang Liu">
-                </div>
             </div>
-            <p class="legend">Hover to pause. Photos shown use member avatars as placeholders; replace with group photos when available.</p>
         </div>
 
-        <!-- Optional contact/action section -->
-        <div class="header" style="margin-top: 2rem;">
-            <a href="opening.html" class="paper-link">See Open Positions</a>
-        </div>
+    </div>
+    
+    <!-- Lightbox for enlarged photos -->
+    <div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Enlarged photo">
+        <img id="lightbox-image" class="lightbox-image" alt="Enlarged group photo" />
     </div>
 </body>
+<script>
+    // Simple lightbox for group photos
+    (function() {
+        const overlay = document.getElementById('lightbox');
+        const overlayImg = document.getElementById('lightbox-image');
+        const photos = document.querySelectorAll('.photo');
+
+        photos.forEach(img => {
+            img.addEventListener('click', () => {
+                overlayImg.src = img.src;
+                overlayImg.alt = img.alt || 'Enlarged group photo';
+                overlay.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeLightbox() {
+            overlay.style.display = 'none';
+            overlayImg.src = '';
+            document.body.style.overflow = '';
+        }
+
+        overlay.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    })();
+</script>
 </html>
