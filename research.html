@@ -996,8 +996,13 @@
                 document.querySelectorAll('.topic-tag').forEach(tag => {
                     tag.classList.remove('active');
                 });
+                selectedTopic = null;
             } else if (method === 'type') {
-                // 若已有选中的topic，保持其颜色；否则使用默认回退颜色由CSS控制
+                // 若已有选中的topic，保持其颜色；否则设置默认颜色，确保按钮效果保留
+                if (!selectedTopic) {
+                    typeBtn.style.setProperty('--type-color', '#95ade4');
+                    typeBtn.setAttribute('data-type-color', 'true');
+                }
             }
 
             const topicsWrapper = document.getElementById('topics-wrapper');
