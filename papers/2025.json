@@ -72,7 +72,7 @@
     "arxiv_link": "https://arxiv.org/abs/2412.01095",
     "project_link": "https://vera-framework.github.io/",
     "bibtex": "@inproceedings{ye2025vera,\n  title={VERA: Explainable Video Anomaly Detection via Verbalized Learning of Vision-Language Models},\n  author={Ye, Muchao and Liu, Weiyang and He, Pan},\n  booktitle={CVPR},\n  year={2025}\n}",
-    "type": "Vision + Language",
+    "type": "Vision & Language",
     "date": "2024-12-02",
     "venue": "CVPR 2025",
     "status": null
@@ -83,7 +83,7 @@
     "arxiv_link": "https://arxiv.org/abs/2405.04533",
     "project_link": "https://chathuman.github.io/",
     "bibtex": "@inproceedings{lin2025chathuman,\n  title={ChatHuman: Chatting about 3D Humans with Tools},\n  author={Lin, Jing and Feng, Yao and Liu, Weiyang and Black, Michael J.},\n  booktitle={CVPR},\n  year={2025}\n}",
-    "type": "Vision + Language",
+    "type": "Vision & Language",
     "date": "2024-05-07",
     "venue": "CVPR 2025",
     "status": null
