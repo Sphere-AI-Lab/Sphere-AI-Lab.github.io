@@ -7,7 +7,7 @@
     "project_link": "https://github.com/timxzz/VML_Examples",
     "bibtex": "@article{xiao2025verbalized,\n  title={Verbalized Machine Learning: Revisiting Machine Learning with Language Models},\n  author={Xiao, Tim Z. and Bamler, Robert and Schölkopf, Bernhard and Liu, Weiyang},\n  journal={TMLR},\n  year={2025}\n}",
     "type": "LLM Reasoning",
-    "date": "2025-06-06",
+    "date": "2024-06-06",
     "venue": "TMLR 2025",
     "status": null
   },
@@ -95,7 +95,7 @@
     "project_link": "https://github.com/andiac/LLMOODratio",
     "bibtex": "@inproceedings{zhang2025llm_ood,\n  title={Your Finetuned Large Language Model is Already a Powerful Out-of-distribution Detector},\n  author={Zhang, Andi and Xiao, Tim Z. and Liu, Weiyang and Bamler, Robert and Wischik, Damon},\n  booktitle={AISTATS},\n  year={2025}\n}",
     "type": "LLM Reasoning",
-    "date": "2024-04-07",
+    "date": "2024-05-07",
     "venue": "AISTATS 2025",
     "status": null
   },
@@ -120,7 +120,7 @@
     "bibtex": "@inproceedings{qiu2025sgpbench,\n  title={Can Large Language Models Understand Symbolic Graphics Programs?},\n  author={Qiu, Zeju and Liu, Weiyang and Feng, Haiwen and Liu, Zhen and Xiao, Tim Z. and Collins, Katherine M. and Tenenbaum, Joshua B. and Weller, Adrian and Black, Michael J. and Sch{\"o}lkopf, Bernhard},\n  booktitle={ICLR},\n  year={2025}\n}",
     "description": "Evaluates whether LLMs can comprehend and execute symbolic graphics programs; includes Spotlight presentation.",
     "type": "LLM Reasoning",
-    "date": "2024-08-15",
+    "date": "2024-12-03",
     "venue": "ICLR 2025",
     "status": "Spotlight"
   }
