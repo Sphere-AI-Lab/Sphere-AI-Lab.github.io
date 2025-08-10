@@ -398,15 +398,19 @@
             /* Move affiliations block into flow and center on mobile */
             .affiliations {
                 position: static;
-                margin: 1rem auto 0 auto;
+                margin: 2.5rem auto 0 auto;
                 font-size: 0.85rem;
                 padding-bottom: env(safe-area-inset-bottom);
                 text-align: center;
+                width: 100%;
+                max-width: 320px;
             }
 
             .affiliation {
                 justify-content: center;
                 gap: 0.4rem;
+                align-items: center;
+                flex-direction: column;
             }
 
             .affiliations img {
@@ -417,6 +421,8 @@
             .description {
                 font-size: 0.85rem;
                 line-height: 1.2;
+                text-align: center;
+                width: 100%;
             }
 
             /* Hide slogan to avoid clutter/overlap on small screens */
