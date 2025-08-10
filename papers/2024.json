@@ -24,7 +24,7 @@
     },
     {
       "title": "GraphDreamer: Compositional 3D Scene Synthesis from Scene Graphs",
-      "authorlist": ["Gege Gao", "Weiyang Liu*", "Anpei Chen", "Andreas Geiger", "Bernhard Schölkopf"],
+      "authorlist": ["Gege Gao", "Weiyang Liu", "Anpei Chen", "Andreas Geiger", "Bernhard Schölkopf"],
       "arxiv_link": "https://arxiv.org/abs/2312.00093",
       "project_link": "https://github.com/GGGHSL/GraphDreamer",
       "bibtex": "@inproceedings{gao2024graphdreamer,\n  title={GraphDreamer: Compositional 3D Scene Synthesis from Scene Graphs},\n  author={Gao, Gege and Liu, Weiyang and Chen, Anpei and Geiger, Andreas and Sch{\"o}lkopf, Bernhard},\n  booktitle={CVPR},\n  year={2024}\n}",

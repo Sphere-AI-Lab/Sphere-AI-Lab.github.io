@@ -24,7 +24,7 @@
   },
   {
     "title": "Reparameterized LLM Training via Orthogonal Equivalence Transformation",
-    "authorlist": ["Zeju Qiu", "Simon Buchholz", "Tim Z. Xiao", "Maximilian Dax", "Bernhard Schölkopf", "Weiyang Liu*"],
+    "authorlist": ["Zeju Qiu", "Simon Buchholz", "Tim Z. Xiao", "Maximilian Dax", "Bernhard Schölkopf", "Weiyang Liu"],
     "arxiv_link": "https://arxiv.org/abs/2506.08001",
     "project_link": "https://spherelab.ai/oftv2/",
     "bibtex": "@article{qiu2025llm_reparam,\n  title={Reparameterized LLM Training via Orthogonal Equivalence Transformation},\n  author={Qiu, Zeju and Buchholz, Simon and Xiao, Tim Z. and Dax, Maximilian and Schölkopf, Bernhard and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2506.08001},\n  year={2025}\n}",
@@ -35,7 +35,7 @@
   },
   {
     "title": "FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models",
-    "authorlist": ["Zhouliang Yu", "Ruotian Peng", "Keyi Ding", "Yizhe Li", "Zhongyuan Peng", "Minghao Liu", "Yifan Zhang", "Zheng Yuan", "Huajian Xin", "Wenhao Huang", "Yandong Wen", "Ge Zhang", "Weiyang Liu*"],
+    "authorlist": ["Zhouliang Yu", "Ruotian Peng", "Keyi Ding", "Yizhe Li", "Zhongyuan Peng", "Minghao Liu", "Yifan Zhang", "Zheng Yuan", "Huajian Xin", "Wenhao Huang", "Yandong Wen", "Ge Zhang", "Weiyang Liu"],
     "arxiv_link": "https://arxiv.org/abs/2505.02735",
     "project_link": "https://spherelab.ai/FormalMATH/",
     "bibtex": "@article{yu2025formalmath,\n  title={FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models},\n  author={Yu, Zhouliang and Peng, Ruotian and Ding, Keyi and Li, Yizhe and Peng, Zhongyuan and Liu, Minghao and Zhang, Yifan and Yuan, Zheng and Xin, Huajian and Huang, Wenhao and Wen, Yandong and Zhang, Ge and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2505.02735},\n  year={2025}\n}",
@@ -57,7 +57,7 @@
   },
   {
     "title": "Generating Symbolic World Models via Test-time Scaling of Large Language Models",
-    "authorlist": ["Zhouliang Yu", "Yuhuan Yuan", "Tim Z. Xiao", "Frank Xia", "Jie Fu", "Ge Zhang", "Ge Lin", "Weiyang Liu*"],
+    "authorlist": ["Zhouliang Yu", "Yuhuan Yuan", "Tim Z. Xiao", "Frank Xia", "Jie Fu", "Ge Zhang", "Ge Lin", "Weiyang Liu"],
     "arxiv_link": "https://arxiv.org/abs/2502.04728",
     "project_link": "https://vmlpddl.github.io/",
     "bibtex": "@article{yu2025symbolic_world,\n  title={Generating Symbolic World Models via Test-time Scaling of Large Language Models},\n  author={Yu, Zhouliang and Yuan, Yuhuan and Xiao, Tim Z. and Xia, Frank and Fu, Jie and Zhang, Ge and Lin, Ge and Liu, Weiyang},\n  journal={arXiv preprint, 2025},\n  year={2025}\n}",
@@ -113,7 +113,7 @@
   },
   {
     "title": "Can Large Language Models Understand Symbolic Graphics Programs?",
-    "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Haiwen Feng*", "Zhen Liu**", "Tim Z. Xiao**", "Katherine M. Collins**", "Joshua B. Tenenbaum", "Adrian Weller", "Michael J. Black", "Bernhard Schölkopf"],
+    "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Haiwen Feng*", "Zhen Liu", "Tim Z. Xiao", "Katherine M. Collins", "Joshua B. Tenenbaum", "Adrian Weller", "Michael J. Black", "Bernhard Schölkopf"],
     "img_path": "papers/img/2025/llm_symbolic_graphics.png",
     "arxiv_link": "https://arxiv.org/abs/2408.08313",
     "project_link": "https://sgp-bench.github.io/",
