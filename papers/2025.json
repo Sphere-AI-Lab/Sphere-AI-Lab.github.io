@@ -84,7 +84,7 @@
     "project_link": "https://chathuman.github.io/",
     "bibtex": "@inproceedings{lin2025chathuman,\n  title={ChatHuman: Chatting about 3D Humans with Tools},\n  author={Lin, Jing and Feng, Yao and Liu, Weiyang and Black, Michael J.},\n  booktitle={CVPR},\n  year={2025}\n}",
     "type": "Multimodal Reasoning",
-    "date": "2024-05-07",
+    "date": "2024-06-07",
     "venue": "CVPR 2025",
     "status": null
   },
