@@ -9,7 +9,8 @@
         "description": "A comprehensive study of optimization techniques in deep learning, focusing on convergence properties and theoretical guarantees.",
         "type": "PEFT",
         "date": "2024-01-15",
-        "venue": "ICLR 2024"
+        "venue": "ICLR 2024",
+        "status": "Oral"
     },
     {
         "title": "MetaMath: Bootstrap Your Own Mathematical Questions for Large Language Models",
@@ -21,6 +22,7 @@
         "description": "A comprehensive study of optimization techniques in deep learning, focusing on convergence properties and theoretical guarantees.",
         "type": "Math Reasoning",
         "date": "2024-01-15",
-        "venue": "ICLR 2024"
+        "venue": "ICLR 2024",
+        "status": null
     }
 ] 
