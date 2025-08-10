@@ -1,58 +1,127 @@
+
 [
-    {
-        "title": "Orthogonal Finetuning Made Scalable",
-        "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Adrian Weller", "Bernhard Schölkopf"],
-        "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "project_link": "https://github.com/spherelab/orthogonal-finetuning-v2",
-        "bibtex": "@article{qiu2025orthogonal,\n  title={Orthogonal Finetuning Made Scalable},\n  author={Qiu, Zeju and Liu, Weiyang and Weller, Adrian and Sch{\\\"o}lkopf, Bernhard},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
-        "type": "PEFT",
-        "date": "2025-01-05",
-        "venue": "Preprint 2025",
-        "status": null
-    },
-    
-    {
-        "title": "Reparameterized LLM Training via Orthogonal Equivalence Transformation",
-        "authorlist": ["Zeju Qiu", "Simon Buchholz", "Tim Z. Xiao", "Maximilian Dax", "Bernhard Schölkopf", "Weiyang Liu"],
-        "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "project_link": "https://github.com/spherelab/poet",
-        "bibtex": "@article{qiu2025reparameterized,\n  title={Reparameterized LLM Training via Orthogonal Equivalence Transformation},\n  author={Qiu, Zeju and Buchholz, Simon and Xiao, Tim Z and Dax, Maximilian and Sch{\\\"o}lkopf, Bernhard and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
-        "type": "PEFT",
-        "date": "2025-02-05",
-        "venue": "Preprint 2025",
-        "status": null
-    },
-    {
-        "title": "FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models",
-        "authorlist": ["Zhouliang Yu", "Ruotian Peng", "Keyi Ding", "Yizhe Li", "Zhongyuan Peng", "Minghao Liu", "Yifan Zhang", "Zheng Yuan", "Huajian Xin", "Wenhao Huang", "Yandong Wen", "Ge Zhang", "Weiyang Liu"],
-        "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "project_link": "https://github.com/spherelab/formalmath",
-        "bibtex": "@article{yu2025formalmath,\n  title={FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models},\n  author={Yu, Zhouliang and Peng, Ruotian and Ding, Keyi and Li, Yizhe and Peng, Zhongyuan and Liu, Minghao and Zhang, Yifan and Yuan, Zheng and Xin, Huajian and Huang, Wenhao and Wen, Yandong and Zhang, Ge and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
-        "type": "Math Reasoning",
-        "date": "2025-03-05",
-        "venue": "Preprint 2025",
-        "status": "Spotlight"
-    },
-    {
-        "title": "Generating Symbolic World Models via Test-time Scaling of Large Language Models",
-        "authorlist": ["Zhouliang Yu", "Yuhuan Yuan", "Tim Z. Xiao", "Frank Xia", "Jie Fu", "Ge Zhang", "Ge Lin", "Weiyang Liu"],
-        "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "project_link": "https://github.com/spherelab/symbolic-world-models",
-        "bibtex": "@article{yu2025generating,\n  title={Generating Symbolic World Models via Test-time Scaling of Large Language Models},\n  author={Yu, Zhouliang and Yuan, Yuhuan and Xiao, Tim Z and Xia, Frank and Fu, Jie and Zhang, Ge and Lin, Ge and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
-        "type": "Symbolic Reasoning",
-        "date": "2025-01-05",
-        "venue": "Preprint 2025",
-        "status": null
-    },
-    {
-        "title": "Can Large Language Models Understand Symbolic Graphics Programs?",
-        "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Haiwen Feng*", "Zhen Liu**", "Tim Z. Xiao**", "Katherine M. Collins**", "Joshua B. Tenenbaum", "Adrian Weller", "Michael J. Black", "Bernhard Schölkopf"],
-        "arxiv_link": "https://arxiv.org/abs/2501.11111",
-        "project_link": "https://github.com/spherelab/symbolic-graphics",
-        "bibtex": "@article{qiu2025can,\n  title={Can Large Language Models Understand Symbolic Graphics Programs?},\n  author={Qiu, Zeju and Liu, Weiyang and Feng, Haiwen and Liu, Zhen and Xiao, Tim Z and Collins, Katherine M and Tenenbaum, Joshua B and Weller, Adrian and Black, Michael J and Sch{\\\"o}lkopf, Bernhard},\n  journal={arXiv preprint arXiv:2501.11111},\n  year={2025}\n}",
-        "type": "Symbolic Reasoning",
-        "date": "2025-01-05",
-        "venue": "Preprint 2025",
-        "status": null
-    }
-] 
+  {
+    "title": "Verbalized Machine Learning: Revisiting Machine Learning with Language Models",
+    "authorlist": ["Tim Z. Xiao", "Robert Bamler", "Bernhard Schölkopf", "Weiyang Liu*"],
+    "arxiv_link": "https://arxiv.org/abs/2406.04344",
+    "project_link": "https://github.com/timxzz/VML_Examples",
+    "bibtex": "@article{xiao2025verbalized,\n  title={Verbalized Machine Learning: Revisiting Machine Learning with Language Models},\n  author={Xiao, Tim Z. and Bamler, Robert and Schölkopf, Bernhard and Liu, Weiyang},\n  journal={TMLR},\n  year={2025}\n}",
+    "type": "LLM Reasoning",
+    "date": "2025-06-06",
+    "venue": "TMLR 2025",
+    "status": null
+  },
+  {
+    "title": "Orthogonal Finetuning Made Scalable",
+    "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Adrian Weller", "Bernhard Schölkopf"],
+    "arxiv_link": "https://arxiv.org/abs/2506.19847",
+    "project_link": "https://spherelab.ai/poet/",
+    "bibtex": "@article{qiu2025oftv2,\n  title={Orthogonal Finetuning Made Scalable},\n  author={Qiu, Zeju and Liu, Weiyang and Weller, Adrian and Schölkopf, Bernhard},\n  journal={arXiv preprint arXiv:2506.19847},\n  year={2025}\n}",
+    "type": "Efficiency",
+    "date": "2025-06-24",
+    "venue": "Preprint 2025",
+    "status": null
+  },
+  {
+    "title": "Reparameterized LLM Training via Orthogonal Equivalence Transformation",
+    "authorlist": ["Zeju Qiu", "Simon Buchholz", "Tim Z. Xiao", "Maximilian Dax", "Bernhard Schölkopf", "Weiyang Liu*"],
+    "arxiv_link": "https://arxiv.org/abs/2506.08001",
+    "project_link": "https://spherelab.ai/oftv2/",
+    "bibtex": "@article{qiu2025llm_reparam,\n  title={Reparameterized LLM Training via Orthogonal Equivalence Transformation},\n  author={Qiu, Zeju and Buchholz, Simon and Xiao, Tim Z. and Dax, Maximilian and Schölkopf, Bernhard and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2506.08001},\n  year={2025}\n}",
+    "type": "Principled Training",
+    "date": "2025-06-09",
+    "venue": "Preprint 2025",
+    "status": null
+  },
+  {
+    "title": "FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models",
+    "authorlist": ["Zhouliang Yu", "Ruotian Peng", "Keyi Ding", "Yizhe Li", "Zhongyuan Peng", "Minghao Liu", "Yifan Zhang", "Zheng Yuan", "Huajian Xin", "Wenhao Huang", "Yandong Wen", "Ge Zhang", "Weiyang Liu*"],
+    "arxiv_link": "https://arxiv.org/abs/2505.02735",
+    "project_link": "https://spherelab.ai/FormalMATH/",
+    "bibtex": "@article{yu2025formalmath,\n  title={FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models},\n  author={Yu, Zhouliang and Peng, Ruotian and Ding, Keyi and Li, Yizhe and Peng, Zhongyuan and Liu, Minghao and Zhang, Yifan and Yuan, Zheng and Xin, Huajian and Huang, Wenhao and Wen, Yandong and Zhang, Ge and Liu, Weiyang},\n  journal={arXiv preprint arXiv:2505.02735},\n  year={2025}\n}",
+    "type": "LLM Reasoning",
+    "date": "2025-05-05",
+    "venue": "Preprint 2025",
+    "status": null
+  },
+  {
+    "title": "SepLLM: Accelerate Large Language Models by Compressing One Segment into One Separator",
+    "authorlist": ["Guoxuan Chen", "Han Shi", "Jiawei Li", "Yihang Gao", "Xiaozhe Ren", "Yimeng Chen", "Xin Jiang", "Zhenguo Li", "Weiyang Liu", "Chao Huang"],
+    "arxiv_link": "https://arxiv.org/abs/2412.12094",
+    "project_link": "https://sepllm.github.io/",
+    "bibtex": "@inproceedings{chen2025sepllml,\n  title={SepLLM: Accelerate Large Language Models by Compressing One Segment into One Separator},\n  author={Chen, Guoxuan and Shi, Han and Li, Jiawei and Gao, Yihang and Ren, Xiaozhe and Chen, Yimeng and Jiang, Xin and Li, Zhenguo and Liu, Weiyang and Huang, Chao},\n  booktitle={ICML},\n  year={2025}\n}",
+    "type": "Efficiency",
+    "date": "2024-12-16",
+    "venue": "ICML 2025",
+    "status": null
+  },
+  {
+    "title": "Generating Symbolic World Models via Test-time Scaling of Large Language Models",
+    "authorlist": ["Zhouliang Yu", "Yuhuan Yuan", "Tim Z. Xiao", "Frank Xia", "Jie Fu", "Ge Zhang", "Ge Lin", "Weiyang Liu*"],
+    "arxiv_link": "https://arxiv.org/abs/2502.04728",
+    "project_link": "https://vmlpddl.github.io/",
+    "bibtex": "@article{yu2025symbolic_world,\n  title={Generating Symbolic World Models via Test-time Scaling of Large Language Models},\n  author={Yu, Zhouliang and Yuan, Yuhuan and Xiao, Tim Z. and Xia, Frank and Fu, Jie and Zhang, Ge and Lin, Ge and Liu, Weiyang},\n  journal={arXiv preprint, 2025},\n  year={2025}\n}",
+    "type": "LLM Reasoning",
+    "date": "2025-02-07",
+    "venue": "TMLR 2025",
+    "status": null
+  },
+  {
+    "title": "VERA: Explainable Video Anomaly Detection via Verbalized Learning of Vision-Language Models",
+    "authorlist": ["Muchao Ye", "Weiyang Liu", "Pan He"],
+    "arxiv_link": "https://arxiv.org/abs/2412.01095",
+    "project_link": "https://vera-framework.github.io/",
+    "bibtex": "@inproceedings{ye2025vera,\n  title={VERA: Explainable Video Anomaly Detection via Verbalized Learning of Vision-Language Models},\n  author={Ye, Muchao and Liu, Weiyang and He, Pan},\n  booktitle={CVPR},\n  year={2025}\n}",
+    "type": "Vision + Language",
+    "date": "2024-12-02",
+    "venue": "CVPR 2025",
+    "status": null
+  },
+  {
+    "title": "ChatHuman: Chatting about 3D Humans with Tools",
+    "authorlist": ["Jing Lin*", "Yao Feng*", "Weiyang Liu", "Michael J. Black"],
+    "arxiv_link": "https://arxiv.org/abs/2405.04533",
+    "project_link": "https://chathuman.github.io/",
+    "bibtex": "@inproceedings{lin2025chathuman,\n  title={ChatHuman: Chatting about 3D Humans with Tools},\n  author={Lin, Jing and Feng, Yao and Liu, Weiyang and Black, Michael J.},\n  booktitle={CVPR},\n  year={2025}\n}",
+    "type": "Vision + Language",
+    "date": "2024-05-07",
+    "venue": "CVPR 2025",
+    "status": null
+  },
+  {
+    "title": "Your Finetuned Large Language Model is Already a Powerful Out-of-distribution Detector",
+    "authorlist": ["Andi Zhang", "Tim Z. Xiao", "Weiyang Liu", "Robert Bamler", "Damon Wischik"],
+    "arxiv_link": "https://arxiv.org/abs/2404.08679",
+    "project_link": "https://github.com/andiac/LLMOODratio",
+    "bibtex": "@inproceedings{zhang2025llm_ood,\n  title={Your Finetuned Large Language Model is Already a Powerful Out-of-distribution Detector},\n  author={Zhang, Andi and Xiao, Tim Z. and Liu, Weiyang and Bamler, Robert and Wischik, Damon},\n  booktitle={AISTATS},\n  year={2025}\n}",
+    "type": "LLM Reasoning",
+    "date": "2024-04-07",
+    "venue": "AISTATS 2025",
+    "status": null
+  },
+  {
+    "title": "Efficient Diversity-Preserving Diffusion Alignment via Gradient-Informed GFlowNets",
+    "authorlist": ["Zhen Liu", "Tim Z. Xiao*", "Weiyang Liu*", "Yoshua Bengio", "Dinghuai Zhang"],
+    "arxiv_link": "https://arxiv.org/abs/2412.07775",
+    "project_link": "https://nabla-gfn.github.io/",
+    "bibtex": "@inproceedings{liu2025diversity_diffusion,\n  title={Efficient Diversity-Preserving Diffusion Alignment via Gradient-Informed GFlowNets},\n  author={Liu, Zhen and Xiao, Tim Z. and Liu, Weiyang and Bengio, Yoshua and Zhang, Dinghuai},\n  booktitle={ICLR},\n  year={2025}\n}",
+    "description": "Combines diffusion models with gradient-informed GFlowNets to align and preserve diversity efficiently in generation tasks.",
+    "type": "Principled Training",
+    "date": "2024-12-10",
+    "venue": "ICLR 2025",
+    "status": null
+  },
+  {
+    "title": "Can Large Language Models Understand Symbolic Graphics Programs?",
+    "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Haiwen Feng*", "Zhen Liu**", "Tim Z. Xiao**", "Katherine M. Collins**", "Joshua B. Tenenbaum", "Adrian Weller", "Michael J. Black", "Bernhard Schölkopf"],
+    "img_path": "papers/img/2025/llm_symbolic_graphics.png",
+    "arxiv_link": "https://arxiv.org/abs/2408.08313",
+    "project_link": "https://sgp-bench.github.io/",
+    "bibtex": "@inproceedings{qiu2025sgpbench,\n  title={Can Large Language Models Understand Symbolic Graphics Programs?},\n  author={Qiu, Zeju and Liu, Weiyang and Feng, Haiwen and Liu, Zhen and Xiao, Tim Z. and Collins, Katherine M. and Tenenbaum, Joshua B. and Weller, Adrian and Black, Michael J. and Sch{\"o}lkopf, Bernhard},\n  booktitle={ICLR},\n  year={2025}\n}",
+    "description": "Evaluates whether LLMs can comprehend and execute symbolic graphics programs; includes Spotlight presentation.",
+    "type": "LLM Reasoning",
+    "date": "2024-08-15",
+    "venue": "ICLR 2025",
+    "status": "Spotlight"
+  }
+]

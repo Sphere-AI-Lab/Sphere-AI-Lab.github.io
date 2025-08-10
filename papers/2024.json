@@ -1,28 +1,69 @@
+
 [
     {
-        "title": "Parameter-Efficient Orthogonal Finetuning via Butterfly Factorization",
-        "authorlist": ["Weiyang Liu*", "Zeju Qiu*", "Yao Feng**", "Yuliang Xiu**", "Yuxuan Xue**", "Longhui Yu**", "Haiwen Feng", "Zhen Liu", "Juyeon Heo", "Songyou Peng", "Yandong Wen", "Michael J. Black", "Adrian Weller", "Bernhard Schölkopf"],
-        "img_path": "papers/img/2024/orthogonal2024.png",
-        "arxiv_link": "https://arxiv.org/abs/2401.12345",
-        "project_link": "https://github.com/spherelab/orthogonal-finetuning",
-        "bibtex": "@inproceedings{liu2024parameter,\n  title={Parameter-Efficient Orthogonal Finetuning via Butterfly Factorization},\n  author={Liu, Weiyang and Qiu, Zeju and Feng, Yao and Xiu, Yuliang and Xue, Yuxuan and Yu, Longhui and Feng, Haiwen and Liu, Zhen and Heo, Juyeon and Peng, Songyou and Wen, Yandong and Black, Michael J and Weller, Adrian and Sch{\\\"o}lkopf, Bernhard},\n  booktitle={International Conference on Learning Representations},\n  year={2024}\n}",
-        "description": "A comprehensive study of optimization techniques in deep learning, focusing on convergence properties and theoretical guarantees.",
-        "type": "PEFT",
-        "date": "2024-01-15",
-        "venue": "ICLR 2024",
-        "status": "Oral"
+      "title": "Re-Thinking Inverse Graphics with Large Language Models",
+      "authorlist": ["Peter Kulits*", "Haiwen Feng*", "Weiyang Liu", "Victoria Abrevaya", "Michael J. Black"],
+      "arxiv_link": "https://arxiv.org/abs/2404.15228",
+      "project_link": "https://ig-llm.is.tue.mpg.de/", 
+      "bibtex": "@article{kulits2024rethinking,\n  title={Re-Thinking Inverse Graphics with Large Language Models},\n  author={Kulits, Peter and Feng, Haiwen and Liu, Weiyang and Abrevaya, Victoria and Black, Michael J.},\n  journal={TMLR},\n  year={2024}\n}",
+      "type": "Vision & Language",
+      "date": "2024-04-23",
+      "venue": "TMLR 2024",
+      "status": "Selected for Presentation at ICLR 2025"
     },
     {
-        "title": "MetaMath: Bootstrap Your Own Mathematical Questions for Large Language Models",
-        "authorlist": ["Longhui Yu", "Weisen Jiang", "Han Shi", "J. Yu", "Z. Liu", "Yu Zhang", "James Kwok", "Zhenguo Li", "Adrian Weller", "Weiyang Liu*"],
-        "img_path": "papers/img/2024/metamath2024.png",
-        "arxiv_link": "https://arxiv.org/abs/2401.12345",
-        "project_link": "https://github.com/spherelab/metamath",
-        "bibtex": "@inproceedings{yu2024metamath,\n  title={MetaMath: Bootstrap Your Own Mathematical Questions for Large Language Models},\n  author={Yu, Longhui and Jiang, Weisen and Shi, Han and Yu, J and Liu, Z and Zhang, Yu and Kwok, James and Li, Zhenguo and Weller, Adrian and Liu, Weiyang},\n  booktitle={International Conference on Learning Representations},\n  year={2024}\n}",
-        "description": "A comprehensive study of optimization techniques in deep learning, focusing on convergence properties and theoretical guarantees.",
-        "type": "Math Reasoning",
-        "date": "2024-01-15",
-        "venue": "ICLR 2024",
-        "status": null
+      "title": "Easy-to-Hard Generalization: Scalable Alignment Beyond Human Supervision",
+      "authorlist": ["Zhiqing Sun*", "Longhui Yu*", "Yikang Shen", "Weiyang Liu", "Yiming Yang", "Sean Welleck", "Chuang Gan"],
+      "arxiv_link": "https://arxiv.org/abs/2403.09472",
+      "project_link": "https://github.com/Edward-Sun/easy-to-hard",
+      "bibtex": "@inproceedings{sun2024easy,\n  title={Easy-to-Hard Generalization: Scalable Alignment Beyond Human Supervision},\n  author={Sun, Zhiqing and Yu, Longhui and Shen, Yikang and Liu, Weiyang and Yang, Yiming and Welleck, Sean and Gan, Chuang},\n  booktitle={NeurIPS},\n  year={2024}\n}",
+      "type": "LLM Reasoning",
+      "date": "2024-03-14",
+      "venue": "NeurIPS 2024",
+      "status": null
+    },
+    {
+      "title": "GraphDreamer: Compositional 3D Scene Synthesis from Scene Graphs",
+      "authorlist": ["Gege Gao", "Weiyang Liu*", "Anpei Chen", "Andreas Geiger", "Bernhard Schölkopf"],
+      "arxiv_link": "https://arxiv.org/abs/2312.00093",
+      "project_link": "https://github.com/GGGHSL/GraphDreamer",
+      "bibtex": "@inproceedings{gao2024graphdreamer,\n  title={GraphDreamer: Compositional 3D Scene Synthesis from Scene Graphs},\n  author={Gao, Gege and Liu, Weiyang and Chen, Anpei and Geiger, Andreas and Sch{\"o}lkopf, Bernhard},\n  booktitle={CVPR},\n  year={2024}\n}",
+      "type": "Vision & Language",
+      "date": "2023-11-30",
+      "venue": "CVPR 2024",
+      "status": null
+    },
+    {
+      "title": "Parameter-Efficient Orthogonal Finetuning via Butterfly Factorization",
+      "authorlist": ["Weiyang Liu*", "Zeju Qiu*", "Yao Feng**", "Yuliang Xiu**", "Yuxuan Xue**", "Longhui Yu**", "Haiwen Feng", "Zhen Liu", "Juyeon Heo", "Songyou Peng", "Yandong Wen", "Michael J. Black", "Adrian Weller", "Bernhard Schölkopf"],
+      "arxiv_link": "https://arxiv.org/abs/2311.06243",
+      "project_link": "https://github.com/wy1iu/butterfly-oft",
+      "bibtex": "@inproceedings{liu2024boft,\n  title={Parameter-Efficient Orthogonal Finetuning via Butterfly Factorization},\n  author={Liu, Weiyang and Qiu, Zeju and Feng, Yao and Xiu, Yuliang and Xue, Yuxuan and Yu, Longhui and Feng, Haiwen and Liu, Zhen and Heo, Juyeon and Peng, Songyou and Wen, Yandong and Black, Michael J. and Weller, Adrian and Sch{\"o}lkopf, Bernhard},\n  booktitle={ICLR},\n  year={2024}\n}",
+      "type": "Principled Training",
+      "date": "2023-11-10",
+      "venue": "ICLR 2024",
+      "status": null
+    },
+    {
+      "title": "Ghost on the Shell: An Expressive Representation of General 3D Shapes",
+      "authorlist": ["Zhen Liu", "Yao Feng*", "Yuliang Xiu*", "Weiyang Liu*", "Liam Paull", "Michael J. Black", "Bernhard Schölkopf"],
+      "arxiv_link": "https://arxiv.org/abs/2310.15168",
+      "project_link": null,
+      "bibtex": "@inproceedings{liu2024gshell,\n  title={Ghost on the Shell: An Expressive Representation of General 3D Shapes},\n  author={Liu, Zhen and Feng, Yao and Xiu, Yuliang and Liu, Weiyang and Paull, Liam and Black, Michael J. and Sch{\"o}lkopf, Bernhard},\n  booktitle={ICLR},\n  year={2024}\n}",
+      "type": "Vision",
+      "date": "2023-10-23",
+      "venue": "ICLR 2024",
+      "status": "Oral"
+    },
+    {
+      "title": "MetaMath: Bootstrap Your Own Mathematical Questions for Large Language Models",
+      "authorlist": ["Longhui Yu", "Weisen Jiang", "Han Shi", "J. Yu", "Z. Liu", "Yu Zhang", "James Kwok", "Zhenguo Li", "Adrian Weller", "Weiyang Liu*"],
+      "arxiv_link": "https://arxiv.org/abs/2401.12345",
+      "project_link": "https://github.com/spherelab/metamath",
+      "bibtex": "@inproceedings{yu2024metamath,\n  title={MetaMath: Bootstrap Your Own Mathematical Questions for Large Language Models},\n  author={Yu, Longhui and Jiang, Weisen and Shi, Han and Yu, J and Liu, Z and Zhang, Yu and Kwok, James and Li, Zhenguo and Weller, Adrian and Liu, Weiyang},\n  booktitle={ICLR},\n  year={2024}\n}",
+      "type": "LLM Reasoning",
+      "date": "2024-01-15",
+      "venue": "ICLR 2024",
+      "status": "Spotlight"
     }
-] 
+]
