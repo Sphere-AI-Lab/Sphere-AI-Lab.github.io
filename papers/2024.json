@@ -58,11 +58,11 @@
     {
       "title": "MetaMath: Bootstrap Your Own Mathematical Questions for Large Language Models",
       "authorlist": ["Longhui Yu", "Weisen Jiang", "Han Shi", "J. Yu", "Z. Liu", "Yu Zhang", "James Kwok", "Zhenguo Li", "Adrian Weller", "Weiyang Liu*"],
-      "arxiv_link": "https://arxiv.org/abs/2401.12345",
-      "project_link": "https://github.com/spherelab/metamath",
+      "arxiv_link": "https://arxiv.org/abs/2309.12284",
+      "project_link": "https://meta-math.github.io/",
       "bibtex": "@inproceedings{yu2024metamath,\n  title={MetaMath: Bootstrap Your Own Mathematical Questions for Large Language Models},\n  author={Yu, Longhui and Jiang, Weisen and Shi, Han and Yu, J and Liu, Z and Zhang, Yu and Kwok, James and Li, Zhenguo and Weller, Adrian and Liu, Weiyang},\n  booktitle={ICLR},\n  year={2024}\n}",
       "type": "LLM Reasoning",
-      "date": "2024-01-15",
+      "date": "2023-09-21",
       "venue": "ICLR 2024",
       "status": "Spotlight"
     }
