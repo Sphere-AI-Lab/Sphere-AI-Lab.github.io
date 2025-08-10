@@ -6,7 +6,7 @@
       "arxiv_link": "https://arxiv.org/abs/2404.15228",
       "project_link": "https://ig-llm.is.tue.mpg.de/", 
       "bibtex": "@article{kulits2024rethinking,\n  title={Re-Thinking Inverse Graphics with Large Language Models},\n  author={Kulits, Peter and Feng, Haiwen and Liu, Weiyang and Abrevaya, Victoria and Black, Michael J.},\n  journal={TMLR},\n  year={2024}\n}",
-      "type": "Vision & Language",
+      "type": "Multimodal Reasoning",
       "date": "2024-04-23",
       "venue": "TMLR 2024",
       "status": "Selected for Presentation at ICLR 2025"
@@ -28,7 +28,7 @@
       "arxiv_link": "https://arxiv.org/abs/2312.00093",
       "project_link": "https://graphdreamer.github.io/",
       "bibtex": "@inproceedings{gao2024graphdreamer,\n  title={GraphDreamer: Compositional 3D Scene Synthesis from Scene Graphs},\n  author={Gao, Gege and Liu, Weiyang and Chen, Anpei and Geiger, Andreas and Sch{\"o}lkopf, Bernhard},\n  booktitle={CVPR},\n  year={2024}\n}",
-      "type": "Vision & Language",
+      "type": "Generative Modeling",
       "date": "2023-11-30",
       "venue": "CVPR 2024",
       "status": null
@@ -50,6 +50,7 @@
       "arxiv_link": "https://arxiv.org/abs/2310.15168",
       "project_link": "https://gshell3d.github.io/",
       "bibtex": "@inproceedings{liu2024gshell,\n  title={Ghost on the Shell: An Expressive Representation of General 3D Shapes},\n  author={Liu, Zhen and Feng, Yao and Xiu, Yuliang and Liu, Weiyang and Paull, Liam and Black, Michael J. and Sch{\"o}lkopf, Bernhard},\n  booktitle={ICLR},\n  year={2024}\n}",
+      "type": "Generative Modeling",
       "date": "2023-10-23",
       "venue": "ICLR 2024",
       "status": "Oral"
