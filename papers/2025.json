@@ -5,7 +5,7 @@
     "authorlist": ["Shengchao Liu", "Divin Yan", "Weitao Du", "Weiyang Liu", "Zhuoxinran Li", "Hongyu Guo", "Christian Borgs", "Jennifer Chayes", "Anima Anandkumar"],
     "arxiv_link": "https://arxiv.org/abs/2409.10584",
     "project_link": "https://yanliang3612.github.io/NucleusDiff/",
-    "bibtex": "@article{liu2024manifold,\n  title={Manifold-Constrained Nucleus-Level Denoising Diffusion Model for Structure-Based Drug Design},\n  author={Liu, Shengchao and Yan, Divin and Du, Weitao and Liu, Weiyang and Li, Zhuoxinran and Guo, Hongyu and Borgs, Christian and Chayes, Jennifer and Anandkumar, Anima},\n  journal={arXiv preprint arXiv:2409.10584},year={2024}\n}"
+    "bibtex": "@article{liu2024manifold,\n  title={Manifold-Constrained Nucleus-Level Denoising Diffusion Model for Structure-Based Drug Design},\n  author={Liu, Shengchao and Yan, Divin and Du, Weitao and Liu, Weiyang and Li, Zhuoxinran and Guo, Hongyu and Borgs, Christian and Chayes, Jennifer and Anandkumar, Anima},\n  journal={arXiv preprint arXiv:2409.10584},year={2024}\n}",
     "type": "Generative Modeling",
     "date": "2025-08-12",
     "venue": "Proceedings of the National Academy of Sciences 2025",
