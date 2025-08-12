@@ -943,7 +943,6 @@
                 console.log('Loaded papers:', allPapers.length);
                 console.log('First paper sample:', allPapers[0]);
                 
-                // 提取所有独特的类型并创建主题标签
                 const types = [...new Set(allPapers.map(paper => paper.type))];
                 const topicsContainer = document.getElementById('topics-container');
                 
@@ -960,7 +959,6 @@
                     topicsContainer.appendChild(topicTag);
                 });
 
-                // 初始化时按日期降序排序
                 currentPapers = [...allPapers].sort((a, b) => new Date(b.date) - new Date(a.date));
                 console.log('Current papers to display:', currentPapers.length);
                 displayPapers(currentPapers);
