@@ -27,10 +27,10 @@
     "authorlist": ["Zeju Qiu*", "Weiyang Liu*", "Adrian Weller", "Bernhard Schölkopf"],
     "arxiv_link": "https://arxiv.org/abs/2506.19847",
     "project_link": "https://spherelab.ai/oftv2/",
-    "bibtex": "@article{qiu2025oftv2,\n  title={Orthogonal Finetuning Made Scalable},\n  author={Qiu, Zeju and Liu, Weiyang and Weller, Adrian and Schölkopf, Bernhard},\n  journal={arXiv preprint arXiv:2506.19847},\n  year={2025}\n}",
+    "bibtex": "@InProceedings{qiu2025oftv2,\n  title={Orthogonal Finetuning Made Scalable},\n  author={Qiu, Zeju and Liu, Weiyang and Weller, Adrian and Schölkopf, Bernhard},\n  booktitle={EMNLP},\n  year={2025}\n}",
     "type": "Efficiency",
-    "date": "2025-06-24",
-    "venue": "Preprint 2025",
+    "date": "2025-08-21",
+    "venue": "EMNLP 2025",
     "status": null
   },
   {

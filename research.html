@@ -1122,61 +1122,24 @@
         let autoScrollInterval;
         let autoScrollEnabled = true;
         const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
-        const featuredProjects = [
-            {
-                title: "Orthogonal Finetuning Made Scalable",
-                authors: "Zeju Qiu*, Weiyang Liu*, Adrian Weller, Bernhard Schölkopf",
-                venue: "Preprint 2025",
-                description: "A parameter-efficient, memory-efficient finetuning method that works for both full-precision and quantized models.",
-                image: "papers/featured/oftv2.png",
-                link: "https://spherelab.ai/oftv2/"
-            },
-            {
-                title: "Reparameterized LLM Training via Orthogonal Equivalence Transformation",
-                authors: "Zeju Qiu, Simon Buchholz, Tim Z. Xiao, Maximilian Dax, Bernhard Schölkopf, Weiyang Liu",
-                venue: "Preprint 2025",
-                description: "A novel reparameterized training algorithm that uses orthogonal equivalence transformation to optimize large language models.",
-                image: "papers/featured/poet.png",
-                link: "https://spherelab.ai/poet/"
-            },
-            {
-                title: "FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models",
-                authors: "Zhouliang Yu, Ruotian Peng, Keyi Ding, Yizhe Li, Zhongyuan Peng, Minghao Liu, Yifan Zhang, Zheng Yuan, Huajian Xin, Wenhao Huang, Yandong Wen, Ge Zhang, Weiyang Liu",
-                venue: "Preprint 2025",
-                description: "A large-scale comprehensive Lean4 mathematical reasoning benchmark.",
-                image: "papers/featured/formalmath.png",
-                link: "https://spherelab.ai/FormalMATH/"
-            },
+        let featuredProjects = [];
 
-            {
-                title: "Generating Symbolic World Models via Test-time Scaling of Large Language Models",
-                authors: "Zhouliang Yu, Yuhuan Yuan, Tim Z. Xiao, Frank Xia, Jie Fu, Ge Zhang, Ge Lin, Weiyang Liu",
-                venue: "TMLR 2025",
-                description: "A general yet effective test-time compute scaling method for large language models",
-                image: "papers/featured/ivml.png",
-                link: "https://vmlpddl.github.io/"
-            },
-
-            {
-                title: "Can Large Language Models Understand Symbolic Graphics Programs?",
-                authors: "Zeju Qiu*, Weiyang Liu*, Haiwen Feng*, Zhen Liu, Tim Z. Xiao, Katherine M. Collins, Joshua B. Tenenbaum, Adrian Weller, Michael J. Black, Bernhard Schölkopfu",
-                venue: "ICLR 2025 Spotlight",
-                description: "A comprehensive study to evaluate whether language models can truly understand symbolic graphics programs.",
-                image: "papers/featured/sgpbench.png",
-                link: "https://sgp-bench.github.io/"
-            },
-
-
-            {
-                title: "Verbalized Machine Learning: Revisiting Machine Learning with Language Models",
-                authors: "Tim Z. Xiao, Robert Bamler, Bernhard Schölkopf, Weiyang Liu",
-                venue: "TMLR 2025",
-                description: "A novel in-context machine learning paradigm that enables effective learning of text prompts in large language models.",
-                image: "papers/featured/vml.png",
-                link: "https://arxiv.org/abs/2406.04344/"
+        // Load featured projects from JSON file
+        async function loadFeaturedProjects() {
+            try {
+                const response = await fetch('papers/featured-projects.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                featuredProjects = await response.json();
+                initializeFeaturedCarousel();
+            } catch (error) {
+                console.error('Error loading featured projects:', error);
+                // Fallback to empty array if loading fails
+                featuredProjects = [];
+                initializeFeaturedCarousel();
             }
-
-        ];
+        }
 
         function initializeFeaturedCarousel() {
             const carouselTrack = document.querySelector('.carousel-track');
@@ -1213,7 +1176,14 @@
             carouselTrack.addEventListener('mouseleave', startAutoScroll);
 
             // Initialize navigation buttons
-            updateNavigationButtons();
+            const container = document.querySelector('.carousel-container');
+            const containerWidth = container.offsetWidth;
+            const projectWidth = window.innerWidth <= 768 ? 280 : 350;
+            const gap = 32;
+            const slideWidth = projectWidth + gap;
+            const maxVisibleSlides = Math.floor(containerWidth / slideWidth);
+            const maxSlide = Math.max(0, featuredProjects.length - maxVisibleSlides);
+            updateNavigationButtons(maxSlide);
 
             // Respond to viewport changes
             window.addEventListener('resize', () => {
@@ -1319,7 +1289,7 @@
         // 初始化加载
         window.onload = () => {
             loadPapers();
-            initializeFeaturedCarousel();
+            loadFeaturedProjects();
         };
     </script>
 </body>
