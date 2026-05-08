@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>People | SphereLab</title>
+    <link rel="shortcut icon" href="./spherelab_icon.svg">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            padding: 3rem 2rem;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -150px;
+            right: -150px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(206,168,224, 0.1);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(206,168,224, 0.1);
+            z-index: -1;
+        }
+
+        .main-title {
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: clamp(1rem, 2vh, 1rem);
+            letter-spacing: -0.02em;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+        }
+        
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1.5rem;
+            width: clamp(1.5rem, 3vw, 3rem);
+            height: clamp(1.5rem, 3vw, 3rem);
+            background-color: #c2e8f6;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+            z-index: -1;
+        }
+        
+        .main-title:hover::before {
+            transform: scale(1.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
+        }
+        
+        .subtitle {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 10;
+            display: inline-block;
+        }
+
+        .subtitle-text {
+            font-weight: 900;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.4rem;
+            color: #3e3e3e;
+            line-height: 1.1;
+            text-align: left;
+            display: inline-block;
+            background: linear-gradient(to right, #66b7d8, #e67300, #cc3333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 200% 100%;
+            transition: color 0.3s ease;
+        }
+
+        .subtitle:hover .subtitle-text {
+            color: transparent;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .page-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            color: #3e3e3e;
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .page-title::before {
+            content: '';
+            position: absolute;
+            top: -0.3rem;
+            left: -1rem;
+            width: clamp(2rem, 3vw, 2.5rem);
+            height: clamp(2rem, 3vw, 2.5rem);
+            background-color: #cea8e0;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+            z-index: -1;
+        }
+        
+        .page-title:hover::before {
+            transform: scale(1.2);
+        }
+
+        /* Match featured project title style from research.html */
+        .featured-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: .3rem;
+            margin-top: 2.5rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+                         .member-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+        }
+         
+         .member-avatar {
+             position: relative;
+             flex-shrink: 0;
+         }
+         
+         .avatar-dot {
+             position: absolute;
+             top: -1rem;
+             left: -1rem;
+             width: 2.5rem;
+             height: 2.5rem;
+             background-color: #cea8e0;
+             border-radius: 50%;
+             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+             z-index: -1;
+         }
+         
+         .avatar-frame {
+             width: 100px;
+             height: 100px;
+             border: 2px solid #ffffff;
+             border-radius: 8px;
+             overflow: hidden;
+             position: relative;
+             z-index: 1;
+         }
+         
+         .avatar-frame img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+         }
+         
+         .member-card:hover .avatar-dot {
+             transform: scale(1.7) translate(0.3rem, 0.3rem);
+             background-color: #cea8e0;
+         }
+        
+        .member-info {
+            flex: 1;
+        }
+        
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #3e3e3e;
+            margin-bottom: 0.25rem;
+        }
+        
+        .member-title {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #666;
+            margin-bottom: 0.8rem;
+        }
+
+        .member-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Ensure email button is right-most in the flex row */
+        .member-links .member-link[title="Email"] { order: 99; }
+
+        .member-link {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #666;
+            transition: all 0.2s ease;
+        }
+
+        .member-link:hover {
+            background-color: #e0e0e0;
+            color: #333;
+        }
+
+        /* Ensure SVG brand icons fit existing circular buttons */
+        .member-link svg { width: 1.1rem; height: 1.1rem; display: block; fill: currentColor; }
+
+        .material-icons-round {
+            font-size: 1.2rem;
+        }
+        
+        .pi-card {
+            grid-column: 1 / -1;
+            justify-self: center;
+            max-width: 400px;
+            margin-bottom: 2rem;
+        }
+        
+        .pi-card .avatar-frame {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .pi-card .avatar-dot {
+            top: -1rem;
+            left: -1rem;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        
+        .pi-card .member-name {
+            font-size: 1.6rem;
+        }
+        
+        .pi-card .member-title {
+            font-size: 1.1rem;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem 0.8rem;
+            }
+            
+            .subtitle {
+                top: 0.8rem;
+                left: 0.8rem;
+                gap: 0.6rem;
+                padding: 0.15rem 0.4rem 0.15rem 0.4rem;
+                border-radius: 8px;
+            }
+            
+            .subtitle-icon {
+                width: 1.4rem;
+                height: 1.4rem;
+            }
+            
+            .subtitle-text {
+                font-size: 0.95rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            
+            .member-card {
+                padding: 0.7rem;
+                align-items: center;
+            }
+            
+            .avatar-frame { width: 80px; height: 80px; font-size: 1.4rem; }
+            
+            .pi-card .avatar-frame { width: 96px; height: 96px; }
+
+            /* Larger tap targets on small screens */
+            .member-link { width: 2.2rem; height: 2.2rem; }
+            .material-icons-round { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden;">
+      <symbol id="icon-github" viewBox="0 0 24 24">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.302 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.016-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.386-1.333-1.756-1.333-1.756-1.09-.745.082-.73.082-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.835 2.807 1.305 3.492.997.108-.777.418-1.305.762-1.605-2.665-.305-5.467-1.332-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.536-1.523.118-3.176 0 0 1.01-.323 3.31 1.23a11.5 11.5 0 0 1 6.018 0c2.3-1.553 3.308-1.23 3.308-1.23.656 1.653.244 2.873.12 3.176.77.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.48 5.92.43.37.823 1.103.823 2.222 0 1.604-.014 2.896-.014 3.292 0 .32.218.694.825.576C20.565 21.796 24 17.302 24 12 24 5.37 18.63 0 12 0Z"/>
+      </symbol>
+      <symbol id="icon-twitter" viewBox="0 0 24 24">
+        <path d="M18.244 2h3.31l-7.227 8.26L22 22h-6.579l-5.145-6.58L4.244 22H.934l7.594-8.68L2 2h6.579l4.94 6.315L18.244 2z"/>
+      </symbol>
+    </svg>
+    
+    <a href="index.html" class="subtitle">
+            <h1 class="main-title">SphereLab</h1>
+    </a>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="page-title">People</h1>
+        </div>
+        
+        <div class="team-grid">
+                         <div class="member-card pi-card">
+                 <div class="member-avatar">
+                     <div class="avatar-frame">
+                         <img src="member_avatar/weiyang_liu.jpg" alt="Weiyang Liu">
+                     </div>
+                     <div class="avatar-dot"></div>
+                 </div>
+                                 <div class="member-info">
+                    <div class="member-name">Weiyang Liu</div>
+                    <div class="member-title">Principal Investigator</div>
+                    <div class="member-links">
+                        <a href="https://wyliu.com" class="member-link" target="_blank" title="Personal Website">
+                            <span class="material-icons-round">language</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=DMjROf0AAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                            <span class="material-icons-round">school</span>
+                        </a>
+                        <a href="https://github.com/wy1iu" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/Besteuler" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:wyliu@cse.cuhk.edu.hk" class="member-link" title="Email">
+                            <span class="material-icons-round">email</span>
+                        </a>
+                    </div>
+                </div>
+             </div>
+
+            <div class="member-card">
+             <div class="member-avatar">
+                 <div class="avatar-frame">
+                     <img src="member_avatar/zeju_qiu.jpg" alt="Zeju Qiu">
+                 </div>
+                 <div class="avatar-dot"></div>
+             </div>
+
+             <div class="member-info">
+                 <div class="member-name">Zeju Qiu</div>
+                 <div class="member-title">PhD Student <br> <em style="font-size: 0.8rem;color: #005994;">with <a href="https://is.mpg.de/~bs" style="color: #005994;"> Bernhard Schölkopf</a></em></div>
+                 <div class="member-links">
+                 <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
+                     <span class="material-icons-round">language</span>
+                 </a>
+                 <a href="https://scholar.google.com/citations?user=7y5RN9wAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                     <span class="material-icons-round">school</span>
+                 </a>
+                 <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                 <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                 <a href="mailto:place_holder" class="member-link" title="Email">
+                         <span class="material-icons-round">email</span>
+                         </a>
+                 </div>
+             </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/jiacheng_chen.jpg" alt="Jiacheng Chen">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                                <div class="member-info">
+                   <div class="member-name">Jiacheng Chen</div>
+                   <div class="member-title">PhD Student <br> <em style="font-size: 0.8rem;color: #005994;">with <a href="https://ych133.github.io/" style="color: #005994;">Yu Cheng</a></em></div>
+                   <div class="member-links">
+                       <a href="https://jc-chen1.github.io/" class="member-link" target="_blank" title="Personal Website">
+                           <span class="material-icons-round">language</span>
+                       </a>
+                       <a href="https://scholar.google.com/citations?user=knvJGuQAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                           <span class="material-icons-round">school</span>
+                       </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:place_holder" class="member-link" title="Email">
+                           <span class="material-icons-round">email</span>
+                         </a>
+                   </div>
+               </div>
+            </div>
+                        
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/yamei_chen.jpg" alt="Yamei Chen">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                                <div class="member-info">
+                <div class="member-name">Yamei Chen</div>
+                <div class="member-title">PhD Student</div>
+                <div class="member-links">
+                    <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=aCEtEIIAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                    <a href="mailto:place_holder" class="member-link" title="Email">
+                        <span class="material-icons-round">email</span>
+                        </a>
+                </div>
+            </div>
+            </div>
+                         
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/he_guo.jpg" alt="He Guo">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                                <div class="member-info">
+                <div class="member-name">He Guo</div>
+                <div class="member-title">PhD Student</div>
+                <div class="member-links">
+                    <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=place_holder" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                    <a href="mailto:place_holder" class="member-link" title="Email">
+                        <span class="material-icons-round">email</span>
+                        </a>
+                </div>
+            </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/yangyi_huang.jpg" alt="Yanyi Huang">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                                <div class="member-info">
+                <div class="member-name">Yangyi Huang</div>
+                <div class="member-title">PhD Student</div>
+                <div class="member-links">
+                    <a href="https://huangyangyi.github.io/" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=MzGqlqIAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="https://github.com/huangyangyi" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://x.com/yangyi_huang_cn" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                    <a href="mailto:yyhuang@link.cuhk.edu.hk" class="member-link" title="Email">
+                        <span class="material-icons-round">email</span>
+                        </a>
+                </div>
+            </div>
+            </div>
+
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/placeHold.png" alt="Siyuan Ma">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                                <div class="member-info">
+                <div class="member-name">Siyuan Ma</div>
+                <div class="member-title">PhD Student <br> <em style="font-size: 0.8rem;color: #005994;">with <a href="https://en.westlake.edu.cn/faculty/yandong-wen.html" style="color: #005994;"> Yandong Wen</a></em></div>
+                <div class="member-links">
+                    <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=CDyo3XgAAAAJ&hl=zh-CN" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="mailto:place_holder" class="member-link" title="Email">
+                        <span class="material-icons-round">email</span>
+                        </a>
+                </div>
+            </div>
+            </div>
+
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/kexuan_shi.jpg" alt="Kexuan Shi">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                                <div class="member-info">
+                <div class="member-name">Kexuan Shi</div>
+                <div class="member-title">PhD Student</div>
+                <div class="member-links">
+                    <a href="TBA" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=dX-aOIwAAAAJ&hl=en" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                    <a href="mailto:place_holder" class="member-link" title="Email">
+                        <span class="material-icons-round">email</span>
+                        </a>
+                </div>
+            </div>
+            </div>
+            
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/zhouliang_yu.jpg" alt="Zhouliang Yu">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                                <div class="member-info">
+                <div class="member-name">Zhouliang Yu</div>
+                <div class="member-title">PhD Student</div>
+                <div class="member-links">
+                    <a href="https://zhouliang-yu.github.io/" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=qUMjnPcAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                    <a href="mailto:place_holder" class="member-link" title="Email">
+                        <span class="material-icons-round">email</span>
+                        </a>
+                </div>
+            </div>
+            </div>
+                        
+            <div class="member-card">
+            <div class="member-avatar">
+                <div class="avatar-frame">
+                    <img src="member_avatar/haoquan_zhang.jpg" alt="Haoquan Zhang">
+                </div>
+                <div class="avatar-dot"></div>
+            </div>
+                            <div class="member-info">
+                <div class="member-name">Haoquan Zhang</div>
+                <div class="member-title">PhD Student</div>
+                <div class="member-links">
+                    <a href="https://haoquanzhang.github.io/" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=VUboP9QAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                    <a href="mailto:place_holder" class="member-link" title="Email">
+                        <span class="material-icons-round">email</span>
+                        </a>
+                </div>
+            </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/tim_z_xiao.jpg" alt="Tim Z Xiao">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                                <div class="member-info">
+                <div class="member-name">Tim Z. Xiao</div>
+                <div class="member-title">Visiting PhD Student</div>
+                <div class="member-links">
+                    <a href="https://timx.me/" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=4I7boHIAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                    <a href="mailto:place_holder" class="member-link" title="Email">
+                           <span class="material-icons-round">email</span>
+                         </a>
+                </div>
+            </div>
+            </div>
+
+        </div>
+
+        <!-- Alumni Section -->
+        <div class="header">
+            <h2 class="featured-title">Alumni</h2>
+        </div>
+        <div class="team-grid">
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/zhen_liu.jpg" alt="Zhen Liu">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Zhen Liu</div>
+                    <div class="member-title">Current: Assistant Professor at<br>CUHK-Shenzhen</div>
+                    <div class="member-links">
+                        <a href="https://itszhen.com/" class="member-link" target="_blank" title="Personal Website">
+                            <span class="material-icons-round">language</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=I1IiJCAAAAAJ&hl=en" class="member-link" target="_blank" title="Google Scholar">
+                            <span class="material-icons-round">school</span>
+                        </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:zhenliu@cuhk.edu.cn" class="member-link" title="Email">
+                            <span class="material-icons-round">email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/longhui_yu.jpg" alt="Longhui Yu">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                    <div class="member-info">
+                   <div class="member-name">Longhui Yu</div>
+                   <div class="member-title">Current: Researcher at Kimi AI</div>
+                   <div class="member-links">
+                       <a href="https://yulonghui.github.io/" class="member-link" target="_blank" title="Personal Website">
+                           <span class="material-icons-round">language</span>
+                       </a>
+                       <a href="https://scholar.google.com.hk/citations?user=3eHjDDgAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                           <span class="material-icons-round">school</span>
+                       </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:place_holder" class="member-link" title="Email">
+                           <span class="material-icons-round">email</span>
+                         </a>
+                   </div>
+               </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/zeju_qiu.jpg" alt="Zeju Qiu">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Zeju Qiu</div>
+                    <div class="member-title">Current: PhD Student at SphereLab</div>
+                    <div class="member-links">
+                    <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
+                        <span class="material-icons-round">language</span>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=7y5RN9wAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                        <span class="material-icons-round">school</span>
+                    </a>
+                    <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                    <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                    <a href="mailto:place_holder" class="member-link" title="Email">
+                           <span class="material-icons-round">email</span>
+                         </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/gege_gao.jpg" alt="Gege Gao">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Gege Gao</div>
+                    <div class="member-title">Current: PhD Student at University of Tübingen</div>
+                    <div class="member-links">
+                        <a href="https://ggghsl.github.io/" class="member-link" target="_blank" title="Personal Website">
+                            <span class="material-icons-round">language</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=nYYIYaUAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                            <span class="material-icons-round">school</span>
+                        </a>
+                        <a href="https://github.com/GGGHSL" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/GegeHeseri" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:gege.gao@inf.ethz.ch" class="member-link" title="Email">
+                            <span class="material-icons-round">email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="member-card">
+                <div class="member-avatar">
+                    <div class="avatar-frame">
+                        <img src="member_avatar/yamei_chen.jpg" alt="Yamei Chen">
+                    </div>
+                    <div class="avatar-dot"></div>
+                </div>
+                <div class="member-info">
+                    <div class="member-name">Yamei Chen</div>
+                    <div class="member-title">Current: PhD Student at SphereLab</div>
+                    <div class="member-links">
+                        <a href="https://place_holder" class="member-link" target="_blank" title="Personal Website">
+                            <span class="material-icons-round">language</span>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=aCEtEIIAAAAJ" class="member-link" target="_blank" title="Google Scholar">
+                            <span class="material-icons-round">school</span>
+                        </a>
+                        <a href="https://github.com/PLACEHOLDER" class="member-link" target="_blank" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-github"/></svg></a>
+                        <a href="https://twitter.com/PLACEHOLDER" class="member-link" target="_blank" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#icon-twitter"/></svg></a>
+                        <a href="mailto:place_holder@example.com" class="member-link" title="Email">
+                            <span class="material-icons-round">email</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+<script>
+  (function () {
+    function isPlaceholderHref(href) {
+      if (!href) return true;
+      const h = href.trim();
+      if (h === '#' || h === '') return true;
+      if (/place_holder/i.test(h)) return true;
+      if (/PLACEHOLDER/.test(h)) return true;
+      if (/user=place_holder/i.test(h)) return true;
+      if (/^mailto:\s*place_holder/i.test(h)) return true;
+      return false;
+    }
+
+    document.querySelectorAll('.member-links a.member-link').forEach((a) => {
+      const href = a.getAttribute('href');
+      if (isPlaceholderHref(href)) {
+        a.remove();
+      } else {
+        // Security hardening for external links
+        if (a.getAttribute('target') === '_blank') {
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
+      }
+    });
+  })();
+</script>
+</body>
+</html> 

@@ -1,478 +1,567 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SphereLab @ CUHK</title>
-    <link rel="shortcut icon" href="./spherelab_icon.svg">
-    <style>
-        :root {
-            --grad-1: #a78bfa;  /* pink */
-            --grad-2: #60a5fa;  /* purple */
-            --grad-3: #34d399;  /* cyan */
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
-            background-color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-        
-        #typewriter {
-            font-size: 4.5rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, var(--grad-1), var(--grad-2) 50%, var(--grad-3));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 0.15em solid rgba(255, 255, 255, 0.75);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SphereLab — Scalable Principles for Learning and Reasoning</title>
+  <meta name="description" content="SphereLab is a research lab studying scalable principles for machine learning and reasoning at The Chinese University of Hong Kong." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #f5efe2;            /* pale sand */
+      --bg-deep:   #efe7d6;            /* slightly deeper sand for hairlines */
+      --ink:       #1c1a16;            /* warm near-black */
+      --ink-soft:  #3b362d;
+      --muted:     #7a7163;            /* warm grey-brown */
+      --line:      rgba(28, 26, 22, 0.10);
+      --hair:      rgba(28, 26, 22, 0.18);
 
-      /*
-       * Blink animation for the caret. It toggles the border colour
-       * from transparent to opaque to create the familiar blinking
-       * effect. Applied via the `.typing` class while the animation
-       * runs.
-       */
-        @keyframes blink {
-            from,
-            to {
-              border-color: transparent;
-            }
-            50% {
-              border-color: rgba(183, 180, 180, 0.75);
-            }
-        }
-        .typing {
-            animation: blink 0.8s step-end infinite;
-        }
+      --serif:     "Newsreader", "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+      --sans:      "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --mono:      ui-monospace, "SF Mono", Menlo, "Cascadia Mono", Consolas, monospace;
 
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding-top: 18vh; /* replaces manual <br> spacing */
-        }
-        
-        .main-title {
-            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
-            font-weight: 900;
-            margin-bottom: clamp(1rem, 2vh, 1rem);
-            letter-spacing: -0.02em;
-            position: relative;
-            cursor: pointer;
-            background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-size: 200% 100%;
-            animation: gradientMove 2s linear infinite;
-        }
-        
-        .main-title::before {
-            content: '';
-            position: absolute;
-            top: -0.5rem;
-            left: -1.5rem;
-            width: clamp(1.5rem, 3vw, 3rem);
-            height: clamp(1.5rem, 3vw, 3rem);
-            background-color: #c2e8f6;
-            border-radius: 50%;
-            transition: transform 0.2s ease;
-            z-index: -1;
-        }
-        
-        .main-title:hover::before {
-            transform: scale(1.2);
-        }
-        
-        .sections {
-            display: flex;
-            gap: clamp(2rem, 5vw, 5rem);
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .section {
-            display: flex;
-            align-items: center;
-            gap: clamp(1rem, 2vw, 1.5rem);
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-        }
-        
-        .icon {
-            width: clamp(2rem, 3vw, 2.5rem);
-            height: clamp(2rem, 3vw, 2.5rem);
-            border-radius: 50%;
-            flex-shrink: 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: absolute;
-            top: -0.5rem;
-            left: -0.3rem;
-            z-index: -1;
-            background-size: 200% 200%;
-        }
-        
-        .research-icon {
-            background-color: #95ade4;
-        }
-        
-        .people-icon {
-            background-color: #cea8e0;
-        }
+      --maxw:      1080px;             /* main column */
+      --maxw-wide: 1240px;
+      --pad:       clamp(22px, 5vw, 48px);
+    }
 
-        .aboutus-icon {
-            background-color: #6acacf;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: 400;
+      font-feature-settings: "ss01", "kern";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    ::selection { background: var(--ink); color: var(--bg); }
 
-        .opening-icon {
-            background-color: #eeb2d0;
-        }
+    a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--hair);
+      transition: border-color .25s ease, color .25s ease, opacity .25s ease;
+    }
+    a:hover { border-bottom-color: var(--ink); }
 
-        .about-icon {
-            background-color: #60cdc9;
-        }
-        
-        .section:hover .icon {
-            transform: scale(1.2);
-            animation: gradientMoveBg 2s linear infinite;
-        }
-        
-        .section-text {
-            margin-left: clamp(2rem, 3vw, 2.5rem);
-            background: linear-gradient(to right, #e24f00, #e67300, #cc3333);
-            -webkit-background-clip: text;
-            background-clip: text;
-            background-size: 200% 100%;
-            transition: color 0.3s ease;
-        }
-        
-        .section-text {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 700;
-            color: #3e3e3e;
-        }
+    /* ---------- Subtle paper grain ---------- */
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 1px 1px, rgba(28,26,22,0.022) 1px, transparent 0);
+      background-size: 3px 3px;
+      mix-blend-mode: multiply;
+      z-index: 1;
+    }
+    .layer { position: relative; z-index: 2; }
 
-        .section:hover .section-text {
-            color: transparent;
-            animation: gradientMove 2s linear infinite;
-        }
+    /* ---------- Layout primitives ---------- */
+    main { padding-top: 0; }
+    section {
+      padding: clamp(56px, 8vw, 96px) var(--pad);
+    }
+    .col      { max-width: var(--maxw);      margin: 0 auto; }
+    .col-wide { max-width: var(--maxw-wide); margin: 0 auto; }
+    .center   { text-align: center; }
 
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+    .hairline {
+      width: 1px;
+      height: 32px;
+      background: var(--hair);
+      margin: 0 auto;
+      opacity: 0.6;
+    }
 
-        @keyframes gradientMoveBg {
-            0% {
-                background-position: 0% 0%;
-            }
-            50% {
-                background-position: 100% 100%;
-            }
-            100% {
-                background-position: 0% 0%;
-            }
-        }
-        
-                .subtitle {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            cursor: pointer;
-            display: inline-block;
-            z-index: 20;
-        }
+    .eyebrow {
+      font-family: var(--sans);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12.5px;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
 
-        .subtitle-text {
-            font-weight: 900;
-            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
-            font-size: 1.4rem;
-            color: #000;
-            line-height: 1.1;
-            text-align: left;
-            display: inline-block;
-            background: linear-gradient(to right, #66b7d8, #e67300, #cc3333);
-            -webkit-background-clip: text;
-            background-clip: text;
-            background-size: 200% 100%;
-            transition: color 0.3s ease;
-        }
+    h1, h2, h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      letter-spacing: -0.018em;
+      color: var(--ink);
+      margin: 0;
+    }
+    p { margin: 0 0 1.1em 0; color: var(--ink-soft); }
 
-        .subtitle:hover .subtitle-text {
-            color: transparent;
-            animation: gradientMove 2s linear infinite;
-        }
+    /* ---------- Hero ---------- */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: flex-start;
+      padding-top: clamp(360px, 62vh, 640px);
+      padding-bottom: clamp(56px, 8vw, 96px);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero .col { position: relative; z-index: 3; }
+    .hero h1 {
+      font-size: clamp(38px, 5.6vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      font-weight: 400;
+      margin-bottom: 36px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 300;
+    }
+    .hero p {
+      font-size: clamp(17px, 1.4vw, 19px);
+      line-height: 1.65;
+      color: var(--ink-soft);
+      max-width: 82ch;
+      margin-left: auto; margin-right: auto;
+      margin-bottom: 1.2em;
+    }
+    .hero .signoff {
+      margin-top: 48px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+      font-size: 15px;
+      letter-spacing: 0.01em;
+    }
 
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        
+    /* ---------- Sphere visual (fixed background) ---------- */
+    .sphere-wrap {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;                /* sits behind .layer (z-index: 2) */
+      width: min(900px, 96vw);
+      aspect-ratio: 1 / 1;
+      pointer-events: none;
+      opacity: 1;
+      will-change: opacity;
+      transition: opacity .25s linear;
+    }
+    .sphere-wrap canvas { width: 100% !important; height: 100% !important; display: block; }
+    @media (prefers-reduced-motion: reduce) {
+      .sphere-wrap { opacity: 0.7; }
+    }
 
-        
-        .description {
-            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
-            font-size: 1rem;
-            font-weight: 590;
-            letter-spacing: 0.02em;
-            color: #aaa;
-            line-height: 1.4;
-            text-align: left;
-        }
+    /* ---------- Section heads (centered, like humansand) ---------- */
+    .section-head { margin-bottom: 40px; }
+    .section-head h2 {
+      font-size: clamp(28px, 3.2vw, 40px);
+      line-height: 1.18;
+      max-width: 26ch;
+      margin: 0 auto;
+      letter-spacing: -0.022em;
+    }
+    .section-head .eyebrow { margin-bottom: 18px; }
 
-        /* Prevent wrapping within each affiliation line */
-        .description .no-wrap { white-space: nowrap; }
+    .prose p {
+      font-size: clamp(17px, 1.35vw, 19px);
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .prose p + p { margin-top: 1em; }
 
-        .affiliations {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #666;
-        }
+    /* ---------- Research themes ---------- */
+    .themes {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 16px;
+      border-top: 1px solid var(--hair);
+    }
+    .theme {
+      padding: 36px 0 38px;
+      border-bottom: 1px solid var(--hair);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      align-items: baseline;
+    }
+    @media (max-width: 640px) {
+      .theme { grid-template-columns: 1fr; gap: 8px; padding: 30px 0; }
+    }
+    .theme .num {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .theme h3 {
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -0.012em;
+      margin-bottom: 10px;
+    }
+    .theme p {
+      font-size: 16.5px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      margin: 0;
+      max-width: 60ch;
+    }
 
-        .affiliation {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
+    /* ---------- People (flowing name list) ---------- */
+    .people-flow {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(24px, 3.2vw, 40px);
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+      text-wrap: balance;
+    }
+    .people-flow em {
+      font-style: italic;
+      font-weight: 300;
+    }
+    .people-flow .amp {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+      margin: 0 0.18em;
+      display: inline-block;
+    }
+    .people-flow .name { white-space: nowrap; }
+    .people-flow a {
+      color: inherit;
+      border: none;
+      transition: opacity .2s ease, color .2s ease;
+    }
+    .people-flow a:hover { opacity: 0.55; }
+    .people-flow .with {
+      font-size: 0.5em;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+      margin-left: 0.15em;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .people-flow .with a:hover { color: var(--ink); opacity: 1; }
+    .people-flow .ph {
+      opacity: 0.32;
+      font-style: italic;
+      font-weight: 300;
+    }
 
-        .affiliation-tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.3rem 0.8rem;
-            border-radius: 1.5rem;
-            margin: 0 0.2rem;
-            color: #ffffff;
-        }
+    /* ---------- News ---------- */
+    .news { margin-top: 8px; }
+    .news-item {
+      display: grid;
+      grid-template-columns: 130px 1fr auto;
+      gap: 28px;
+      align-items: baseline;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--hair);
+    }
+    .news-item:first-child { border-top: 1px solid var(--hair); }
+    @media (max-width: 640px) {
+      .news-item { grid-template-columns: 1fr; gap: 4px; padding: 18px 0; }
+    }
+    .news-date {
+      font-family: var(--sans);
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .news-title { font-size: 17px; line-height: 1.45; color: var(--ink); }
+    .news-title a { border-bottom-color: transparent; }
+    .news-title a:hover { border-bottom-color: var(--ink); }
+    .news-tag {
+      font-family: var(--sans);
+      font-style: normal;
+      font-weight: 500;
+      font-size: 11.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
 
-        .affiliation-tag span {
-            color: #ffffff;
-            margin-right: 0.2rem;
-            font-weight: 900;
-        }
+    /* ---------- Contact ---------- */
+    .contact-block { margin-top: 8px; display: grid; gap: 36px; }
+    .contact-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 32px;
+      align-items: baseline;
+      border-top: 1px solid var(--hair);
+      padding-top: 26px;
+    }
+    @media (max-width: 640px) { .contact-row { grid-template-columns: 1fr; gap: 8px; } }
+    .contact-row .label {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .contact-row p { margin: 0; font-size: 16.5px; line-height: 1.6; }
 
-        .cuhk-bg {
-            background: linear-gradient(135deg, #be02cb, #ffe063);
-        }
-
-        .cuhk-bg:hover {
-            background: linear-gradient(135deg, #9a02a3, #e6cc57);
-        }
-
-        .mpis-bg {
-            background-color: #5d9f7f;
-        }
-
-        .mpis-bg:hover {
-            background-color: #4a7f65;
-        }
-
-        .westlake-bg {
-            background: linear-gradient(135deg, #0077ff, #ff7b00);
-        }
-
-        .westlake-bg:hover {
-            background: linear-gradient(135deg, #005acc, #e66d00);
-        }
-
-        .slogan {
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            text-align: right;
-            font-size: 1.4rem;
-            font-weight: 900;
-            /* font-style: italic; */
-            line-height: 1.4;
-            color: #000;
-            z-index: 10;
-        }
-
-        .slogan .line1, .slogan .line2 {
-            display: flex;
-            justify-content: flex-end;
-            overflow: hidden;
-        }
-
-        .slogan span {
-            opacity: 0;
-            transform: translateX(1rem);
-            display: inline-block;
-        }
-
-        .slogan .line1 span {
-            animation: typeIn 0.08s ease forwards;
-        }
-
-        .slogan .line2 span {
-            animation: typeIn 0.08s ease forwards;
-            animation-delay: calc(1.5s + (var(--char-index) * 0.05s));
-        }
-
-        .slogan .line1 span {
-            animation-delay: calc(var(--char-index) * 0.05s);
-        }
-
-        @keyframes typeIn {
-            from {
-                opacity: 0;
-                transform: translateX(1rem);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        /* 移动端适配 */
-        @media (max-width: 768px) {
-            /* Typewriter headline */
-            #typewriter {
-                font-size: 2rem;
-                border-right-width: 0.1em;
-            }
-
-            /* Reduce top spacing for compact view */
-            .main-content {
-                padding-top: 8vh;
-            }
-
-            .sections {
-                flex-direction: column;
-                gap: clamp(1.5rem, 4vh, 2.5rem);
-            }
-            
-            .subtitle {
-                top: 0.8rem;
-                left: 0.8rem;
-                gap: 0.6rem;
-            }
-            
-            .subtitle-icon {
-                width: 1.4rem;
-                height: 1.4rem;
-            }
-            
-            .subtitle-text {
-                font-size: 0.95rem;
-                font-weight: 900;
-            }
-
-            /* Move affiliations block into flow and center on mobile */
-            .affiliations {
-                position: static;
-                margin: 2.5rem auto 0 auto;
-                font-size: 0.85rem;
-                padding-bottom: env(safe-area-inset-bottom);
-                text-align: center;
-                width: 100%;
-                max-width: 320px;
-            }
-
-            .affiliation {
-                justify-content: center;
-                gap: 0.4rem;
-                align-items: center;
-                flex-direction: column;
-            }
-
-            .affiliations img {
-                width: 48px;
-                height: 48px;
-            }
-
-            .description {
-                font-size: 0.85rem;
-                line-height: 1.2;
-                text-align: center;
-                width: 100%;
-            }
-
-            /* Hide slogan to avoid clutter/overlap on small screens */
-            .slogan { display: none; }
-
-            .affiliation-tag {
-                padding: 0.18rem 0.5rem;
-            }
-        }
-    </style>
+    /* ---------- Footer ---------- */
+    footer {
+      padding: 60px var(--pad) 80px;
+      text-align: center;
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+    footer .links {
+      margin-top: 14px;
+      font-style: normal;
+      font-weight: 400;
+    }
+    footer .links a { color: var(--ink-soft); border: none; margin: 0 10px; }
+    footer .links a:hover { color: var(--ink); }
+  </style>
 </head>
 <body>
-    <div id="typewriter" class="typing"></div>
-    <div class="main-content">
-        <div class="sections">
-            <a href="aboutus.html" class="section">
-                <div class="icon about-icon"></div>
-                <span class="section-text">About</span>
-            </a>
 
-            <a href="research.html" class="section">
-                <div class="icon research-icon"></div>
-                <span class="section-text">Research</span>
-            </a>
-            
-            <a href="people.html" class="section">
-                <div class="icon people-icon"></div>
-                <span class="section-text">People</span>
-            </a>
+  <!-- 3D rotating sphere (Three.js) — fixed at viewport center, behind all content -->
+  <div class="sphere-wrap" aria-hidden="true">
+    <canvas id="sphere-canvas"></canvas>
+  </div>
 
-            <a href="opening.html" class="section">
-                <div class="icon opening-icon"></div>
-                <span class="section-text">Openings</span>
-            </a>
+  <main class="layer">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="top">
+      <div class="col center">
+        <h1>
+          SphereLab.
+        </h1>
+        <p>
+          Scalable Principles for Learning and Reasoning Lab @ CUHK<br><br>
+        </p>
+      </div>
+      <div class="prose">
+          <p>
+            We believe the next leap in AI won't come from blindly stacking more parameters — it will come from finding the right principles. The simple ones. The ones that truly scale. So we hunt for them.<br>
+          </p> 
+          <p>
+            We work on the principles that shape how machines learn — the structures, symmetries, and quiet assumptions that decide what a model can generalize to. We believe the right idea is often worth more than another order of magnitude of compute, and we work to turn the ones we find into functional algorithms and systems.<br>
+          </p><p>
+            <em>How we work.</em>&nbsp;&nbsp;Curiosity over trends. Depth over speed. Insight before application.<br>
+          </p>
+          <p>
+            <em>Director.</em>&nbsp;&nbsp;<a href="https://wyliu.com/">Weiyang Liu</a><br>
+            <em>Members.</em>&nbsp;&nbsp;<a href="https://siyuanwangw.github.io/">Siyuan Wang</a>, <a href="https://www.linkedin.com/in/zeju-qiu-729b8018a/?originalSubdomain=de">Zeju Qiu</a> , <a href="TBA">He Guo</a>, <a href="https://huangyangyi.github.io/">Yangyi Huang</a>, <a href="https://scholar.google.com/citations?user=dX-aOIwAAAAJ&hl=en">Kexuan Shi</a>, <a href="https://zhouliang-yu.github.io/">Zhouliang Yu</a>, <a href="https://haoquanzhang.github.io/">Haoquan Zhang</a><br>
+            <em>Affiliated members.</em>&nbsp;&nbsp;<a href="https://timx.me/">Tim Z. Xiao</a>, <a href="https://lhxcs.github.io/">Hanxuan Li</a>, <a href="https://sihany077.github.io/">Sihan Yang</a>, <a href="https://scholar.google.com/citations?user=tMihzcoAAAAJ&hl=zh-CN">Jiale Kang</a>, <a href="http://lijunc04.github.io/">Lijun Cai</a>, <a href="TBA">Luocheng Liang</a>, <a href="https://github.com/hetailang">Zihao Wang</a>, <a href="https://scholar.google.com/citations?user=CDyo3XgAAAAJ&hl=en">Siyuan Ma</a>, <a href="https://github.com/Vvauted">Kailebo Jiefulisi</a>
+            <br>
+          </p>
         </div>
-    </div>
-    
-    <div class="subtitle">
-        <h1 class="main-title">SphereLab</h1>
-    </div>
+    </section>
 
-    <div class="affiliations">
-        <div class="affiliation">
-            <img src="cuhkmlg.svg" width="65" height="65">
-            <div class="description"><span class="no-wrap">Scalable Principles for Learning and Reasoning Lab</span><br><span class="no-wrap">at The Chinese University of Hong Kong</span></div>
-            <!-- <div class="affiliation-tag mpis-bg" style="cursor:pointer;" onclick="window.open('https://is.mpg.de/', '_blank')"><span>@</span>MPI-IS</div>
-            <div class="affiliation-tag westlake-bg" style="cursor:pointer;" onclick="window.open('https://en.westlake.edu.cn/', '_blank')"><span>@</span>Westlake</div> -->
+    <!-- ===== ABOUT =====
+    <section id="about">
+      <div class="col">
+        <div class="section-head center">
+          <div class="eyebrow">About</div>
+          <h2>We work on the principles behind learning, not only its results.</h2>
         </div>
-    </div>
-    <script src="script.js"></script>
+        <div class="prose">
+          <p>
+            Modern machine learning is, in many ways, an empirical science. Models grow, benchmarks shift, and useful behaviors appear that no one fully understands. We are interested in the parts of this picture that admit explanation — the structural and geometric ideas that quietly do most of the work.
+          </p>
+          <p>
+            Our research spans parameter-efficient adaptation, formal mathematical reasoning, model merging, and the geometry of representations in large neural networks. We try to develop methods whose effectiveness can be reasoned about, and whose ideas transfer.
+          </p>
+          <p>
+            The lab is led by <a href="https://www.cse.cuhk.edu.hk/people/faculty/weiyang-liu/">Weiyang Liu</a>, an Assistant Professor in Computer Science and Engineering at CUHK. We collaborate broadly across institutions, and welcome students, interns, and visiting researchers who care about both theory and craft.
+          </p>
+        </div>
+      </div>
+    </section>-->
+
+
+    <footer>
+      SphereLab · Scalable Principles for Learning and Reasoning
+      <div class="links">
+        <a href="https://github.com/Sphere-AI-Lab">GitHub</a>
+        <a href="https://huggingface.co/SphereLab">Hugging Face</a>
+        <a href="https://www.cse.cuhk.edu.hk/">CUHK CSE</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Three.js for the rotating wireframe sphere in the hero -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    (function () {
+      const canvas = document.getElementById('sphere-canvas');
+      if (!canvas || typeof THREE === 'undefined') return;
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas,
+        alpha: true,
+        antialias: true,
+      });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+      const scene = new THREE.Scene();
+
+      const camera = new THREE.PerspectiveCamera(36, 1, 0.1, 100);
+      camera.position.set(0, 0, 3.4);
+
+      // ---- Build the wireframe sphere ----
+      // Thin lat/long lines + a faint surface point cloud.
+      const sphereGroup = new THREE.Group();
+      const RADIUS = 1;
+
+      // Use the warm muted brown rather than near-black so the sphere
+      // recedes behind the (darker) text instead of competing with it.
+      const lineColor = new THREE.Color('#7a7163');
+      const lineMat = new THREE.LineBasicMaterial({
+        color: lineColor,
+        transparent: true,
+        opacity: 0.6,
+      });
+      const lineMatSoft = new THREE.LineBasicMaterial({
+        color: lineColor,
+        transparent: true,
+        opacity: 0.34,
+      });
+
+      // Meridians (great circles through the poles)
+      const MERIDIANS = 18;
+      const MERIDIAN_RES = 96;
+      for (let i = 0; i < MERIDIANS; i++) {
+        const phi = (i / MERIDIANS) * Math.PI; // 0..pi (each line covers full circle)
+        const pts = [];
+        for (let j = 0; j <= MERIDIAN_RES; j++) {
+          const t = (j / MERIDIAN_RES) * Math.PI * 2;
+          pts.push(new THREE.Vector3(
+            RADIUS * Math.sin(t) * Math.cos(phi),
+            RADIUS * Math.cos(t),
+            RADIUS * Math.sin(t) * Math.sin(phi)
+          ));
+        }
+        const geom = new THREE.BufferGeometry().setFromPoints(pts);
+        sphereGroup.add(new THREE.Line(geom, lineMat));
+      }
+
+      // Parallels (latitude rings)
+      const PARALLELS = 12;
+      const PARALLEL_RES = 128;
+      for (let i = 1; i < PARALLELS; i++) {
+        const lat = (i / PARALLELS) * Math.PI; // 0..pi, exclusive of poles
+        const r = Math.sin(lat) * RADIUS;
+        const y = Math.cos(lat) * RADIUS;
+        const pts = [];
+        for (let j = 0; j <= PARALLEL_RES; j++) {
+          const a = (j / PARALLEL_RES) * Math.PI * 2;
+          pts.push(new THREE.Vector3(r * Math.cos(a), y, r * Math.sin(a)));
+        }
+        const geom = new THREE.BufferGeometry().setFromPoints(pts);
+        sphereGroup.add(new THREE.Line(geom, lineMatSoft));
+      }
+
+      // Faint surface point cloud (Fibonacci sphere) — adds texture / depth cue
+      const POINTS = 1400;
+      const positions = new Float32Array(POINTS * 3);
+      const golden = Math.PI * (3 - Math.sqrt(5));
+      for (let i = 0; i < POINTS; i++) {
+        const y = 1 - (i / (POINTS - 1)) * 2;        // -1..1
+        const r = Math.sqrt(1 - y * y);
+        const theta = golden * i;
+        positions[i * 3 + 0] = Math.cos(theta) * r * RADIUS;
+        positions[i * 3 + 1] = y * RADIUS;
+        positions[i * 3 + 2] = Math.sin(theta) * r * RADIUS;
+      }
+      const ptGeom = new THREE.BufferGeometry();
+      ptGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      const ptMat = new THREE.PointsMaterial({
+        color: lineColor,
+        size: 0.013,
+        sizeAttenuation: true,
+        transparent: true,
+        opacity: 0.85,
+      });
+      sphereGroup.add(new THREE.Points(ptGeom, ptMat));
+
+      // Slight tilt so we see both hemispheres
+      sphereGroup.rotation.x = 0.32;
+      sphereGroup.rotation.z = -0.05;
+
+      scene.add(sphereGroup);
+
+      // ---- Sizing ----
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        const size = Math.min(rect.width, rect.height) || 600;
+        renderer.setSize(size, size, false);
+        camera.aspect = 1;
+        camera.updateProjectionMatrix();
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      // ---- Animate ----
+      const reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const SPEED_Y = reduceMotion ? 0 : 0.0018;
+      const SPEED_X = reduceMotion ? 0 : 0.00035;
+
+      function tick() {
+        sphereGroup.rotation.y += SPEED_Y;
+        sphereGroup.rotation.x += SPEED_X;
+        renderer.render(scene, camera);
+        requestAnimationFrame(tick);
+      }
+      tick();
+
+      // ---- Scroll fade ----
+      // Sphere is fixed at viewport center. As the user scrolls past the
+      // first viewport, fade it down so it blends into the background but
+      // stays visible (rotation still legible).
+      const wrap = document.querySelector('.sphere-wrap');
+      const FADE_START = 0.0;       // start fading immediately on scroll (in viewport heights)
+      const FADE_END   = 0.1;      // fully faded after ~30% of one viewport
+      const MIN_OPACITY = 0.45;     // never fully invisible
+
+      let ticking = false;
+      function applyFade() {
+        const vh = window.innerHeight || 800;
+        // Normalize scroll progress to [0, 1] across the [FADE_START, FADE_END] range.
+        const raw = (window.scrollY / vh - FADE_START) / (FADE_END - FADE_START);
+        const t   = Math.min(Math.max(raw, 0), 1);
+        const eased = t * t * (3 - 2 * t);   // smoothstep on [0,1]
+        const op = 1 - eased * (1 - MIN_OPACITY);
+        wrap.style.opacity = op.toFixed(3);
+        ticking = false;
+      }
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(applyFade);
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      applyFade();
+    })();
+  </script>
 </body>
-</html> 
+</html>

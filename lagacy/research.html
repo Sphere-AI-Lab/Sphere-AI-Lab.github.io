@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | SphereLab</title>
+    <link rel="shortcut icon" href="./spherelab_icon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            position: relative;
+            overflow-x: hidden;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -150px;
+            right: -150px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: rgba(149,173,228, 0.1);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -100px;
+            left: -100px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(149,173,228, 0.1);
+            z-index: -1;
+        }
+
+        .main-title {
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: clamp(1rem, 2vh, 1rem);
+            letter-spacing: -0.02em;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+        }
+        
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1.5rem;
+            width: clamp(1.5rem, 3vw, 3rem);
+            height: clamp(1.5rem, 3vw, 3rem);
+            background-color: #c2e8f6;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+            z-index: -1;
+        }
+        
+        .main-title:hover::before {
+            transform: scale(1.2);
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+        }
+
+        .subtitle {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 10;
+            display: inline-block;
+        }
+
+        .subtitle-text {
+            font-weight: 900;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.4rem;
+            color: #000;
+            line-height: 1.1;
+            text-align: left;
+            display: inline-block;
+            background: linear-gradient(to right, #66b7d8, #e67300, #cc3333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 200% 100%;
+            transition: color 0.3s ease;
+        }
+
+        .subtitle:hover .subtitle-text {
+            color: transparent;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
+        }
+
+        .header h1::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1rem;
+            width: clamp(2.5rem, 4vw, 3rem);
+            height: clamp(2.5rem, 4vw, 3rem);
+            background-color: #95ade4;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
+        .header h1:hover::before {
+            transform: scale(1.2);
+        }
+
+        .filter-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* margin-bottom: 2rem; */
+            flex-wrap: wrap;
+            gap: 1rem;
+            max-width: 1200px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            /* padding: 0 2rem; */
+        }
+
+        .sort-buttons {
+            display: flex;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        /* Compact resource buttons (GitHub / Hugging Face) */
+        .resource-links {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 20;
+        }
+
+        .resource-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            color: #333;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid #e1e1e1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.2s ease;
+        }
+
+        .resource-btn:hover {
+            background-color: #e5e5e5;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .resource-btn:active { transform: translateY(0); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+        .btn-icon { width: 1.1rem; height: 1.1rem; display: inline-flex; align-items: center; justify-content: center; }
+        .btn-icon svg { width: 100%; height: 100%; display: block; fill: currentColor; }
+        .emoji-icon { font-size: 1.15rem; line-height: 1; }
+        .resource-btn .label { display: none; }
+
+        /* Featured Projects Carousel Styles */
+        .featured-section {
+            text-align: center;
+            margin-bottom: 0rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0rem 0;
+            padding: 0rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 900;
+            color: #3e3e3e;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 2rem;
+            padding: 1rem 0;
+            width: fit-content;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .featured-project {
+            flex: 0 0 350px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .featured-project:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .featured-project::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: #ffb366;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .featured-project:hover::before {
+            opacity: 0.2;
+            transform: scale(1.2);
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #f8f8f8;
+        }
+
+        .featured-content {
+            padding: 1.5rem;
+        }
+
+        .featured-project-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        .featured-project-authors {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .featured-project-venue {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.03em;
+            background-color: #95ade4;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            display: inline-block;
+            width: fit-content;
+            box-shadow: 0 2px 4px rgba(149, 173, 228, 0.3);
+            margin-bottom: 0.8rem;
+        }
+
+        .featured-project-description {
+            font-size: 0.9rem;
+            color: #444;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .featured-project-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            background-color: #e8e8e8;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .featured-project-link:hover {
+            background-color: #d8d8d8;
+            color: #000;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #95ade4;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #95ade4;
+            font-weight: bold;
+        }
+
+        .carousel-btn:hover {
+            background-color: #95ade4;
+            color: #fff;
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .carousel-btn:disabled:hover {
+            background-color: #fff;
+            color: #95ade4;
+            transform: none;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-350px - 2rem));
+            }
+        }
+
+        .auto-scroll {
+            animation: scroll 30s linear infinite;
+        }
+
+        /* Mobile responsive for featured section */
+        @media (max-width: 768px) {
+            .featured-section {
+                margin: 2rem 0;
+                padding: 1rem 0;
+            }
+
+            .featured-project {
+                flex: 0 0 280px;
+            }
+
+            .featured-content {
+                padding: 1rem;
+            }
+
+            .featured-project-title {
+                font-size: 1.1rem;
+            }
+
+            .featured-project-description {
+                font-size: 0.85rem;
+                -webkit-line-clamp: 2;
+            }
+
+            @keyframes scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(-280px - 2rem));
+                }
+            }
+        }
+
+        /* Redesigned pill-style sort buttons */
+        .sort-btn {
+            padding: 0.45rem 1.1rem;
+            border: 1px solid #e6e6e6;
+            background: #f9f9f9;
+            border-radius: 999px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            z-index: 1;
+            font-size: 1.05rem;
+            color: #3e3e3e;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .sort-btn:hover { background: #f1f1f1; }
+
+        .sort-btn.active {
+            background: #95ade4;
+            color: #fff;
+            border-color: #95ade4;
+            box-shadow: 0 2px 8px rgba(149,173,228,0.35);
+        }
+
+        /* Neutralize legacy ::before circle if any */
+        .sort-btn::before { content: none !important; display: none !important; }
+
+        .filter-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            /* margin-bottom: 2rem; */
+            width: 100%;
+        }
+
+        .topics-container {
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .topics-container.visible {
+            height: 3rem;
+        }
+
+        .topics {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .topic-tag {
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid #e6e6e6;
+            background: #f9f9f9;
+            color: #3e3e3e;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .topic-tag:hover { background: #f1f1f1; }
+        .topic-tag:focus { outline: none; box-shadow: 0 0 0 3px rgba(149,173,228,0.35); }
+        .topic-tag.active { background: #95ade4; color: #fff; border-color: #95ade4; box-shadow: 0 2px 8px rgba(149,173,228,0.35); }
+
+        /* Remove legacy dot decoration */
+        .topic-tag::before { content: none !important; }
+
+        .papers-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            position: relative;
+            max-width: 1200px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 2rem;
+        }
+
+        .paper-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #f8fafc;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            min-height: 100px;
+        }
+
+        .paper-card.appear {
+            animation: paperAppear 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .paper-card.disappear {
+            animation: paperDisappear 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes paperAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes paperDisappear {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+
+        /* 为每个论文添加延迟 */
+        .paper-card.appear:nth-child(n+1) { animation-delay: 0.1s; }
+        .paper-card.appear:nth-child(n+2) { animation-delay: 0.2s; }
+        .paper-card.appear:nth-child(n+3) { animation-delay: 0.3s; }
+
+        /* 消失时的延迟 */
+        .paper-card.disappear:nth-child(n+1) { animation-delay: 0s; }
+        .paper-card.disappear:nth-child(n+2) { animation-delay: 0.05s; }
+        .paper-card.disappear:nth-child(n+3) { animation-delay: 0.1s; }
+
+        .paper-card::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background-color: #95ade4;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .paper-card:hover::before {
+            opacity: 0.2;
+            transform: scale(1.2);
+        }
+
+        .paper-image-container {
+            flex: 0 0 300px;
+            position: relative;
+            overflow: hidden;
+            background-color: #f8f8f8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .paper-image {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .paper-content {
+            padding: 1rem;
+        }
+
+        .paper-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #000;
+            line-height: 1.2;
+        }
+
+        .paper-authors {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        .paper-venue {
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1c59af;
+            letter-spacing: 0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .paper-status {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #006400;
+            background-color: #e8f5e8;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid #006400;
+        }
+
+
+
+        .paper-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .paper-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            background-color: #e8e8e8;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            width: fit-content;
+            border: none;
+            cursor: pointer;
+        }
+
+        .paper-link:hover {
+            background-color: #d8d8d8;
+            color: #000;
+        }
+
+        .bib-btn {
+            background-color: #e8e8e8;
+            color: #333;
+        }
+
+        .bib-btn:hover {
+            background-color: #d8d8d8;
+            color: #000;
+        }
+
+        .bib-content {
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #95ade4;
+        }
+
+        .bib-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #333;
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        a {
+            color: #95ade4; /* closer to site blues */
+            text-decoration: none;
+        }
+        a:hover,
+        a:hover {
+            color: #e67300; /* slightly darker on hover */
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .subtitle {
+                top: 0.8rem;
+                left: 0.8rem;
+                gap: 0.6rem;
+                padding: 0.15rem 0.4rem 0.08rem 0.4rem;
+                border-radius: 8px;
+            }
+            
+            .subtitle-icon {
+                width: 1.4rem;
+                height: 1.4rem;
+            }
+            
+            .subtitle-text {
+                font-size: 0.95rem;
+            }
+
+            .filter-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.2rem;
+            }
+
+            .sort-buttons { gap: 0.8rem; }
+            .sort-btn { padding: 0.45rem 0.9rem; font-size: 0.95rem; }
+
+            /* Featured projects: enable native touch scroll on mobile */
+            .carousel-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 0.4rem;
+            }
+            .carousel-track {
+                width: max-content;
+                gap: 0.8rem;
+                transform: none !important; /* avoid JS transforms fighting native scroll */
+            }
+            .featured-project {
+                flex: 0 0 280px;
+                scroll-snap-align: start;
+            }
+            .carousel-nav { display: none; }
+
+            /* Let topic filters fully expand on mobile for readability */
+            #topics-wrapper.visible { height: auto; }
+            #topics-container { max-height: none; }
+
+            .resource-btn { font-size: 0.85rem; padding: 0.45rem 0.8rem; }
+            .resource-links { top: 0.7rem; right: 0.7rem; gap: 0.4rem; }
+            .resource-btn { width: 36px; height: 36px; }
+
+            /* Topic tags: larger tap targets */
+            .topic-tag { padding: 0.4rem 0.9rem; font-size: 0.95rem; }
+            #topics-wrapper { padding: 0 0.3rem; }
+
+            .papers-grid {
+                padding: 0 0.8rem;
+            }
+
+            .paper-card {
+                flex-direction: column;
+                min-height: auto;
+            }
+
+            .paper-image-container {
+                flex: 0 0 auto;
+                height: 180px;
+            }
+
+            .paper-content {
+                padding: 1.2rem;
+            }
+
+            .paper-title {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+                line-height: 1.3;
+            }
+
+            .paper-authors {
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+                line-height: 1.4;
+            }
+
+            .paper-description {
+                font-size: 0.85rem;
+                margin-bottom: 0.8rem;
+                line-height: 1.5;
+            }
+
+            .paper-venue {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.25rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .paper-status {
+                font-size: 0.75rem;
+                padding: 0.12rem 0.45rem;
+            }
+
+            .paper-links {
+                gap: 0.6rem;
+            }
+
+            .paper-link {
+                font-size: 0.8rem;
+                padding: 0.25rem 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="subtitle">
+        <h1 class="main-title">SphereLab</h1>
+    </a>
+    <div class="container">
+        <div class="header">
+            <h1>Research</h1>
+        </div>
+
+        <div class="resource-links">
+            <a href="https://github.com/Sphere-AI-Lab" target="_blank" class="resource-btn" aria-label="GitHub">
+                <span class="btn-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56 0-.28-.01-1.03-.02-2.02-3.22.7-3.9-1.55-3.9-1.55-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.76.41-1.27.74-1.56-2.57-.29-5.28-1.28-5.28-5.68 0-1.25.45-2.28 1.2-3.08-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.75.8 1.2 1.83 1.2 3.08 0 4.41-2.71 5.38-5.29 5.66.42.36.79 1.08.79 2.19 0 1.58-.01 2.86-.01 3.25 0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+                </span>
+                <span class="label">GitHub</span>
+            </a>
+            <a href="https://huggingface.co/SphereLab" target="_blank" class="resource-btn" aria-label="Hugging Face">
+                <span class="btn-icon emoji-icon" aria-hidden="true">🤗</span>
+                <span class="label">Hugging Face</span>
+            </a>
+        </div>
+
+        <div class="featured-section">
+            <h2 class="featured-title">Featured Projects (<a href="project.html">Full List</a>)</h2>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- Projects will be dynamically populated by JavaScript -->
+                </div>
+                <div class="carousel-nav">
+                    <button class="carousel-btn" onclick="moveToSlide('prev')" id="prev-btn">‹</button>
+                    <button class="carousel-btn" onclick="moveToSlide('next')" id="next-btn">›</button>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <div class="featured-section">
+            <h2 class="featured-title">Publication</h2>
+        </div>
+        <div class="filter-section">
+            <div class="sort-buttons">
+                <button class="sort-btn active" onclick="handleSort('date', this)">Sort by Date</button>
+                <button class="sort-btn" onclick="handleSort('type', this)">Sort by Topic</button>
+            </div>
+            <div class="topics-container" id="topics-wrapper">
+                <div class="topics" id="topics-container">
+                    <!-- Topics will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="papers-grid" id="papers-container">
+            <!-- Papers will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        let currentPapers = [];
+        let allPapers = [];
+        let currentSort = 'date';
+        let selectedTopic = null;
+
+        async function loadPapers() {
+            try {
+                const years = ['2024', '2025'];
+                for (const year of years) {
+                    const response = await fetch(`papers/${year}.json`);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load ${year}.json: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    allPapers = [...allPapers, ...data];
+                }
+                
+                console.log('Loaded papers:', allPapers.length);
+                console.log('First paper sample:', allPapers[0]);
+                
+                const types = [...new Set(allPapers.map(paper => paper.type))];
+                const topicsContainer = document.getElementById('topics-container');
+                
+                types.forEach(type => {
+                    const topicTag = document.createElement('div');
+                    topicTag.className = 'topic-tag';
+                    topicTag.textContent = type;
+                    topicTag.onclick = () => filterByTopic(type);
+                    topicTag.setAttribute('role', 'button');
+                    topicTag.tabIndex = 0;
+                    topicTag.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); filterByTopic(type); }
+                    });
+                    topicsContainer.appendChild(topicTag);
+                });
+
+                currentPapers = [...allPapers].sort((a, b) => new Date(b.date) - new Date(a.date));
+                console.log('Current papers to display:', currentPapers.length);
+                displayPapers(currentPapers);
+            } catch (error) {
+                console.error('Error loading papers:', error);
+                // Show error message on page
+                const container = document.getElementById('papers-container');
+                container.innerHTML = `<div style="text-align: center; padding: 2rem; color: #666;">Error loading papers: ${error.message}</div>`;
+            }
+        }
+
+        // Removed dynamic topic colors; using unified pill style
+
+        async         function handleSort(method, btnEl) {
+            if (method === currentSort) return; // 如果点击当前激活的按钮，不执行任何操作
+            
+            currentSort = method;
+            const buttons = document.querySelectorAll('.sort-btn');
+            const typeBtn = document.querySelector('.sort-btn[onclick*="type"]');
+
+            // 清除所有active，再设置当前按钮为active
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (btnEl && btnEl.classList) btnEl.classList.add('active');
+
+            // 如果切换到date排序，清除type按钮的颜色
+            if (method === 'date') {
+                // 清除所有topic的active状态
+                document.querySelectorAll('.topic-tag').forEach(tag => {
+                    tag.classList.remove('active');
+                });
+                selectedTopic = null;
+            } else if (method === 'type') {
+                // 仅控制话题区域显隐，按钮使用active样式，不做动态配色
+            }
+
+            const topicsWrapper = document.getElementById('topics-wrapper');
+            const topicsContainer = document.getElementById('topics-container');
+            if (method === 'type') {
+                topicsWrapper.classList.add('visible');
+                setTimeout(() => {
+                    topicsContainer.classList.add('visible');
+                }, 50);
+            } else {
+                topicsContainer.classList.remove('visible');
+                setTimeout(() => {
+                    topicsWrapper.classList.remove('visible');
+                }, 300);
+                selectedTopic = null;
+                currentPapers = [...allPapers];
+            }
+
+            let sortedPapers = [...currentPapers];
+            if (method === 'date') {
+                // 降序排序：最新的日期（较大的值）排在前面
+                sortedPapers.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } else if (method === 'type') {
+                // 先按类型排序，同类型内按日期降序排序
+                sortedPapers.sort((a, b) => {
+                    const typeCompare = a.type.localeCompare(b.type);
+                    if (typeCompare !== 0) return typeCompare;
+                    return new Date(b.date) - new Date(a.date);
+                });
+            }
+
+            displayPapers(sortedPapers);
+        }
+
+        function filterByTopic(type) {
+            const topicTags = document.querySelectorAll('.topic-tag');
+            const typeBtn = document.querySelector('.sort-btn[onclick*="type"]');
+            
+            topicTags.forEach(tag => {
+                if (tag.textContent === type) {
+                    tag.classList.toggle('active');
+                    if (tag.classList.contains('active')) {
+                        // 获取当前类型的颜色
+                        const color = window.getComputedStyle(tag).backgroundColor;
+                        // 设置Sort by Type按钮的颜色
+                        typeBtn.style.setProperty('--type-color', color);
+                        typeBtn.setAttribute('data-type-color', 'true');
+                    } else {
+                        // 如果取消选择，恢复默认颜色
+                        typeBtn.style.removeProperty('--type-color');
+                        typeBtn.removeAttribute('data-type-color');
+                    }
+                } else {
+                    tag.classList.remove('active');
+                }
+            });
+
+            if (selectedTopic === type) {
+                selectedTopic = null;
+                currentPapers = [...allPapers];
+                // 恢复默认颜色
+                typeBtn.style.removeProperty('--type-color');
+                typeBtn.removeAttribute('data-type-color');
+            } else {
+                selectedTopic = type;
+                currentPapers = allPapers.filter(paper => paper.type === type);
+            }
+
+            // 对筛选后的论文按日期排序
+            currentPapers.sort((a, b) => new Date(b.date) - new Date(a.date));
+            displayPapers(currentPapers);
+        }
+
+        async function displayPapers(papers) {
+            const container = document.getElementById('papers-container');
+            
+            console.log('Displaying papers:', papers.length);
+            
+            // 为现有的卡片添加消失动画
+            const existingCards = container.querySelectorAll('.paper-card');
+            const disappearPromises = Array.from(existingCards).map((card, index) => {
+                return new Promise(resolve => {
+                    card.classList.add('disappear');
+                    // 根据卡片位置计算延迟时间
+                    const delay = 500 + (index % 3) * 50; // 基础动画时间 + 延迟
+                    setTimeout(resolve, delay);
+                });
+            });
+            
+            // 等待所有卡片的消失动画完成
+            await Promise.all(disappearPromises);
+            
+            container.innerHTML = '';
+
+            papers.forEach((paper, index) => {
+                console.log('Creating paper card:', paper.title);
+                console.log('BibTeX field:', paper.bibtex);
+                const paperCard = document.createElement('div');
+                paperCard.className = 'paper-card appear';
+                
+                paperCard.innerHTML = `
+                    <div class="paper-content">
+                        <h3 class="paper-title">${paper.title}</h3>
+                        <p class="paper-authors">${paper.authorlist.join(', ')}</p>
+                        <div class="paper-venue">
+                            <span>${paper.venue}</span>
+                            ${paper.status ? `<span class="paper-status">${paper.status}</span>` : ''}
+                        </div>
+                        <div class="paper-links">
+                            <a href="${paper.arxiv_link}" target="_blank" class="paper-link">Paper</a>
+                            ${paper.project_link ? `<a href="${paper.project_link}" target="_blank" class="paper-link">Project</a>` : ''}
+                            <button class="paper-link bib-btn" onclick="toggleBib(${index})">BibTeX</button>
+                        </div>
+                        <div class="bib-content" id="bib-${index}" style="display: none;">
+                            <pre class="bib-text">${paper.bibtex ? paper.bibtex.replace(/\\n/g, '\n') : 'BibTeX not available'}</pre>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(paperCard);
+            });
+            
+            console.log('Finished displaying papers');
+        }
+
+        // Featured Projects Carousel Functionality
+        let currentSlide = 0;
+        let autoScrollInterval;
+        let autoScrollEnabled = true;
+        const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+        let featuredProjects = [];
+
+        // Load featured projects from JSON file
+        async function loadFeaturedProjects() {
+            try {
+                const response = await fetch('papers/featured-projects.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                featuredProjects = await response.json();
+                initializeFeaturedCarousel();
+            } catch (error) {
+                console.error('Error loading featured projects:', error);
+                // Fallback to empty array if loading fails
+                featuredProjects = [];
+                initializeFeaturedCarousel();
+            }
+        }
+
+        function initializeFeaturedCarousel() {
+            const carouselTrack = document.querySelector('.carousel-track');
+            
+            // Populate carousel with actual project data
+            carouselTrack.innerHTML = '';
+            featuredProjects.forEach((project, index) => {
+                const projectElement = document.createElement('div');
+                projectElement.className = 'featured-project';
+                projectElement.innerHTML = `
+                    <img src="${project.image}" alt="${project.title}" class="featured-image">
+                    <div class="featured-content">
+                        <h3 class="featured-project-title">${project.title}</h3>
+                        <p class="featured-project-authors">${project.authors}</p>
+                        <p class="featured-project-venue">${project.venue}</p>
+                        <p class="featured-project-description">${project.description}</p>
+                        <a href="${project.link}" target="_blank" class="featured-project-link">Learn More</a>
+                    </div>
+                `;
+                carouselTrack.appendChild(projectElement);
+            });
+
+            // Start/stop auto-scroll depending on viewport
+            if (isMobile()) {
+                autoScrollEnabled = false;
+                pauseAutoScroll();
+            } else {
+                autoScrollEnabled = true;
+                startAutoScroll();
+            }
+
+            // Add hover pause functionality
+            carouselTrack.addEventListener('mouseenter', pauseAutoScroll);
+            carouselTrack.addEventListener('mouseleave', startAutoScroll);
+
+            // Initialize navigation buttons
+            const container = document.querySelector('.carousel-container');
+            const containerWidth = container.offsetWidth;
+            const projectWidth = window.innerWidth <= 768 ? 280 : 350;
+            const gap = 32;
+            const slideWidth = projectWidth + gap;
+            const maxVisibleSlides = Math.floor(containerWidth / slideWidth);
+            const maxSlide = Math.max(0, featuredProjects.length - maxVisibleSlides);
+            updateNavigationButtons(maxSlide);
+
+            // Respond to viewport changes
+            window.addEventListener('resize', () => {
+                if (isMobile()) {
+                    autoScrollEnabled = false;
+                    pauseAutoScroll();
+                } else {
+                    autoScrollEnabled = true;
+                    startAutoScroll();
+                }
+            });
+        }
+
+        function startAutoScroll() {
+            if (!autoScrollEnabled) return;
+            autoScrollInterval = setInterval(() => {
+                const container = document.querySelector('.carousel-container');
+                const containerWidth = container.offsetWidth;
+                const projectWidth = window.innerWidth <= 768 ? 280 : 350;
+                const gap = 32;
+                const slideWidth = projectWidth + gap;
+                const maxVisibleSlides = Math.floor(containerWidth / slideWidth);
+                const maxSlide = Math.max(0, featuredProjects.length - maxVisibleSlides);
+                
+                if (currentSlide < maxSlide) {
+                    currentSlide++;
+                } else {
+                    // Loop back to the beginning
+                    currentSlide = 0;
+                }
+                updateCarousel();
+            }, 4000); // Change slide every 4 seconds
+        }
+
+        function pauseAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+
+        function updateCarousel() {
+            if (isMobile()) return; // use native scroll on mobile
+            const carouselTrack = document.querySelector('.carousel-track');
+            const container = document.querySelector('.carousel-container');
+            const containerWidth = container.offsetWidth;
+            
+            // Responsive project width
+            const projectWidth = window.innerWidth <= 768 ? 280 : 350;
+            const gap = 32;
+            const slideWidth = projectWidth + gap;
+            const maxVisibleSlides = Math.floor(containerWidth / slideWidth);
+            const maxSlide = Math.max(0, featuredProjects.length - maxVisibleSlides);
+            
+            // Ensure currentSlide doesn't exceed the maximum
+            if (currentSlide > maxSlide) {
+                currentSlide = maxSlide;
+            }
+            
+            carouselTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+            updateNavigationButtons(maxSlide);
+        }
+
+        function updateNavigationButtons(maxSlide) {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            if (!prevBtn || !nextBtn) return;
+            // Disable prev button if at the beginning
+            prevBtn.disabled = currentSlide === 0;
+            
+            // Disable next button if at the end
+            nextBtn.disabled = currentSlide >= maxSlide;
+        }
+
+        function moveToSlide(direction) {
+            if (isMobile()) return; // allow native swipe/scroll on mobile
+            const container = document.querySelector('.carousel-container');
+            const containerWidth = container.offsetWidth;
+            const projectWidth = window.innerWidth <= 768 ? 280 : 350;
+            const gap = 32;
+            const slideWidth = projectWidth + gap;
+            const maxVisibleSlides = Math.floor(containerWidth / slideWidth);
+            const maxSlide = Math.max(0, featuredProjects.length - maxVisibleSlides);
+            
+            if (direction === 'prev' && currentSlide > 0) {
+                currentSlide--;
+            } else if (direction === 'next' && currentSlide < maxSlide) {
+                currentSlide++;
+            }
+            
+            updateCarousel();
+            // Restart auto-scroll timer
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
+
+        function toggleBib(index) {
+            const bibContent = document.getElementById(`bib-${index}`);
+            if (bibContent.style.display === 'none') {
+                bibContent.style.display = 'block';
+            } else {
+                bibContent.style.display = 'none';
+            }
+        }
+
+        // 初始化加载
+        window.onload = () => {
+            loadPapers();
+            loadFeaturedProjects();
+        };
+    </script>
+</body>
+</html> 

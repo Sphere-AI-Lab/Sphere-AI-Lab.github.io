@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SphereLab @ CUHK</title>
+    <link rel="shortcut icon" href="./spherelab_icon.svg">
+    <style>
+        :root {
+            --grad-1: #a78bfa;  /* pink */
+            --grad-2: #60a5fa;  /* purple */
+            --grad-3: #34d399;  /* cyan */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        #typewriter {
+            font-size: 4.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--grad-1), var(--grad-2) 50%, var(--grad-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.15em solid rgba(255, 255, 255, 0.75);
+        }
+
+      /*
+       * Blink animation for the caret. It toggles the border colour
+       * from transparent to opaque to create the familiar blinking
+       * effect. Applied via the `.typing` class while the animation
+       * runs.
+       */
+        @keyframes blink {
+            from,
+            to {
+              border-color: transparent;
+            }
+            50% {
+              border-color: rgba(183, 180, 180, 0.75);
+            }
+        }
+        .typing {
+            animation: blink 0.8s step-end infinite;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 18vh; /* replaces manual <br> spacing */
+        }
+        
+        .main-title {
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            font-weight: 900;
+            margin-bottom: clamp(1rem, 2vh, 1rem);
+            letter-spacing: -0.02em;
+            position: relative;
+            cursor: pointer;
+            background: linear-gradient(to right, #65b4d3, #60cdc9, #977ff9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% 100%;
+            animation: gradientMove 2s linear infinite;
+        }
+        
+        .main-title::before {
+            content: '';
+            position: absolute;
+            top: -0.5rem;
+            left: -1.5rem;
+            width: clamp(1.5rem, 3vw, 3rem);
+            height: clamp(1.5rem, 3vw, 3rem);
+            background-color: #c2e8f6;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+            z-index: -1;
+        }
+        
+        .main-title:hover::before {
+            transform: scale(1.2);
+        }
+        
+        .sections {
+            display: flex;
+            gap: clamp(2rem, 5vw, 5rem);
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .section {
+            display: flex;
+            align-items: center;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+        }
+        
+        .icon {
+            width: clamp(2rem, 3vw, 2.5rem);
+            height: clamp(2rem, 3vw, 2.5rem);
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            top: -0.5rem;
+            left: -0.3rem;
+            z-index: -1;
+            background-size: 200% 200%;
+        }
+        
+        .research-icon {
+            background-color: #95ade4;
+        }
+        
+        .people-icon {
+            background-color: #cea8e0;
+        }
+
+        .aboutus-icon {
+            background-color: #6acacf;
+        }
+
+        .opening-icon {
+            background-color: #eeb2d0;
+        }
+
+        .about-icon {
+            background-color: #60cdc9;
+        }
+        
+        .section:hover .icon {
+            transform: scale(1.2);
+            animation: gradientMoveBg 2s linear infinite;
+        }
+        
+        .section-text {
+            margin-left: clamp(2rem, 3vw, 2.5rem);
+            background: linear-gradient(to right, #e24f00, #e67300, #cc3333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 200% 100%;
+            transition: color 0.3s ease;
+        }
+        
+        .section-text {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            color: #3e3e3e;
+        }
+
+        .section:hover .section-text {
+            color: transparent;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes gradientMoveBg {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+        
+                .subtitle {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            cursor: pointer;
+            display: inline-block;
+            z-index: 20;
+        }
+
+        .subtitle-text {
+            font-weight: 900;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.4rem;
+            color: #000;
+            line-height: 1.1;
+            text-align: left;
+            display: inline-block;
+            background: linear-gradient(to right, #66b7d8, #e67300, #cc3333);
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-size: 200% 100%;
+            transition: color 0.3s ease;
+        }
+
+        .subtitle:hover .subtitle-text {
+            color: transparent;
+            animation: gradientMove 2s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+
+        
+        .description {
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1rem;
+            font-weight: 590;
+            letter-spacing: 0.02em;
+            color: #aaa;
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        /* Prevent wrapping within each affiliation line */
+        .description .no-wrap { white-space: nowrap; }
+
+        .affiliations {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #666;
+        }
+
+        .affiliation {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .affiliation-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.3rem 0.8rem;
+            border-radius: 1.5rem;
+            margin: 0 0.2rem;
+            color: #ffffff;
+        }
+
+        .affiliation-tag span {
+            color: #ffffff;
+            margin-right: 0.2rem;
+            font-weight: 900;
+        }
+
+        .cuhk-bg {
+            background: linear-gradient(135deg, #be02cb, #ffe063);
+        }
+
+        .cuhk-bg:hover {
+            background: linear-gradient(135deg, #9a02a3, #e6cc57);
+        }
+
+        .mpis-bg {
+            background-color: #5d9f7f;
+        }
+
+        .mpis-bg:hover {
+            background-color: #4a7f65;
+        }
+
+        .westlake-bg {
+            background: linear-gradient(135deg, #0077ff, #ff7b00);
+        }
+
+        .westlake-bg:hover {
+            background: linear-gradient(135deg, #005acc, #e66d00);
+        }
+
+        .slogan {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            text-align: right;
+            font-size: 1.4rem;
+            font-weight: 900;
+            /* font-style: italic; */
+            line-height: 1.4;
+            color: #000;
+            z-index: 10;
+        }
+
+        .slogan .line1, .slogan .line2 {
+            display: flex;
+            justify-content: flex-end;
+            overflow: hidden;
+        }
+
+        .slogan span {
+            opacity: 0;
+            transform: translateX(1rem);
+            display: inline-block;
+        }
+
+        .slogan .line1 span {
+            animation: typeIn 0.08s ease forwards;
+        }
+
+        .slogan .line2 span {
+            animation: typeIn 0.08s ease forwards;
+            animation-delay: calc(1.5s + (var(--char-index) * 0.05s));
+        }
+
+        .slogan .line1 span {
+            animation-delay: calc(var(--char-index) * 0.05s);
+        }
+
+        @keyframes typeIn {
+            from {
+                opacity: 0;
+                transform: translateX(1rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            /* Typewriter headline */
+            #typewriter {
+                font-size: 2rem;
+                border-right-width: 0.1em;
+            }
+
+            /* Reduce top spacing for compact view */
+            .main-content {
+                padding-top: 8vh;
+            }
+
+            .sections {
+                flex-direction: column;
+                gap: clamp(1.5rem, 4vh, 2.5rem);
+            }
+            
+            .subtitle {
+                top: 0.8rem;
+                left: 0.8rem;
+                gap: 0.6rem;
+            }
+            
+            .subtitle-icon {
+                width: 1.4rem;
+                height: 1.4rem;
+            }
+            
+            .subtitle-text {
+                font-size: 0.95rem;
+                font-weight: 900;
+            }
+
+            /* Move affiliations block into flow and center on mobile */
+            .affiliations {
+                position: static;
+                margin: 2.5rem auto 0 auto;
+                font-size: 0.85rem;
+                padding-bottom: env(safe-area-inset-bottom);
+                text-align: center;
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .affiliation {
+                justify-content: center;
+                gap: 0.4rem;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .affiliations img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .description {
+                font-size: 0.85rem;
+                line-height: 1.2;
+                text-align: center;
+                width: 100%;
+            }
+
+            /* Hide slogan to avoid clutter/overlap on small screens */
+            .slogan { display: none; }
+
+            .affiliation-tag {
+                padding: 0.18rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="typewriter" class="typing"></div>
+    <div class="main-content">
+        <div class="sections">
+            <a href="aboutus.html" class="section">
+                <div class="icon about-icon"></div>
+                <span class="section-text">About</span>
+            </a>
+
+            <a href="research.html" class="section">
+                <div class="icon research-icon"></div>
+                <span class="section-text">Research</span>
+            </a>
+            
+            <a href="people.html" class="section">
+                <div class="icon people-icon"></div>
+                <span class="section-text">People</span>
+            </a>
+
+            <a href="opening.html" class="section">
+                <div class="icon opening-icon"></div>
+                <span class="section-text">Openings</span>
+            </a>
+        </div>
+    </div>
+    
+    <div class="subtitle">
+        <h1 class="main-title">SphereLab</h1>
+    </div>
+
+    <div class="affiliations">
+        <div class="affiliation">
+            <img src="cuhkmlg.svg" width="65" height="65">
+            <div class="description"><span class="no-wrap">Scalable Principles for Learning and Reasoning Lab</span><br><span class="no-wrap">at The Chinese University of Hong Kong</span></div>
+            <!-- <div class="affiliation-tag mpis-bg" style="cursor:pointer;" onclick="window.open('https://is.mpg.de/', '_blank')"><span>@</span>MPI-IS</div>
+            <div class="affiliation-tag westlake-bg" style="cursor:pointer;" onclick="window.open('https://en.westlake.edu.cn/', '_blank')"><span>@</span>Westlake</div> -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
